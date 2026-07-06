@@ -1,8 +1,8 @@
 // src/core/events/event-bus.ts
 
 import { EventEmitter } from "node:events";
-import { EventEnvelope } from "./event-envelope";
-import { EventStore } from "../../store/event-store";
+import type { EventEnvelope } from "./event-envelope";
+import type { EventStore } from "../../store/event-store";
 
 export class EventBus {
   private readonly emitter = new EventEmitter();

@@ -2,8 +2,8 @@
 
 import { appendFile, mkdir, readFile } from "node:fs/promises";
 import { dirname } from "node:path";
-import { EventEnvelope } from "../core/events/event-envelope";
-import { EventStore } from "./event-store";
+import type { EventEnvelope } from "../core/events/event-envelope";
+import type { EventStore } from "./event-store";
 
 export class FileEventStore implements EventStore {
   constructor(private readonly path = "data/events.jsonl") {}

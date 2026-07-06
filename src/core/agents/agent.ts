@@ -1,6 +1,6 @@
 // src/core/agents/agent.ts
 
-import { EventEnvelope } from "../events/event-envelope";
+import type { EventEnvelope } from "../events/event-envelope";
 
 export type AgentMetadata = {
   name: string;

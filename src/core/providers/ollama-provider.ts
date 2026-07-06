@@ -1,7 +1,7 @@
 // src/core/providers/ollama-provider.ts
 
 import ollama from "ollama";
-import { LlmProvider } from "./llm-provider";
+import type { LlmProvider } from "./llm-provider";
 
 export class OllamaProvider implements LlmProvider {
   name = "ollama";
@@ -14,7 +14,7 @@ export class OllamaProvider implements LlmProvider {
     const response = await ollama.chat({
       model: params.model,
       messages: params.messages,
-      format: params.format
+      ...(params.format !== undefined ? { format: params.format } : {}),
     });
 
     return response.message.content;

@@ -1,8 +1,8 @@
 // src/agents/summary/summary-agent.ts
 
-import { Agent, AgentMetadata } from "../../core/agents/agent";
+import type { Agent, AgentMetadata } from "../../core/agents/agent";
 import { EventBus } from "../../core/events/event-bus";
-import { EventEnvelope } from "../../core/events/event-envelope";
+import type { EventEnvelope } from "../../core/events/event-envelope";
 
 export class SummaryAgent implements Agent {
   metadata: AgentMetadata = {
@@ -25,7 +25,7 @@ export class SummaryAgent implements Agent {
       conversationId: event.conversationId,
       rootTaskId: event.rootTaskId,
       taskId: event.taskId,
-      parentTaskId: event.parentTaskId,
+      ...(event.parentTaskId !== undefined ? { parentTaskId: event.parentTaskId } : {}),
 
       type: "agent.message",
       source: this.metadata.name,

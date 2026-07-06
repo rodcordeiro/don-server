@@ -11,7 +11,7 @@ import { BacklogAgent } from "../agents/backlog/backlog-agent";
 import { SummaryAgent } from "../agents/summary/summary-agent";
 
 import { ChatGateway } from "../gateway/chat-gateway";
-import { AppContext } from "./app-context";
+import type { AppContext } from "./app-context";
 import { env } from "node:process";
 
 export class Bootstrap {

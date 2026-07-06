@@ -5,7 +5,7 @@ import { randomUUID } from "node:crypto";
 
 import { EventBus } from "../core/events/event-bus";
 import { parseCommand } from "./command-parser";
-import { EventEnvelope } from "../core/events/event-envelope";
+import type { EventEnvelope } from "../core/events/event-envelope";
 import { AgentRegistry } from "../core/agents/agent-registry";
 
 type ClientMessage = {

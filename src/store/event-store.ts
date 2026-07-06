@@ -1,6 +1,6 @@
 // src/store/event-store.ts
 
-import { EventEnvelope } from "../core/events/event-envelope";
+import type { EventEnvelope } from "../core/events/event-envelope";
 
 export interface EventStore {
   append(event: EventEnvelope): Promise<void>;

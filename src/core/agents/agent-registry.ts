@@ -1,6 +1,6 @@
 // src/core/agents/agent-registry.ts
 
-import { Agent, AgentMetadata } from "./agent";
+import type { Agent, AgentMetadata } from "./agent";
 
 export class AgentRegistry {
   private readonly agents = new Map<string, Agent>();

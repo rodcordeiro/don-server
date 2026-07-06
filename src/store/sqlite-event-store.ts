@@ -1,9 +1,9 @@
 // src/store/sqlite-event-store.ts
 
 import sqlite3 from "sqlite3";
-import { open, Database } from "sqlite";
-import { EventEnvelope } from "../core/events/event-envelope";
-import { EventStore } from "./event-store";
+import { open, type Database } from "sqlite";
+import type { EventEnvelope } from "../core/events/event-envelope";
+import type { EventStore } from "./event-store";
 
 type EventRow = {
   event_id: string;

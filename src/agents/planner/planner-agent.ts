@@ -1,10 +1,10 @@
 // src/agents/planner/planner-agent.ts
 
 import { EventBus } from "../../core/events/event-bus";
-import { Agent, AgentMetadata } from "../../core/agents/agent";
+import type { Agent, AgentMetadata } from "../../core/agents/agent";
 import { AgentRegistry } from "../../core/agents/agent-registry";
-import { LlmProvider } from "../../core/providers/llm-provider";
-import { EventEnvelope } from "../../core/events/event-envelope";
+import type { LlmProvider } from "../../core/providers/llm-provider";
+import type { EventEnvelope } from "../../core/events/event-envelope";
 
 type PlannerStep = {
   target: string;
@@ -155,7 +155,7 @@ Regras:
       conversationId: parentEvent.conversationId,
       rootTaskId: parentEvent.rootTaskId,
       taskId: parentEvent.taskId,
-      parentTaskId: parentEvent.parentTaskId,
+      ...(parentEvent.parentTaskId !== undefined ? { parentTaskId: parentEvent.parentTaskId } : {}),
 
       type: "agent.message",
       source: this.metadata.name,

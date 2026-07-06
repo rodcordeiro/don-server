@@ -20,7 +20,8 @@ export function parseCommand(
     };
   }
 
-  const [, mention, content] = match;
+  const mention = match[1]!;
+  const content = match[2]!;
 
   const possibleNames = [
     mention,

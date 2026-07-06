@@ -1,11 +1,11 @@
 // src/bootstrap/app-context.ts
 
-import { EventBus } from "../core/events/event-bus";
-import { AgentRegistry } from "../core/agents/agent-registry";
-import { AgentRouter } from "../core/agents/agent-router";
-import { ChatGateway } from "../gateway/chat-gateway";
-import { LlmProvider } from "../core/providers/llm-provider";
-import { EventStore } from "../store/event-store";
+import type { EventBus } from "../core/events/event-bus";
+import type { AgentRegistry } from "../core/agents/agent-registry";
+import type { AgentRouter } from "../core/agents/agent-router";
+import type { ChatGateway } from "../gateway/chat-gateway";
+import type { LlmProvider } from "../core/providers/llm-provider";
+import type { EventStore } from "../store/event-store";
 
 export type AppContext = {
   eventStore: EventStore;

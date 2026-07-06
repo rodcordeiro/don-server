@@ -2,7 +2,7 @@
 
 import { EventBus } from "../events/event-bus";
 import { AgentRegistry } from "./agent-registry";
-import { EventEnvelope } from "../events/event-envelope";
+import type { EventEnvelope } from "../events/event-envelope";
 
 export class AgentRouter {
   constructor(
