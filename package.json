@@ -1,19 +1,29 @@
 {
-  "name": "@rodcordeiro/don-server",
+  "name": "@rocordeiro/don-server",
   "version": "0.0.1",
-  "license": "MIT",
+  "description": "",
+  "main": "dist/index.js",
   "scripts": {
-    "preinstall": "sh -c 'rm -f package-lock.json yarn.lock; case \"$npm_config_user_agent\" in pnpm/*) ;; *) echo \"Use pnpm instead\" >&2; exit 1 ;; esac'",
-    "build": "pnpm run typecheck && pnpm -r --if-present run build",
-    "typecheck:libs": "tsc --build",
-    "typecheck": "pnpm run typecheck:libs && pnpm -r --filter \"./artifacts/**\" --filter \"./scripts\" --if-present run typecheck"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "tsx watch src/main.ts",
+    "client": "tsx scripts/ws-client.ts",
+    "build": "tsc",
+    "start": "node dist/main.js"
   },
-  "private": true,
-  "dependencies": {
-    "@replit/connectors-sdk": "^0.4.1"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "prettier": "^3.8.4",
-    "typescript": "~5.9.3"
+    "@types/node": "^26.1.0",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.23.0"
+  },
+  "dependencies": {
+    "ollama": "^0.6.3",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1",
+    "typescript": "^6.0.3",
+    "ws": "^8.21.0"
   }
 }
