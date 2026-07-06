@@ -5,8 +5,7 @@ import { AgentRegistry } from "../core/agents/agent-registry";
 import { AgentRouter } from "../core/agents/agent-router";
 
 import { OllamaProvider } from "../core/providers/ollama-provider";
-import { SqliteEventStore } from "../store/sqlite-event-store";
-
+import { FileEventStore } from "../store/file-event-store";
 import { PlannerAgent } from "../agents/planner/planner-agent";
 import { BacklogAgent } from "../agents/backlog/backlog-agent";
 import { SummaryAgent } from "../agents/summary/summary-agent";
@@ -17,7 +16,8 @@ import { env } from "node:process";
 
 export class Bootstrap {
   static async create(): Promise<AppContext> {
-    const eventStore = await SqliteEventStore.create("don-agent-events.db");
+    // const eventStore = await SqliteEventStore.create("don-agent-events.db");
+    const eventStore = new FileEventStore("data/events.jsonl");
 
     const eventBus = new EventBus(eventStore);
 
