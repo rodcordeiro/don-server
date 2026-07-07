@@ -1,6 +1,7 @@
 // src/gateway/chat-gateway.ts
 
 import { WebSocketServer, WebSocket } from 'ws';
+import type { Server } from 'node:http';
 import { type EventBus } from '../core/events/event-bus';
 import type { EventEnvelope } from '../core/events/event-envelope';
 import { type CommandService } from '../services/command-service';
@@ -16,16 +17,16 @@ export class ChatGateway {
 	constructor(
 		private readonly eventBus: EventBus,
 		private readonly commandService: CommandService,
-		private readonly port = 3001,
+		private readonly server: Server,
 	) {}
 
 	start() {
-		const wss = new WebSocketServer({ port: this.port });
+		const wss = new WebSocketServer({ server: this.server, autoPong: true });
 
 		wss.on('connection', socket => {
 			this.clients.add(socket);
 
-			console.log('[ChatGateway] client connected');
+			console.debug('[ChatGateway] client connected');
 
 			socket.send(
 				JSON.stringify({
@@ -55,7 +56,7 @@ export class ChatGateway {
 			this.broadcast(event);
 		});
 
-		console.log(`ChatGateway listening on ws://localhost:${this.port}`);
+		console.debug('ChatGateway attached to shared HTTP server');
 	}
 
 	private async handleMessage(raw: string, socket: WebSocket): Promise<void> {

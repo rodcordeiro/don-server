@@ -13,6 +13,8 @@ import { BacklogAgent } from '../agents/backlog/backlog-agent';
 import { SummaryAgent } from '../agents/summary/summary-agent';
 
 import { ChatGateway } from '../gateway/chat-gateway';
+import { HttpGateway } from '../gateway/http-gateway';
+import { RestGateway } from '../gateway/rest-gateway';
 import type { AppContext } from './app-context';
 import { env } from 'node:process';
 
@@ -38,14 +40,22 @@ export class Bootstrap {
 		const commandService = new CommandService(eventBus, agentRegistry);
 		const eventService = new EventService(eventStore);
 
-		const chatGateway = new ChatGateway(eventBus, commandService, +(env.PORT ?? 3001));
+		const httpGateway = new HttpGateway(+(env.PORT ?? 3001));
+		const chatGateway = new ChatGateway(eventBus, commandService, httpGateway.getServer());
+		const restGateway = new RestGateway(commandService, eventService);
+
+		httpGateway.register((request, response) => {
+			return restGateway.handleRequest(request, response);
+		});
 
 		return {
 			eventStore,
 			eventBus,
 			agentRegistry,
 			agentRouter,
+			httpGateway,
 			chatGateway,
+			restGateway,
 			llmProvider,
 			providerRegistry,
 			commandService,
@@ -59,6 +69,8 @@ export class Bootstrap {
 		context.agentRouter.start();
 
 		context.chatGateway.start();
+
+		context.httpGateway.start();
 
 		context.eventBus.subscribeAll(event => {
 			console.log(`[${event.type}]`, {

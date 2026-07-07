@@ -170,18 +170,18 @@ Critérios de aceite:
 
 Marco: clientes externos conseguem enviar comando e consultar historico sem WebSocket.
 
-| ID      | Tarefa                                      | Status   | Entregavel validavel                                             |
-| ------- | ------------------------------------------- | -------- | ---------------------------------------------------------------- |
-| API-001 | HTTP server minimo                          | Pendente | Servidor HTTP inicializado pelo Bootstrap sem quebrar WebSocket. |
-| API-002 | `POST /commands`                            | Pendente | Endpoint reutiliza `CommandService`.                             |
-| API-003 | `GET /conversations/:conversationId/events` | Pendente | Endpoint usa `EventService`.                                     |
-| API-004 | `GET /tasks/:taskId/events`                 | Pendente | Endpoint usa `EventService`.                                     |
-| API-005 | `GET /correlations/:correlationId/events`   | Pendente | Endpoint usa `EventService`.                                     |
+| ID      | Tarefa                                      | Status    | Entregavel validavel                                                           |
+| ------- | ------------------------------------------- | --------- | ------------------------------------------------------------------------------ |
+| API-001 | HTTP server minimo                          | Concluido | Servidor HTTP compartilhado inicializado pelo Bootstrap sem quebrar WebSocket. |
+| API-002 | `POST /commands`                            | Concluido | Endpoint reutiliza `CommandService`.                                           |
+| API-003 | `GET /conversations/:conversationId/events` | Concluido | Endpoint usa `EventService`.                                                   |
+| API-004 | `GET /tasks/:taskId/events`                 | Concluido | Endpoint usa `EventService`.                                                   |
+| API-005 | `GET /correlations/:correlationId/events`   | Concluido | Endpoint usa `EventService`.                                                   |
 
 Critérios de aceite:
 
 - Gateway REST nao cria regra propria de comando.
-- WebSocket continua funcionando.
+- WebSocket continua funcionando na mesma porta do REST.
 - Endpoints retornam JSON estavel.
 
 ## Sprint 8 - AgentRuntime
@@ -444,6 +444,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 7 para expor REST API minima.
+Executar a Sprint 8 para padronizar execucao com AgentRuntime.
 
-Motivo: o `EventService` agora centraliza a consulta historica por conversa, task e correlacao. O proximo ganho validavel e expor esses fluxos por HTTP sem duplicar logica de gateway.
+Motivo: a REST API minima agora reutiliza `CommandService` e `EventService`. O proximo ganho validavel e centralizar execucao, erros, duracao e timeout dos agentes no AgentRuntime.
