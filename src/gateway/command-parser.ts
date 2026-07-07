@@ -1,12 +1,7 @@
 // src/gateway/command-parser.ts
 
 import { type AgentRegistry } from "../core/agents/agent-registry";
-
-export type ParsedCommand = {
-  target: string;
-  content: string;
-  mention?: string;
-};
+import type { ParsedCommand } from "../domain";
 
 export function parseCommand(input: string, registry: AgentRegistry): ParsedCommand {
   const match = input.match(/^@([\w-]+),?\s+(.+)$/);

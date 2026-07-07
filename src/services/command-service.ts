@@ -3,12 +3,9 @@ import { randomUUID } from "node:crypto";
 import { type EventBus } from "../core/events/event-bus";
 import { type AgentRegistry } from "../core/agents/agent-registry";
 import { parseCommand } from "../gateway/command-parser";
+import type { UserCommand } from "../domain";
 
-export type HandleUserCommandInput = {
-  conversationId?: string;
-  content: string;
-  source: string;
-};
+export type HandleUserCommandInput = UserCommand;
 
 export type HandleUserCommandResult = {
   conversationId: string;
