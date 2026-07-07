@@ -1,1 +1,1 @@
-export type { AgentResult } from "./agent-result";
+export type { AgentResult } from './agent-result';

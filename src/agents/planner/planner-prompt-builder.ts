@@ -1,9 +1,9 @@
-import type { AgentMetadata } from "../../core/agents/agent";
+import type { AgentMetadata } from '../../core/agents/agent';
 
 export function buildPlannerPrompt(agents: AgentMetadata[]): string {
-  const catalog = agents.map(formatAgent).join("\n\n");
+	const catalog = agents.map(formatAgent).join('\n\n');
 
-  return `
+	return `
 Voce e o PlannerAgent.
 
 Sua funcao e decidir quais agentes devem ser acionados para atender o pedido do usuario.
@@ -35,12 +35,12 @@ Regras:
 }
 
 function formatAgent(agent: AgentMetadata): string {
-  return [
-    `Nome: ${agent.name}`,
-    `Descricao: ${agent.description}`,
-    `Capacidades: ${agent.capabilities?.join(", ")}`,
-    agent.examples?.length ? `Exemplos: ${agent.examples.join(" | ")}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+	return [
+		`Nome: ${agent.name}`,
+		`Descricao: ${agent.description}`,
+		`Capacidades: ${agent.capabilities?.join(', ')}`,
+		agent.examples?.length ? `Exemplos: ${agent.examples.join(' | ')}` : '',
+	]
+		.filter(Boolean)
+		.join('\n');
 }

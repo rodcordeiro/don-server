@@ -1,5 +1,5 @@
 export type UserCommand = {
-  conversationId?: string;
-  content: string;
-  source: string;
+	conversationId?: string;
+	content: string;
+	source: string;
 };

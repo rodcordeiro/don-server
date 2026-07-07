@@ -1,39 +1,39 @@
 {
-  "name": "@rocordeiro/don-server",
-  "version": "0.0.1",
-  "description": "",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsx watch src/main.ts",
-    "client": "tsx scripts/ws-client.ts",
-    "prebuild": " npm run lint:fix && npm run format",
-    "build": "tsc -b",
-    "start": "node dist/main.js",
-    "lint": "eslint src",
-    "lint:fix": "eslint src --fix --max-warnings 10",
-    "format": "prettier --write .",
-    "format:check": "prettier --check ."
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "module",
-  "devDependencies": {
-    "@eslint/js": "^10.0.1",
-    "@types/node": "^26.1.0",
-    "@types/ws": "^8.18.1",
-    "eslint": "^10.6.0",
-    "eslint-config-prettier": "^10.1.8",
-    "prettier": "^3.9.4",
-    "tsx": "^4.23.0",
-    "typescript-eslint": "^8.63.0"
-  },
-  "dependencies": {
-    "ollama": "^0.6.3",
-    "sqlite": "^5.1.1",
-    "sqlite3": "^6.0.1",
-    "typescript": "^6.0.3",
-    "ws": "^8.21.0"
-  }
+	"name": "@rocordeiro/don-server",
+	"version": "0.0.1",
+	"description": "",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "tsx watch src/main.ts",
+		"client": "tsx scripts/ws-client.ts",
+		"prebuild": " npm run lint:fix && npm run format",
+		"build": "tsc -b",
+		"start": "node dist/main.js",
+		"lint": "eslint src",
+		"lint:fix": "eslint src --fix --max-warnings 10",
+		"format": "prettier --write .",
+		"format:check": "prettier --check ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "module",
+	"devDependencies": {
+		"@eslint/js": "^10.0.1",
+		"@types/node": "^26.1.0",
+		"@types/ws": "^8.18.1",
+		"eslint": "^10.6.0",
+		"eslint-config-prettier": "^10.1.8",
+		"prettier": "^3.9.4",
+		"tsx": "^4.23.0",
+		"typescript-eslint": "^8.63.0"
+	},
+	"dependencies": {
+		"ollama": "^0.6.3",
+		"sqlite": "^5.1.1",
+		"sqlite3": "^6.0.1",
+		"typescript": "^6.0.3",
+		"ws": "^8.21.0"
+	}
 }

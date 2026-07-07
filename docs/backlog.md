@@ -51,8 +51,8 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `PLAN-004` PlannerAgent usa `ExecutionPlan` e `ExecutionStep` do dominio.
 - `PLAN-005` Plan Validator dedicado valida JSON, steps obrigatorios, targets conhecidos e plano vazio.
 - `AG-001` PlannerAgent existe e delega usando plano tipado.
-- `AG-002` SummaryAgent existe como agente inicial.
-- `AG-003` BacklogAgent existe, mas ainda retorna backlog fake.
+- `AG-002` SummaryAgent consolida conteudo recebido em `agent.result`.
+- `AG-003` BacklogAgent le `docs/backlog.md` e retorna tarefas pendentes/parciais.
 - `LLM-001` OllamaProvider implementado.
 
 ## Ordem executiva recomendada
@@ -132,13 +132,13 @@ Critérios de aceite:
 
 Marco: o caso de uso principal de backlog deixa de ser fake e passa a ser verificavel no proprio repositorio.
 
-| ID       | Tarefa                                    | Status   | Entregavel validavel                                                                           |
-| -------- | ----------------------------------------- | -------- | ---------------------------------------------------------------------------------------------- |
-| AG-003.1 | BacklogSource para Markdown               | Pendente | Leitor simples de `docs/backlog.md` retorna secoes e tabelas de tarefas.                       |
-| AG-003.2 | BacklogAgent lista tarefas pendentes      | Pendente | `@backlog levante o backlog` retorna tarefas pendentes/parciais por sprint.                    |
-| AG-003.3 | BacklogAgent filtra proximas tarefas      | Pendente | Retorna proxima sprint pendente ordenada por dependencia.                                      |
-| AG-002.1 | SummaryAgent resume resultados de agentes | Pendente | Recebe resultado de outro agente e publica resumo objetivo.                                    |
-| AG-001.1 | Planner delega backlog + resumo           | Pendente | `@planner levante o backlog deste projeto` aciona BacklogAgent e, se necessario, SummaryAgent. |
+| ID       | Tarefa                                    | Status    | Entregavel validavel                                                                           |
+| -------- | ----------------------------------------- | --------- | ---------------------------------------------------------------------------------------------- |
+| AG-003.1 | BacklogSource para Markdown               | Concluido | Leitor simples de `docs/backlog.md` retorna secoes e tabelas de tarefas.                       |
+| AG-003.2 | BacklogAgent lista tarefas pendentes      | Concluido | `@backlog levante o backlog` retorna tarefas pendentes/parciais por sprint.                    |
+| AG-003.3 | BacklogAgent filtra proximas tarefas      | Concluido | Retorna proxima sprint pendente ordenada por dependencia.                                      |
+| AG-002.1 | SummaryAgent resume resultados de agentes | Concluido | Recebe resultado de outro agente e publica resumo objetivo.                                    |
+| AG-001.1 | Planner delega backlog + resumo           | Concluido | `@planner levante o backlog deste projeto` aciona BacklogAgent e, se necessario, SummaryAgent. |
 
 Critérios de aceite:
 
@@ -280,6 +280,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 5 para tornar o backlog real.
+Executar a Sprint 6 para expor consulta historica de eventos.
 
-Motivo: o `PlannerAgent` agora usa contratos de dominio, ProviderRegistry, Prompt Builder e validador dedicado. O proximo ganho validavel e remover o retorno fake do BacklogAgent para sustentar o caso `@planner levante o backlog deste projeto`.
+Motivo: o `BacklogAgent` agora consulta `docs/backlog.md` e o Planner possui caminho deterministico para backlog. O proximo ganho validavel e consultar a historia persistida por conversa, task e correlacao.

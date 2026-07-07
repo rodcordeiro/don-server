@@ -1,10 +1,10 @@
 // src/main.ts
 
-import { Bootstrap } from "./bootstrap/bootstrap";
+import { Bootstrap } from './bootstrap/bootstrap';
 
 try {
-  Bootstrap.start();
+	Bootstrap.start();
 } catch (error) {
-  console.error("[bootstrap.error]", error);
-  process.exit(1);
+	console.error('[bootstrap.error]', error);
+	process.exit(1);
 }

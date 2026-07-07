@@ -1,1 +1,1 @@
-export type { ToolResult } from "./tool-result";
+export type { ToolResult } from './tool-result';

@@ -1,36 +1,43 @@
 // src/agents/summary/summary-agent.ts
 
-import type { Agent, AgentMetadata } from "../../core/agents/agent";
-import { type EventBus } from "../../core/events/event-bus";
-import type { EventEnvelope } from "../../core/events/event-envelope";
+import type { Agent, AgentMetadata } from '../../core/agents/agent';
+import { type EventBus } from '../../core/events/event-bus';
+import type { EventEnvelope } from '../../core/events/event-envelope';
 
 export class SummaryAgent implements Agent {
-  metadata: AgentMetadata = {
-    name: "summary-agent",
-    description: "Consolida resultados de outros agentes e responde ao usuário.",
-    capabilities: ["resumir resultados", "organizar resposta final", "consolidar subtarefas"],
-  };
+	metadata: AgentMetadata = {
+		name: 'summary-agent',
+		description: 'Consolida resultados de outros agentes e responde ao usuario.',
+		capabilities: ['resumir resultados', 'organizar resposta final', 'consolidar subtarefas'],
+		examples: ['Resuma o resultado do BacklogAgent', 'Consolide os resultados dos agentes'],
+	};
 
-  constructor(private readonly eventBus: EventBus) {}
+	constructor(private readonly eventBus: EventBus) {}
 
-  async handle(event: EventEnvelope) {
-    await this.eventBus.publish({
-      eventId: crypto.randomUUID(),
-      correlationId: event.correlationId,
+	async handle(event: EventEnvelope) {
+		const payload = event.payload as Record<string, unknown>;
+		const content = typeof payload['content'] === 'string' ? payload['content'] : '';
 
-      conversationId: event.conversationId,
-      rootTaskId: event.rootTaskId,
-      taskId: event.taskId,
-      ...(event.parentTaskId !== undefined ? { parentTaskId: event.parentTaskId } : {}),
+		await this.eventBus.publish({
+			eventId: crypto.randomUUID(),
+			correlationId: event.correlationId,
 
-      type: "agent.message",
-      source: this.metadata.name,
+			conversationId: event.conversationId,
+			rootTaskId: event.rootTaskId,
+			taskId: event.taskId,
+			...(event.parentTaskId !== undefined ? { parentTaskId: event.parentTaskId } : {}),
 
-      payload: {
-        content: "Vou consolidar os resultados recebidos dos agentes.",
-      },
+			type: 'agent.result',
+			source: this.metadata.name,
 
-      createdAt: new Date().toISOString(),
-    });
-  }
+			payload: {
+				status: 'completed',
+				result: content.trim()
+					? `Resumo consolidado: ${content}`
+					: 'Resumo consolidado: nenhum conteudo informado para consolidacao.',
+			},
+
+			createdAt: new Date().toISOString(),
+		});
+	}
 }

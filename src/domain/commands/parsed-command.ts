@@ -1,5 +1,5 @@
 export type ParsedCommand = {
-  target: string;
-  content: string;
-  mention?: string;
+	target: string;
+	content: string;
+	mention?: string;
 };
