@@ -2,6 +2,7 @@
 
 import { EventBus } from '../core/events/event-bus';
 import { AgentRegistry } from '../core/agents/agent-registry';
+import { AgentRuntime } from '../core/agents/agent-runtime';
 import { AgentRouter } from '../core/agents/agent-router';
 import { CommandService } from '../services/command-service';
 import { EventService } from '../services/event-service';
@@ -36,7 +37,8 @@ export class Bootstrap {
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 
-		const agentRouter = new AgentRouter(eventBus, agentRegistry);
+		const agentRuntime = new AgentRuntime(eventBus, +(env.AGENT_TIMEOUT_MS ?? 30_000));
+		const agentRouter = new AgentRouter(eventBus, agentRegistry, agentRuntime);
 		const commandService = new CommandService(eventBus, agentRegistry);
 		const eventService = new EventService(eventStore);
 
@@ -52,6 +54,7 @@ export class Bootstrap {
 			eventStore,
 			eventBus,
 			agentRegistry,
+			agentRuntime,
 			agentRouter,
 			httpGateway,
 			chatGateway,

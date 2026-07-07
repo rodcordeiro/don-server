@@ -1,6 +1,11 @@
-// src/main.ts
+import { existsSync } from 'node:fs';
+import { loadEnvFile } from 'node:process';
 
-import { Bootstrap } from './bootstrap/bootstrap';
+if (existsSync('.env')) {
+	loadEnvFile('.env');
+}
+
+const { Bootstrap } = await import('./bootstrap/bootstrap');
 
 try {
 	Bootstrap.start();

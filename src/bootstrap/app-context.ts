@@ -2,6 +2,7 @@
 
 import type { EventBus } from '../core/events/event-bus';
 import type { AgentRegistry } from '../core/agents/agent-registry';
+import type { AgentRuntime } from '../core/agents/agent-runtime';
 import type { AgentRouter } from '../core/agents/agent-router';
 import type { ChatGateway } from '../gateway/chat-gateway';
 import type { HttpGateway } from '../gateway/http-gateway';
@@ -15,6 +16,7 @@ export type AppContext = {
 	eventStore: EventStore;
 	eventBus: EventBus;
 	agentRegistry: AgentRegistry;
+	agentRuntime: AgentRuntime;
 	agentRouter: AgentRouter;
 	httpGateway: HttpGateway;
 	chatGateway: ChatGateway;

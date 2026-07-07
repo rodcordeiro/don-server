@@ -23,6 +23,17 @@ export type AgentResultPayload = {
 
 export type AgentErrorPayload = {
 	error: string;
+	durationMs?: number;
+	timeoutMs?: number;
+};
+
+export type AgentStartedPayload = {
+	agent: string;
+};
+
+export type AgentCompletedPayload = {
+	agent: string;
+	durationMs: number;
 };
 
 export type ToolStartedPayload = {

@@ -188,13 +188,13 @@ Critérios de aceite:
 
 Marco: execucao de agentes passa a ser observavel e padronizada fora dos agentes concretos.
 
-| ID      | Tarefa                       | Status   | Entregavel validavel                                                       |
-| ------- | ---------------------------- | -------- | -------------------------------------------------------------------------- |
-| RUN-001 | AgentRuntime basico          | Pendente | Encapsula chamada ao agente e publica `agent.started` e `agent.completed`. |
-| RUN-002 | AgentRuntime captura erro    | Pendente | Excecoes viram `agent.error` sem derrubar o processo.                      |
-| RUN-003 | AgentRouter usa AgentRuntime | Pendente | Router deixa de chamar `agent.handle()` diretamente.                       |
-| RUN-004 | Medicao de duracao           | Pendente | Eventos de completed/error incluem duracao em ms.                          |
-| RUN-005 | Timeout simples por agente   | Pendente | Timeout configuravel publica `agent.error`.                                |
+| ID      | Tarefa                       | Status    | Entregavel validavel                                                       |
+| ------- | ---------------------------- | --------- | -------------------------------------------------------------------------- |
+| RUN-001 | AgentRuntime basico          | Concluido | Encapsula chamada ao agente e publica `agent.started` e `agent.completed`. |
+| RUN-002 | AgentRuntime captura erro    | Concluido | Excecoes viram `agent.error` sem derrubar o processo.                      |
+| RUN-003 | AgentRouter usa AgentRuntime | Concluido | Router deixa de chamar `agent.handle()` diretamente.                       |
+| RUN-004 | Medicao de duracao           | Concluido | Eventos de completed/error incluem duracao em ms.                          |
+| RUN-005 | Timeout simples por agente   | Concluido | Timeout configuravel publica `agent.error`.                                |
 
 Critérios de aceite:
 
@@ -444,6 +444,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 8 para padronizar execucao com AgentRuntime.
+Executar a Sprint 9 para iniciar a base de Tooling.
 
-Motivo: a REST API minima agora reutiliza `CommandService` e `EventService`. O proximo ganho validavel e centralizar execucao, erros, duracao e timeout dos agentes no AgentRuntime.
+Motivo: o `AgentRuntime` agora centraliza inicio, conclusao, erro, duracao e timeout de agentes. O proximo ganho validavel e padronizar ferramentas com Tool interface, ToolRegistry e ToolRuntime.

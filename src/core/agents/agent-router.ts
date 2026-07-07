@@ -3,11 +3,13 @@
 import { type EventBus } from '../events/event-bus';
 import { type AgentRegistry } from './agent-registry';
 import type { EventEnvelope } from '../events/event-envelope';
+import type { AgentRuntime } from './agent-runtime';
 
 export class AgentRouter {
 	constructor(
 		private readonly eventBus: EventBus,
 		private readonly registry: AgentRegistry,
+		private readonly runtime: AgentRuntime,
 	) {}
 
 	start() {
@@ -26,7 +28,7 @@ export class AgentRouter {
 				return;
 			}
 
-			await agent.handle(event);
+			await this.runtime.execute(agent, event);
 		});
 	}
 

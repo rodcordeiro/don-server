@@ -1,9 +1,11 @@
 import type { ToolResult } from '../../domain';
 import type {
 	AgentCommandPayload,
+	AgentCompletedPayload,
 	AgentErrorPayload,
 	AgentMessagePayload,
 	AgentResultPayload,
+	AgentStartedPayload,
 	HumanInstructionPayload,
 	ToolFinishedPayload,
 	ToolStartedPayload,
@@ -40,6 +42,14 @@ export type EventEnvelope<TPayload = unknown> = BaseEnvelope &
 		| {
 				type: 'agent.result';
 				payload: AgentResultPayload;
+		  }
+		| {
+				type: 'agent.started';
+				payload: AgentStartedPayload;
+		  }
+		| {
+				type: 'agent.completed';
+				payload: AgentCompletedPayload;
 		  }
 		| {
 				type: 'agent.error';
