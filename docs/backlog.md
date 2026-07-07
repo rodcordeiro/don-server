@@ -27,6 +27,8 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - A persistencia inicial pode usar JSONL para reduzir atrito com bindings nativos do SQLite durante desenvolvimento.
 - Tipos compartilhados por mais de um modulo devem ficar em `src/domain`.
 - Interfaces usadas por apenas uma classe podem ficar proximas da propria classe.
+- Cada agente relevante deve ter uma sprint propria de otimizacao e melhoria apos sua primeira entrega funcional.
+- A autenticacao inicial deve usar token estatico via variavel de ambiente, evoluindo para JWT/OAuth apenas quando houver necessidade real.
 
 ## Legenda de status
 
@@ -218,19 +220,43 @@ Critérios de aceite:
 - Tools retornam `ToolResult`.
 - Permissoes e limites ficam explicitos.
 
-## Sprint 10 - Agentes de codigo e Git
+## Sprint 10 - Seguranca de entrada
 
-Marco: agentes com ferramentas reais, ainda em escopo controlado.
+Marco: fechar acesso anonimo antes de ampliar superficies de API, agentes dinamicos e operacoes sensiveis.
 
-| ID       | Tarefa                         | Status   | Entregavel validavel                                              |
-| -------- | ------------------------------ | -------- | ----------------------------------------------------------------- |
-| AG-004.1 | CodeAgent leitura inicial      | Pendente | Usa FilesystemTool para listar estrutura e resumir contexto.      |
-| AG-004.2 | CodeAgent analise de arquivos  | Pendente | Lê arquivos selecionados e retorna achados sem editar.            |
-| TOOL-006 | GitTool status/diff            | Pendente | Consulta `git status` e diff sem alterar repositorio.             |
-| AG-005.1 | GitAgent status                | Pendente | Usa GitTool para resumir estado do repositorio.                   |
-| AG-005.2 | Planner delega analise tecnica | Pendente | Planner consegue acionar CodeAgent/GitAgent quando pedido exigir. |
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                        |
+| -------- | ------------------------------ | -------- | --------------------------------------------------------------------------- |
+| SEC-001  | Contrato de autenticacao       | Pendente | Definir payload/token esperado para conexoes WebSocket e futuras APIs.      |
+| SEC-002  | Autenticacao no WebSocket      | Pendente | Exigir autenticacao para conexoes WebSocket e bloquear conexoes anonimas.   |
+| SEC-003  | Identidade no EventEnvelope    | Pendente | Associar eventos a usuario/origem autenticada sem expor segredo no payload. |
+| SEC-004  | Eventos de falha de seguranca  | Pendente | Publicar evento auditavel para tentativa anonima ou token invalido.         |
+| SEC-005  | Documentar operacao de segredo | Pendente | Registrar configuracao local segura para token/chave sem commitar segredo.  |
 
-## Sprint 11 - Providers avancados
+## Sprint 11 - Backlog inteligente
+
+Marco: evoluir o BacklogAgent de leitor deterministico para agente capaz de interpretar solicitacoes e preparar mudancas controladas.
+
+| ID       | Tarefa                       | Status   | Entregavel validavel                                                                  |
+| -------- | ---------------------------- | -------- | ------------------------------------------------------------------------------------- |
+| AG-003.4 | BacklogAgent usa modelo      | Pendente | Usar LLM para interpretar a solicitacao do usuario e retornar o recorte solicitado.   |
+| AG-003.5 | BacklogAgent adiciona tarefa | Pendente | Criar nova tarefa em `docs/backlog.md` preservando sprint, tabela e formato.          |
+| AG-003.6 | BacklogAgent conclui tarefa  | Pendente | Alterar status de uma tarefa para `Concluido` com evento auditavel.                  |
+| AG-003.7 | BacklogAgent edita tarefa    | Pendente | Atualizar titulo, status ou entregavel sem corromper a tabela Markdown.              |
+| AG-003.8 | BacklogAgent remove tarefa   | Pendente | Remover tarefa existente de forma controlada, com confirmacao ou evento auditavel.    |
+
+## Sprint 12 - Projetos e backlogs centralizados
+
+Marco: sair de um backlog unico local e permitir gestao por projeto, preparando armazenamento centralizado.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                           |
+| -------- | ------------------------------ | -------- | ------------------------------------------------------------------------------ |
+| PRJ-001  | Contrato de projeto            | Pendente | Definir `projectId`, nome, origem e repositorio associado.                     |
+| PRJ-002  | Backlog por projeto            | Pendente | Resolver backlog por `projectId`, mantendo fallback para `docs/backlog.md`.    |
+| PRJ-003  | Indice local de projetos       | Pendente | Listar projetos conhecidos e seus backlogs locais.                             |
+| PRJ-004  | Backlog centralizado em nuvem  | Pendente | Definir adapter para persistencia remota sem acoplar agente ao provedor.       |
+| PRJ-005  | Eventos com contexto de projeto | Pendente | Propagar `projectId` nos fluxos de comando, agente e auditoria quando existir. |
+
+## Sprint 13 - Providers avancados
 
 Marco: trocar ou escolher LLM sem alterar agentes.
 
@@ -242,7 +268,27 @@ Marco: trocar ou escolher LLM sem alterar agentes.
 | LLM-004 | OpenAIProvider             | Pendente  | Provider OpenAI atras de interface existente.                      |
 | LLM-005 | Fallback de provider       | Pendente  | Falha de provider retorna erro controlado ou fallback configurado. |
 
-## Sprint 12 - Auditoria operacional
+## Sprint 14 - Template e registro dinamico de agentes
+
+Marco: permitir expansao controlada de agentes sem alterar manualmente o bootstrap a cada novo agente.
+
+| ID      | Tarefa                         | Status   | Entregavel validavel                                                         |
+| ------- | ------------------------------ | -------- | ---------------------------------------------------------------------------- |
+| AGT-001 | Template base de agente        | Pendente | Criar modelo base de agente, similar ao Planner, para novos agentes.         |
+| AGT-002 | Contrato de definicao de agente | Pendente | Definir nome, descricao, capacidades, exemplos, provider/model e limites.    |
+| AGT-003 | Validacao de definicao         | Pendente | Rejeitar definicoes duplicadas, inseguras ou incompletas.                    |
+| AGT-004 | Registro de agentes via chat   | Pendente | Permitir enviar definicao pelo chat e registrar agente em tempo de execucao. |
+| AGT-005 | Listagem de agentes dinamicos  | Pendente | Expor catalogo atualizado incluindo agentes registrados em runtime.          |
+
+## Sprint 14.1 - MCP para agentes externos
+
+Marco: permitir que agentes de outras fontes se conectem ao Don Server e aparecam no chat como agentes registraveis.
+
+| ID      | Tarefa                             | Status   | Entregavel validavel                                                            |
+| ------- | ---------------------------------- | -------- | ------------------------------------------------------------------------------- |
+| MCP-001 | MCP para registro de agentes externos | Pendente | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
+
+## Sprint 15 - Auditoria operacional
 
 Marco: eventos persistidos viram material confiavel de analise e recuperacao.
 
@@ -254,7 +300,41 @@ Marco: eventos persistidos viram material confiavel de analise e recuperacao.
 | AUD-004 | Replay somente leitura de conversa | Pendente | Reconstrui timeline de uma conversa sem reexecutar agentes.         |
 | AUD-005 | Relatorio de falhas                | Pendente | Lista `agent.error` e `tool.error` por periodo/filtro.              |
 
-## Sprint 13 - UI minima
+## Sprint 16 - Agentes tecnicos por dominio
+
+Marco: substituir o CodeAgent generico por agentes especializados por dominio tecnico.
+
+| ID       | Tarefa             | Status   | Entregavel validavel                                                         |
+| -------- | ------------------ | -------- | ---------------------------------------------------------------------------- |
+| AG-004.1 | BackendAgent       | Pendente | Analisa APIs, services, regras de negocio, contratos e persistencia backend. |
+| AG-004.2 | FrontendAgent      | Pendente | Analisa UI web, componentes, estado, integracao e acessibilidade.            |
+| AG-004.3 | MobileAgent        | Pendente | Analisa React Native/Expo, navegacao, estado e comportamento mobile.         |
+| AG-004.4 | DbaAgent           | Pendente | Analisa schema, queries, indices, migrations e riscos de dados.              |
+| AG-004.5 | DevOpsReleaseAgent | Pendente | Analisa build, deploy, ambiente, rollback e confiabilidade operacional.      |
+
+## Sprint 17 - Git e delegacao tecnica
+
+Marco: permitir que agentes tecnicos consultem contexto Git sem cada agente interagir diretamente com Git.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                        |
+| -------- | ------------------------------ | -------- | --------------------------------------------------------------------------- |
+| TOOL-006 | GitTool status/diff            | Pendente | Consulta `git status` e diff sem alterar repositorio.                       |
+| AG-005.1 | GitAgent status                | Pendente | Usa GitTool para resumir estado do repositorio e centraliza permissoes Git. |
+| AG-005.2 | Planner delega analise tecnica | Pendente | Planner aciona agentes de dominio e GitAgent quando pedido exigir.          |
+
+## Sprint 18 - SecurityAgent
+
+Marco: criar agente especializado para revisao de seguranca em fluxos, codigo e operacao.
+
+| ID      | Tarefa                         | Status   | Entregavel validavel                                                       |
+| ------- | ------------------------------ | -------- | -------------------------------------------------------------------------- |
+| AG-007.1 | SecurityAgent metadata         | Pendente | Registrar agente com capacidades de autenticacao, autorizacao e dados.     |
+| AG-007.2 | SecurityAgent analise inicial  | Pendente | Avaliar riscos de auth, autorizacao, dados sensiveis e superficie exposta. |
+| AG-007.3 | SecurityAgent revisa eventos   | Pendente | Identificar eventos com dados sensiveis ou ausencia de identidade.         |
+| AG-007.4 | Planner delega seguranca       | Pendente | Planner aciona SecurityAgent quando pedido envolver seguranca.             |
+| AG-007.5 | Relatorio de risco             | Pendente | Publicar severidade, evidencia, impacto e recomendacao.                    |
+
+## Sprint 19 - UI minima
 
 Marco: primeira central visual de comando e observabilidade.
 
@@ -266,7 +346,91 @@ Marco: primeira central visual de comando e observabilidade.
 | UI-004 | Detalhe de task       | Pendente | Mostrar root task, subtasks e status.             |
 | UI-005 | Estado visual de erro | Pendente | Destacar `agent.error` e `tool.error`.            |
 
-## Sprint 14 - Expansoes futuras
+## Sprint 20 - Otimizacao do PlannerAgent
+
+Marco: melhorar qualidade de planejamento, delegacao e fallback do Planner.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                 |
+| -------- | ------------------------------ | -------- | -------------------------------------------------------------------- |
+| OPT-001  | Prompt versionado do Planner   | Pendente | Versionar prompt e registrar mudancas relevantes.                    |
+| OPT-002  | Replanejamento controlado      | Pendente | Permitir nova tentativa quando plano vier vazio ou invalido.         |
+| OPT-003  | Selecao de agente por score    | Pendente | Considerar capacidades, exemplos e contexto para ordenar candidatos. |
+| OPT-004  | Planos com dependencias reais  | Pendente | Respeitar `dependsOn` antes de disparar steps dependentes.           |
+| OPT-005  | Metricas do Planner            | Pendente | Registrar tempo, provider, modelo e sucesso/falha do plano.         |
+
+## Sprint 21 - Otimizacao do BacklogAgent
+
+Marco: melhorar confiabilidade, edicao e resposta do BacklogAgent.
+
+| ID       | Tarefa                          | Status   | Entregavel validavel                                                       |
+| -------- | ------------------------------- | -------- | -------------------------------------------------------------------------- |
+| OPT-006  | Parser Markdown resiliente      | Pendente | Preservar tabelas mesmo com colunas extras ou texto entre secoes.          |
+| OPT-007  | Validacao antes de editar       | Pendente | Simular mudanca e validar tabela antes de gravar.                          |
+| OPT-008  | Diff auditavel de backlog       | Pendente | Publicar resumo de alteracoes antes/depois.                                |
+| OPT-009  | Busca semantica de tarefas      | Pendente | Encontrar tarefas por intencao, nao apenas ID literal.                     |
+| OPT-010  | Respostas por recorte solicitado | Pendente | Responder por sprint, status, projeto, prioridade ou agente responsavel.   |
+
+## Sprint 22 - Otimizacao do SummaryAgent
+
+Marco: tornar consolidacao util em fluxos multiagente.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                       |
+| -------- | ------------------------------ | -------- | -------------------------------------------------------------------------- |
+| OPT-011  | Correlacionar resultados filhos | Pendente | Buscar resultados relacionados por `parentTaskId` ou `rootTaskId`.         |
+| OPT-012  | Resumo por audiencia           | Pendente | Gerar resumo tecnico, executivo ou operacional conforme pedido.            |
+| OPT-013  | Destaque de riscos             | Pendente | Extrair riscos, bloqueios e proximos passos dos resultados.                |
+| OPT-014  | Limite de verbosidade          | Pendente | Controlar tamanho da resposta final.                                       |
+| OPT-015  | Evidencias no resumo           | Pendente | Incluir IDs de eventos/tarefas que sustentam a conclusao.                  |
+
+## Sprint 23 - Otimizacao dos agentes tecnicos
+
+Marco: melhorar especializacao e consistencia dos agentes Backend, Frontend, Mobile, DBA e DevOps.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                      |
+| -------- | ------------------------------ | -------- | ------------------------------------------------------------------------- |
+| OPT-016  | Rubricas por dominio           | Pendente | Definir criterios de analise para cada agente tecnico.                    |
+| OPT-017  | Saida padronizada de review    | Pendente | Todos os agentes retornam achados, severidade, evidencia e recomendacao.  |
+| OPT-018  | Escopo de arquivos por dominio | Pendente | Cada agente sugere arquivos relevantes sem varrer tudo desnecessariamente.|
+| OPT-019  | Delegacao cruzada controlada   | Pendente | Agente tecnico pode sugerir outro dominio sem chamar diretamente.         |
+| OPT-020  | Testes de roteamento tecnico   | Pendente | Validar que Planner escolhe agentes corretos por tipo de pedido.          |
+
+## Sprint 24 - Otimizacao do GitAgent
+
+Marco: reforcar o GitAgent como fronteira unica de operacoes Git.
+
+| ID       | Tarefa                       | Status   | Entregavel validavel                                                  |
+| -------- | ---------------------------- | -------- | --------------------------------------------------------------------- |
+| OPT-021  | Politica de comandos Git     | Pendente | Definir comandos permitidos, restritos e proibidos.                   |
+| OPT-022  | Resumo seguro de diff        | Pendente | Resumir diff sem vazar segredo ou arquivo sensivel.                   |
+| OPT-023  | Guardrail para escrita Git   | Pendente | Bloquear commit/tag/push sem confirmacao explicita.                   |
+| OPT-024  | Integracao com SecurityAgent | Pendente | Solicitar revisao de seguranca para operacoes sensiveis.              |
+| OPT-025  | Auditoria de operacoes Git   | Pendente | Emitir eventos para cada consulta ou acao Git.                        |
+
+## Sprint 25 - Otimizacao do SecurityAgent
+
+Marco: amadurecer seguranca como capacidade transversal.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                     |
+| -------- | ------------------------------ | -------- | ------------------------------------------------------------------------ |
+| OPT-026  | Catalogo de riscos             | Pendente | Padronizar severidade, categoria e recomendacao.                         |
+| OPT-027  | Politicas por ferramenta       | Pendente | Avaliar Shell, Filesystem, Git, HTTP e RabbitMQ antes de uso sensivel.   |
+| OPT-028  | Detecção de segredo            | Pendente | Sinalizar tokens, chaves e credenciais em outputs/eventos.               |
+| OPT-029  | Checklist de deploy seguro     | Pendente | Revisar auth, env, logs, CORS/origem e secrets antes de exposicao.       |
+| OPT-030  | Relatorio consolidado          | Pendente | Gerar resumo final com riscos aceitos, mitigados e pendentes.            |
+
+## Sprint 26 - Otimizacao do RabbitAgent
+
+Marco: preparar evolucao operacional do RabbitAgent quando a integracao RabbitMQ existir.
+
+| ID       | Tarefa                         | Status   | Entregavel validavel                                                    |
+| -------- | ------------------------------ | -------- | ----------------------------------------------------------------------- |
+| OPT-031  | Diagnostico de filas           | Pendente | Avaliar tamanho, consumidores, mensagens prontas e nao reconhecidas.    |
+| OPT-032  | Alertas por limiar             | Pendente | Sugerir alerta quando filas excederem limite configurado.               |
+| OPT-033  | Relatorio operacional          | Pendente | Resumir riscos e recomendacoes por exchange/fila.                       |
+| OPT-034  | Acoes seguras                  | Pendente | Bloquear purge/requeue sem confirmacao explicita.                       |
+| OPT-035  | Auditoria RabbitMQ             | Pendente | Registrar toda consulta ou acao operacional como evento.                |
+
+## Sprint 27 - Expansoes futuras
 
 Marco: novas integracoes depois do nucleo estar validado.
 
