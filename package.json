@@ -8,16 +8,25 @@
     "dev": "tsx watch src/main.ts",
     "client": "tsx scripts/ws-client.ts",
     "build": "tsc",
-    "start": "node dist/main.js"
+    "start": "node dist/main.js",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@types/node": "^26.1.0",
     "@types/ws": "^8.18.1",
-    "tsx": "^4.23.0"
+    "eslint": "^10.6.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.4",
+    "tsx": "^4.23.0",
+    "typescript-eslint": "^8.63.0"
   },
   "dependencies": {
     "ollama": "^0.6.3",

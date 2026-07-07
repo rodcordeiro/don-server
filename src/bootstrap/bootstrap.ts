@@ -15,7 +15,7 @@ import type { AppContext } from "./app-context";
 import { env } from "node:process";
 
 export class Bootstrap {
-  static async create(): Promise<AppContext> {
+  static create(): AppContext {
     // const eventStore = await SqliteEventStore.create("don-agent-events.db");
     const eventStore = new FileEventStore("data/events.jsonl");
 
@@ -27,18 +27,12 @@ export class Bootstrap {
 
     agentRegistry.register(new BacklogAgent(eventBus));
     agentRegistry.register(new SummaryAgent(eventBus));
-    agentRegistry.register(
-      new PlannerAgent(eventBus, agentRegistry, llmProvider),
-    );
+    agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, llmProvider));
 
     const agentRouter = new AgentRouter(eventBus, agentRegistry);
     const commandService = new CommandService(eventBus, agentRegistry);
 
-    const chatGateway = new ChatGateway(
-      eventBus,
-      commandService,
-      +(env.PORT ?? 3001),
-    );
+    const chatGateway = new ChatGateway(eventBus, commandService, +(env.PORT ?? 3001));
 
     return {
       eventStore,
@@ -47,18 +41,18 @@ export class Bootstrap {
       agentRouter,
       chatGateway,
       llmProvider,
-      commandService
+      commandService,
     };
   }
 
-  static async start(): Promise<AppContext> {
-    const context = await Bootstrap.create();
+  static start(): AppContext {
+    const context = Bootstrap.create();
 
     context.agentRouter.start();
 
     context.chatGateway.start();
 
-    context.eventBus.subscribeAll((event) => {
+    context.eventBus.subscribeAll(event => {
       console.log(`[${event.type}]`, {
         source: event.source,
         target: event.target,

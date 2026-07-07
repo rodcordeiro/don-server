@@ -11,11 +11,7 @@ export class FileEventStore implements EventStore {
   async append(event: EventEnvelope): Promise<void> {
     await mkdir(dirname(this.path), { recursive: true });
 
-    await appendFile(
-      this.path,
-      `${JSON.stringify(event)}\n`,
-      "utf-8"
-    );
+    await appendFile(this.path, `${JSON.stringify(event)}\n`, "utf-8");
   }
 
   async listByConversation(conversationId: string): Promise<EventEnvelope[]> {

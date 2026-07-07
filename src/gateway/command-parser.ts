@@ -1,6 +1,6 @@
 // src/gateway/command-parser.ts
 
-import { AgentRegistry } from "../core/agents/agent-registry";
+import { type AgentRegistry } from "../core/agents/agent-registry";
 
 export type ParsedCommand = {
   target: string;
@@ -8,10 +8,7 @@ export type ParsedCommand = {
   mention?: string;
 };
 
-export function parseCommand(
-  input: string,
-  registry: AgentRegistry,
-): ParsedCommand {
+export function parseCommand(input: string, registry: AgentRegistry): ParsedCommand {
   const match = input.match(/^@([\w-]+),?\s+(.+)$/);
 
   if (!match) {
@@ -26,7 +23,7 @@ export function parseCommand(
 
   const possibleNames = [mention, `${mention}-agent`];
 
-  const target = possibleNames.find((name) => registry.has(name));
+  const target = possibleNames.find(name => registry.has(name));
 
   return {
     target: target ?? "planner-agent",

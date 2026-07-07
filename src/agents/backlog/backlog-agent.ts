@@ -1,7 +1,7 @@
 // src/agents/backlog/backlog-agent.ts
 
 import type { Agent, AgentMetadata } from "../../core/agents/agent";
-import { EventBus } from "../../core/events/event-bus";
+import { type EventBus } from "../../core/events/event-bus";
 import type { EventEnvelope } from "../../core/events/event-envelope";
 
 export class BacklogAgent implements Agent {
@@ -12,19 +12,15 @@ export class BacklogAgent implements Agent {
       "listar backlog",
       "identificar tarefas pendentes",
       "agrupar por status",
-      "resumir prioridades"
+      "resumir prioridades",
     ],
-    examples: [
-      "Levante tarefas pendentes",
-      "Liste backlog aberto",
-      "Mostre itens não concluídos"
-    ]
+    examples: ["Levante tarefas pendentes", "Liste backlog aberto", "Mostre itens não concluídos"],
   };
 
   constructor(private readonly eventBus: EventBus) {}
 
   async handle(event: EventEnvelope) {
-    this.eventBus.publish({
+    await this.eventBus.publish({
       eventId: crypto.randomUUID(),
       correlationId: event.correlationId,
 
@@ -38,10 +34,10 @@ export class BacklogAgent implements Agent {
 
       payload: {
         status: "completed",
-        result: "Backlog fake: 3 itens pendentes encontrados."
+        result: "Backlog fake: 3 itens pendentes encontrados.",
       },
 
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     });
   }
 }

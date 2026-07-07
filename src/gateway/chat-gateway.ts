@@ -1,9 +1,9 @@
 // src/gateway/chat-gateway.ts
 
 import { WebSocketServer, WebSocket } from "ws";
-import { EventBus } from "../core/events/event-bus";
+import { type EventBus } from "../core/events/event-bus";
 import type { EventEnvelope } from "../core/events/event-envelope";
-import { CommandService } from "../services/command-service";
+import { type CommandService } from "../services/command-service";
 
 type ClientMessage = {
   conversationId?: string;
@@ -22,7 +22,7 @@ export class ChatGateway {
   start() {
     const wss = new WebSocketServer({ port: this.port });
 
-    wss.on("connection", (socket) => {
+    wss.on("connection", socket => {
       this.clients.add(socket);
 
       console.log("[ChatGateway] client connected");
@@ -37,8 +37,13 @@ export class ChatGateway {
         }),
       );
 
-      socket.on("message", (raw) => {
-        void this.handleMessage(raw.toString(), socket);
+      socket.on("message", raw => {
+        const text = Buffer.isBuffer(raw)
+          ? raw.toString("utf-8")
+          : raw instanceof ArrayBuffer
+            ? Buffer.from(raw).toString("utf-8")
+            : Buffer.concat(raw).toString("utf-8");
+        void this.handleMessage(text, socket);
       });
 
       socket.on("close", () => {
@@ -46,7 +51,7 @@ export class ChatGateway {
       });
     });
 
-    this.eventBus.subscribeAll((event) => {
+    this.eventBus.subscribeAll(event => {
       this.broadcast(event);
     });
 
@@ -76,10 +81,7 @@ export class ChatGateway {
         }),
       );
     } catch {
-      this.sendGatewayError(
-        socket,
-        "Mensagem inválida. Envie JSON com { content: string }.",
-      );
+      this.sendGatewayError(socket, "Mensagem inválida. Envie JSON com { content: string }.");
     }
   }
 

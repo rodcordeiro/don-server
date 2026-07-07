@@ -1,8 +1,8 @@
 // src/agents/planner/planner-agent.ts
 
-import { EventBus } from "../../core/events/event-bus";
+import { type EventBus } from "../../core/events/event-bus";
 import type { Agent, AgentMetadata } from "../../core/agents/agent";
-import { AgentRegistry } from "../../core/agents/agent-registry";
+import { type AgentRegistry } from "../../core/agents/agent-registry";
 import type { LlmProvider } from "../../core/providers/llm-provider";
 import type { EventEnvelope } from "../../core/events/event-envelope";
 
@@ -24,41 +24,37 @@ export class PlannerAgent implements Agent {
       "analisar pedido do usuário",
       "selecionar agentes",
       "criar subtarefas",
-      "delegar execução"
+      "delegar execução",
     ],
     examples: [
       "@planner levante o backlog pendente deste projeto",
-      "@planner revise o projeto e rode os testes"
-    ]
+      "@planner revise o projeto e rode os testes",
+    ],
   };
 
   constructor(
     private readonly eventBus: EventBus,
     private readonly registry: AgentRegistry,
-    private readonly llm: LlmProvider
+    private readonly llm: LlmProvider,
   ) {}
 
   async handle(event: EventEnvelope) {
-    const content = String((event.payload as any).content ?? "");
+    const payload = event.payload as Record<string, unknown>;
+    const content = typeof payload["content"] === "string" ? payload["content"] : "";
 
-    this.say(event, "Vou analisar quais agentes devem ser acionados.");
+    await this.say(event, "Vou analisar quais agentes devem ser acionados.");
 
     const plan = await this.createPlan(content);
 
-    this.say(
-      event,
-      `Vou acionar: ${plan.steps.map(step => step.target).join(", ")}.`
-    );
+    await this.say(event, `Vou acionar: ${plan.steps.map(step => step.target).join(", ")}.`);
 
     for (const step of plan.steps) {
-      this.dispatch(event, step);
+      await this.dispatch(event, step);
     }
   }
 
   private async createPlan(userRequest: string): Promise<PlannerResponse> {
-    const catalog = this.registry
-      .getCatalog()
-      .filter(agent => agent.name !== this.metadata.name);
+    const catalog = this.registry.getCatalog().filter(agent => agent.name !== this.metadata.name);
 
     const systemPrompt = `
 Você é o PlannerAgent.
@@ -72,7 +68,7 @@ ${catalog
       `Nome: ${agent.name}`,
       `Descrição: ${agent.description}`,
       `Capacidades: ${agent.capabilities?.join(", ")}`,
-      agent.examples?.length ? `Exemplos: ${agent.examples.join(" | ")}` : ""
+      agent.examples?.length ? `Exemplos: ${agent.examples.join(" | ")}` : "",
     ]
       .filter(Boolean)
       .join("\n");
@@ -103,29 +99,27 @@ Regras:
       format: "json",
       messages: [
         { role: "system", content: systemPrompt },
-        { role: "user", content: userRequest }
-      ]
+        { role: "user", content: userRequest },
+      ],
     });
 
-    return this.validatePlan(JSON.parse(response));
+    return this.validatePlan(JSON.parse(response) as PlannerResponse);
   }
 
   private validatePlan(plan: PlannerResponse): PlannerResponse {
-    const availableAgents = new Set(
-      this.registry.getCatalog().map(agent => agent.name)
-    );
+    const availableAgents = new Set(this.registry.getCatalog().map(agent => agent.name));
 
     const validSteps = plan.steps.filter(step => {
       return availableAgents.has(step.target);
     });
 
     return {
-      steps: validSteps
+      steps: validSteps,
     };
   }
 
-  private dispatch(parentEvent: EventEnvelope, step: PlannerStep) {
-    this.eventBus.publish({
+  private async dispatch(parentEvent: EventEnvelope, step: PlannerStep) {
+    await this.eventBus.publish({
       eventId: crypto.randomUUID(),
       correlationId: parentEvent.correlationId,
 
@@ -140,15 +134,15 @@ Regras:
 
       payload: {
         content: step.content,
-        reason: step.reason
+        reason: step.reason,
       },
 
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     });
   }
 
-  private say(parentEvent: EventEnvelope, content: string) {
-    this.eventBus.publish({
+  private async say(parentEvent: EventEnvelope, content: string) {
+    await this.eventBus.publish({
       eventId: crypto.randomUUID(),
       correlationId: parentEvent.correlationId,
 
@@ -161,10 +155,10 @@ Regras:
       source: this.metadata.name,
 
       payload: {
-        content
+        content,
       },
 
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
     });
   }
 }

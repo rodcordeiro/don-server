@@ -16,14 +16,15 @@ export class EventBus {
     this.emitter.emit(event.type, event);
   }
 
-  subscribe<T>(
-    type: string,
-    handler: (event: EventEnvelope<T>) => Promise<void> | void
-  ) {
-    this.emitter.on(type, handler);
+  subscribe<T>(type: string, handler: (event: EventEnvelope<T>) => Promise<void> | void) {
+    this.emitter.on(type, (event: unknown) => {
+      void Promise.resolve(handler(event as EventEnvelope<T>));
+    });
   }
 
   subscribeAll(handler: (event: EventEnvelope) => Promise<void> | void) {
-    this.emitter.on("*", handler);
+    this.emitter.on("*", (event: unknown) => {
+      void Promise.resolve(handler(event as EventEnvelope));
+    });
   }
 }

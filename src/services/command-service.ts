@@ -1,7 +1,7 @@
 import { randomUUID } from "node:crypto";
 
-import { EventBus } from "../core/events/event-bus";
-import { AgentRegistry } from "../core/agents/agent-registry";
+import { type EventBus } from "../core/events/event-bus";
+import { type AgentRegistry } from "../core/agents/agent-registry";
 import { parseCommand } from "../gateway/command-parser";
 
 export type HandleUserCommandInput = {
@@ -23,9 +23,7 @@ export class CommandService {
     private readonly agentRegistry: AgentRegistry,
   ) {}
 
-  async handleUserCommand(
-    input: HandleUserCommandInput,
-  ): Promise<HandleUserCommandResult> {
+  async handleUserCommand(input: HandleUserCommandInput): Promise<HandleUserCommandResult> {
     const parsed = parseCommand(input.content, this.agentRegistry);
 
     const conversationId = input.conversationId ?? "conv-local";

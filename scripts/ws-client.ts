@@ -8,8 +8,8 @@ socket.on("open", () => {
   socket.send(
     JSON.stringify({
       conversationId: "conv-001",
-      content: "@planner levante o backlog pendente deste projeto"
-    })
+      content: "@planner levante o backlog pendente deste projeto",
+    }),
   );
 });
 

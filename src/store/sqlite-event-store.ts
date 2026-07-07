@@ -26,7 +26,7 @@ export class SqliteEventStore implements EventStore {
     const store = new SqliteEventStore();
     store.db = await open({
       filename: path,
-      driver: sqlite3.Database
+      driver: sqlite3.Database,
     });
 
     await store.db.exec(`
@@ -92,8 +92,8 @@ export class SqliteEventStore implements EventStore {
         event.source,
         event.target ?? null,
         JSON.stringify(event.payload),
-        event.createdAt
-      ]
+        event.createdAt,
+      ],
     );
   }
 
@@ -104,7 +104,7 @@ export class SqliteEventStore implements EventStore {
       WHERE conversation_id = ?
       ORDER BY created_at ASC
       `,
-      conversationId
+      conversationId,
     );
 
     return rows.map(row => this.toEvent(row));
@@ -118,7 +118,7 @@ export class SqliteEventStore implements EventStore {
       ORDER BY created_at ASC
       `,
       taskId,
-      taskId
+      taskId,
     );
 
     return rows.map(row => this.toEvent(row));
@@ -131,7 +131,7 @@ export class SqliteEventStore implements EventStore {
       WHERE correlation_id = ?
       ORDER BY created_at ASC
       `,
-      correlationId
+      correlationId,
     );
 
     return rows.map(row => this.toEvent(row));
@@ -149,7 +149,7 @@ export class SqliteEventStore implements EventStore {
       source: row.source,
       target: row.target ?? undefined,
       payload: JSON.parse(row.payload) as unknown,
-      createdAt: row.created_at
+      createdAt: row.created_at,
     } as EventEnvelope;
   }
 }

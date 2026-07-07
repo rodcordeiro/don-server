@@ -8,9 +8,5 @@ export type ChatMessage = {
 export interface LlmProvider {
   name: string;
 
-  chat(params: {
-    model: string;
-    messages: ChatMessage[];
-    format?: "json";
-  }): Promise<string>;
+  chat(params: { model: string; messages: ChatMessage[]; format?: "json" }): Promise<string>;
 }
