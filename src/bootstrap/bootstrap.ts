@@ -5,6 +5,7 @@ import { AgentRegistry } from "../core/agents/agent-registry";
 import { AgentRouter } from "../core/agents/agent-router";
 import { CommandService } from "../services/command-service";
 import { OllamaProvider } from "../core/providers/ollama-provider";
+import { ProviderRegistry } from "../core/providers/provider-registry";
 import { FileEventStore } from "../store/file-event-store";
 import { PlannerAgent } from "../agents/planner/planner-agent";
 import { BacklogAgent } from "../agents/backlog/backlog-agent";
@@ -24,10 +25,13 @@ export class Bootstrap {
     const agentRegistry = new AgentRegistry();
 
     const llmProvider = new OllamaProvider();
+    const providerRegistry = new ProviderRegistry();
+
+    providerRegistry.register(llmProvider);
 
     agentRegistry.register(new BacklogAgent(eventBus));
     agentRegistry.register(new SummaryAgent(eventBus));
-    agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, llmProvider));
+    agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 
     const agentRouter = new AgentRouter(eventBus, agentRegistry);
     const commandService = new CommandService(eventBus, agentRegistry);
@@ -41,6 +45,7 @@ export class Bootstrap {
       agentRouter,
       chatGateway,
       llmProvider,
+      providerRegistry,
       commandService,
     };
   }

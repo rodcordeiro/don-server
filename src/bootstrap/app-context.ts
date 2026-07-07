@@ -5,6 +5,7 @@ import type { AgentRegistry } from "../core/agents/agent-registry";
 import type { AgentRouter } from "../core/agents/agent-router";
 import type { ChatGateway } from "../gateway/chat-gateway";
 import type { LlmProvider } from "../core/providers/llm-provider";
+import type { ProviderRegistry } from "../core/providers/provider-registry";
 import type { EventStore } from "../store/event-store";
 import { type CommandService } from "../services/command-service";
 export type AppContext = {
@@ -14,5 +15,6 @@ export type AppContext = {
   agentRouter: AgentRouter;
   chatGateway: ChatGateway;
   llmProvider: LlmProvider;
+  providerRegistry: ProviderRegistry;
   commandService: CommandService;
 };

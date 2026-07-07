@@ -45,8 +45,12 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `CORE-007` CommandParser implementado com mencoes dinamicas via registry.
 - `GW-001` WebSocket Gateway implementado em `src/gateway/chat-gateway.ts`.
 - `SRV-001` CommandService implementado em `src/services/command-service.ts`.
+- `PLAN-001` ProviderRegistry implementado e registra `ollama`.
 - `PLAN-002` Agent Catalog implementado em `AgentRegistry.getCatalog()`.
-- `AG-001` PlannerAgent existe, mas concentra prompt, parsing e validacao.
+- `PLAN-003` Planner Prompt Builder extraido para arquivo dedicado.
+- `PLAN-004` PlannerAgent usa `ExecutionPlan` e `ExecutionStep` do dominio.
+- `PLAN-005` Plan Validator dedicado valida JSON, steps obrigatorios, targets conhecidos e plano vazio.
+- `AG-001` PlannerAgent existe e delega usando plano tipado.
 - `AG-002` SummaryAgent existe como agente inicial.
 - `AG-003` BacklogAgent existe, mas ainda retorna backlog fake.
 - `LLM-001` OllamaProvider implementado.
@@ -108,11 +112,11 @@ Marco: Planner gera plano validado e delega subtarefas com menor acoplamento.
 
 | ID       | Tarefa                      | Status    | Entregavel validavel                                                                 |
 | -------- | --------------------------- | --------- | ------------------------------------------------------------------------------------ |
-| PLAN-001 | ProviderRegistry minimo     | Pendente  | Registry registra `ollama` e permite `providerRegistry.get("ollama")`.               |
+| PLAN-001 | ProviderRegistry minimo     | Concluido | Registry registra `ollama` e permite `providerRegistry.get("ollama")`.               |
 | PLAN-002 | Agent Catalog               | Concluido | `registry.getCatalog()` lista nome, descricao, capacidades e exemplos.               |
-| PLAN-003 | Planner Prompt Builder      | Pendente  | Prompt sai do `PlannerAgent` para `planner-prompt-builder.ts`.                       |
-| PLAN-004 | Planner usa `ExecutionPlan` | Pendente  | Tipos locais do Planner substituidos por contratos de dominio.                       |
-| PLAN-005 | Plan Validator dedicado     | Parcial   | Validador externo valida JSON, steps obrigatorios, targets conhecidos e plano vazio. |
+| PLAN-003 | Planner Prompt Builder      | Concluido | Prompt sai do `PlannerAgent` para `planner-prompt-builder.ts`.                       |
+| PLAN-004 | Planner usa `ExecutionPlan` | Concluido | Tipos locais do Planner substituidos por contratos de dominio.                       |
+| PLAN-005 | Plan Validator dedicado     | Concluido | Validador externo valida JSON, steps obrigatorios, targets conhecidos e plano vazio. |
 
 Critérios de aceite:
 
@@ -276,6 +280,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 3 antes de mexer novamente no Planner.
+Executar a Sprint 5 para tornar o backlog real.
 
-Motivo: o `PlannerAgent` ja funciona parcialmente, mas ainda usa tipos locais e concentra prompt, parsing e validacao. Criar contratos minimos em `src/domain` reduz retrabalho nas proximas sprints e cria uma base comum para Planner, Runtime, Tools, API e UI.
+Motivo: o `PlannerAgent` agora usa contratos de dominio, ProviderRegistry, Prompt Builder e validador dedicado. O proximo ganho validavel e remover o retorno fake do BacklogAgent para sustentar o caso `@planner levante o backlog deste projeto`.

@@ -3,28 +3,21 @@
 import { type EventBus } from "../../core/events/event-bus";
 import type { Agent, AgentMetadata } from "../../core/agents/agent";
 import { type AgentRegistry } from "../../core/agents/agent-registry";
-import type { LlmProvider } from "../../core/providers/llm-provider";
+import { type ProviderRegistry } from "../../core/providers/provider-registry";
 import type { EventEnvelope } from "../../core/events/event-envelope";
-
-type PlannerStep = {
-  target: string;
-  reason: string;
-  content: string;
-};
-
-type PlannerResponse = {
-  steps: PlannerStep[];
-};
+import type { ExecutionPlan, ExecutionStep } from "../../domain";
+import { parseExecutionPlan } from "./execution-plan-validator";
+import { buildPlannerPrompt } from "./planner-prompt-builder";
 
 export class PlannerAgent implements Agent {
   metadata: AgentMetadata = {
     name: "planner-agent",
     description: "Planeja tarefas, escolhe agentes e delega subtarefas.",
     capabilities: [
-      "analisar pedido do usuário",
+      "analisar pedido do usuario",
       "selecionar agentes",
       "criar subtarefas",
-      "delegar execução",
+      "delegar execucao",
     ],
     examples: [
       "@planner levante o backlog pendente deste projeto",
@@ -35,7 +28,7 @@ export class PlannerAgent implements Agent {
   constructor(
     private readonly eventBus: EventBus,
     private readonly registry: AgentRegistry,
-    private readonly llm: LlmProvider,
+    private readonly providerRegistry: ProviderRegistry,
   ) {}
 
   async handle(event: EventEnvelope) {
@@ -53,72 +46,27 @@ export class PlannerAgent implements Agent {
     }
   }
 
-  private async createPlan(userRequest: string): Promise<PlannerResponse> {
+  private async createPlan(userRequest: string): Promise<ExecutionPlan> {
     const catalog = this.registry.getCatalog().filter(agent => agent.name !== this.metadata.name);
+    const llm = this.providerRegistry.get("ollama");
 
-    const systemPrompt = `
-Você é o PlannerAgent.
-
-Sua função é decidir quais agentes devem ser acionados para atender o pedido do usuário.
-
-Agentes disponíveis:
-${catalog
-  .map(agent => {
-    return [
-      `Nome: ${agent.name}`,
-      `Descrição: ${agent.description}`,
-      `Capacidades: ${agent.capabilities?.join(", ")}`,
-      agent.examples?.length ? `Exemplos: ${agent.examples.join(" | ")}` : "",
-    ]
-      .filter(Boolean)
-      .join("\n");
-  })
-  .join("\n\n")}
-
-Responda somente em JSON válido:
-
-{
-  "steps": [
-    {
-      "target": "nome-do-agente",
-      "reason": "por que este agente deve ser acionado",
-      "content": "instrução objetiva para este agente"
+    if (!llm) {
+      throw new Error("Provider ollama nao encontrado.");
     }
-  ]
-}
 
-Regras:
-- Use apenas agentes da lista.
-- Não invente agentes.
-- Para tarefas ambíguas, acione primeiro um agente capaz de identificar contexto.
-- Se for necessário consolidar resposta final, acione summary-agent.
-`;
-
-    const response = await this.llm.chat({
+    const response = await llm.chat({
       model: "llama3.1",
       format: "json",
       messages: [
-        { role: "system", content: systemPrompt },
+        { role: "system", content: buildPlannerPrompt(catalog) },
         { role: "user", content: userRequest },
       ],
     });
 
-    return this.validatePlan(JSON.parse(response) as PlannerResponse);
+    return parseExecutionPlan(response, new Set(catalog.map(agent => agent.name)));
   }
 
-  private validatePlan(plan: PlannerResponse): PlannerResponse {
-    const availableAgents = new Set(this.registry.getCatalog().map(agent => agent.name));
-
-    const validSteps = plan.steps.filter(step => {
-      return availableAgents.has(step.target);
-    });
-
-    return {
-      steps: validSteps,
-    };
-  }
-
-  private async dispatch(parentEvent: EventEnvelope, step: PlannerStep) {
+  private async dispatch(parentEvent: EventEnvelope, step: ExecutionStep) {
     await this.eventBus.publish({
       eventId: crypto.randomUUID(),
       correlationId: parentEvent.correlationId,
@@ -133,8 +81,9 @@ Regras:
       target: step.target,
 
       payload: {
-        content: step.content,
+        content: step.instruction,
         reason: step.reason,
+        stepId: step.id,
       },
 
       createdAt: new Date().toISOString(),
