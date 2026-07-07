@@ -4,6 +4,7 @@ import { EventBus } from '../core/events/event-bus';
 import { AgentRegistry } from '../core/agents/agent-registry';
 import { AgentRouter } from '../core/agents/agent-router';
 import { CommandService } from '../services/command-service';
+import { EventService } from '../services/event-service';
 import { OllamaProvider } from '../core/providers/ollama-provider';
 import { ProviderRegistry } from '../core/providers/provider-registry';
 import { FileEventStore } from '../store/file-event-store';
@@ -35,6 +36,7 @@ export class Bootstrap {
 
 		const agentRouter = new AgentRouter(eventBus, agentRegistry);
 		const commandService = new CommandService(eventBus, agentRegistry);
+		const eventService = new EventService(eventStore);
 
 		const chatGateway = new ChatGateway(eventBus, commandService, +(env.PORT ?? 3001));
 
@@ -47,6 +49,7 @@ export class Bootstrap {
 			llmProvider,
 			providerRegistry,
 			commandService,
+			eventService,
 		};
 	}
 

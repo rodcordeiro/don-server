@@ -7,12 +7,26 @@ const socket = new WebSocket('ws://localhost:3001');
 socket.on('open', () => {
 	socket.send(
 		JSON.stringify({
-			conversationId: 'conv-001',
-			content: '@planner levante o backlog pendente deste projeto',
+			conversationId: 'conv-history-test',
+			content: '@backlog levante o backlog pendente deste projeto',
 		}),
 	);
 });
 
-socket.on('message', data => {
-	console.log('EVENT:', data.toString());
-});
+// socket.on('message', data => {
+// 	console.log('EVENT:', data.toString());
+// });
+import { Bootstrap } from '../src/bootstrap/bootstrap';
+
+const app = Bootstrap.create();
+
+const events = await app.eventService.listByConversation('conv-history-test');
+
+console.log(
+	events.map(event => ({
+		type: event.type,
+		source: event.source,
+		taskId: event.taskId,
+		createdAt: event.createdAt,
+	})),
+);

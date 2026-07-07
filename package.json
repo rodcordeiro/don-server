@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "tsx watch src/main.ts",
-		"client": "tsx scripts/ws-client.ts",
+		"client": "tsx watch scripts/ws-client.ts",
 		"prebuild": " npm run lint:fix && npm run format",
 		"build": "tsc -b",
 		"start": "node dist/main.js",

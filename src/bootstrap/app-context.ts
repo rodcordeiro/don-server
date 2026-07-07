@@ -8,6 +8,7 @@ import type { LlmProvider } from '../core/providers/llm-provider';
 import type { ProviderRegistry } from '../core/providers/provider-registry';
 import type { EventStore } from '../store/event-store';
 import { type CommandService } from '../services/command-service';
+import type { EventService } from '../services/event-service';
 export type AppContext = {
 	eventStore: EventStore;
 	eventBus: EventBus;
@@ -17,4 +18,5 @@ export type AppContext = {
 	llmProvider: LlmProvider;
 	providerRegistry: ProviderRegistry;
 	commandService: CommandService;
+	eventService: EventService;
 };
