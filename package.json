@@ -7,10 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "tsx watch src/main.ts",
     "client": "tsx scripts/ws-client.ts",
-    "build": "tsc",
+    "prebuild": " npm run lint:fix && npm run format",
+    "build": "tsc -b",
     "start": "node dist/main.js",
     "lint": "eslint src",
-    "lint:fix": "eslint src --fix",
+    "lint:fix": "eslint src --fix --max-warnings 10",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },
