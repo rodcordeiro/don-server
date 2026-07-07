@@ -1,29 +1,36 @@
 // src/core/events/event-types.ts
 
 export type HumanInstructionPayload = {
-  content: string;
+	rawContent: string;
+	content: string;
+	mention?: string;
 };
 
 export type AgentCommandPayload = {
-  content: string;
-  reason?: string;
+	content: string;
+	reason?: string;
+	stepId?: string;
 };
 
 export type AgentMessagePayload = {
-  content: string;
+	content: string;
 };
 
 export type AgentResultPayload = {
-  status: "completed" | "failed";
-  result: string;
+	status: 'completed' | 'failed';
+	result: string;
+};
+
+export type AgentErrorPayload = {
+	error: string;
 };
 
 export type ToolStartedPayload = {
-  tool: string;
-  input?: unknown;
+	tool: string;
+	input?: unknown;
 };
 
 export type ToolFinishedPayload = {
-  tool: string;
-  output?: unknown;
+	tool: string;
+	output?: unknown;
 };
