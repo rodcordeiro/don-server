@@ -44,4 +44,11 @@ export type ToolStartedPayload = {
 export type ToolFinishedPayload = {
 	tool: string;
 	output?: unknown;
+	durationMs: number;
+};
+
+export type ToolErrorPayload = {
+	tool: string;
+	error: string;
+	durationMs: number;
 };

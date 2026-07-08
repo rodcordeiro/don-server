@@ -4,6 +4,7 @@ import type { EventBus } from '../core/events/event-bus';
 import type { AgentRegistry } from '../core/agents/agent-registry';
 import type { AgentRuntime } from '../core/agents/agent-runtime';
 import type { AgentRouter } from '../core/agents/agent-router';
+import type { ToolRegistry, ToolRuntime } from '../core/tools';
 import type { ChatGateway } from '../gateway/chat-gateway';
 import type { HttpGateway } from '../gateway/http-gateway';
 import type { RestGateway } from '../gateway/rest-gateway';
@@ -16,7 +17,9 @@ export type AppContext = {
 	eventStore: EventStore;
 	eventBus: EventBus;
 	agentRegistry: AgentRegistry;
+	toolRegistry: ToolRegistry;
 	agentRuntime: AgentRuntime;
+	toolRuntime: ToolRuntime;
 	agentRouter: AgentRouter;
 	httpGateway: HttpGateway;
 	chatGateway: ChatGateway;

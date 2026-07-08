@@ -4,6 +4,7 @@ import { EventBus } from '../core/events/event-bus';
 import { AgentRegistry } from '../core/agents/agent-registry';
 import { AgentRuntime } from '../core/agents/agent-runtime';
 import { AgentRouter } from '../core/agents/agent-router';
+import { ToolRegistry, ToolRuntime } from '../core/tools';
 import { CommandService } from '../services/command-service';
 import { EventService } from '../services/event-service';
 import { OllamaProvider } from '../core/providers/ollama-provider';
@@ -12,6 +13,7 @@ import { FileEventStore } from '../store/file-event-store';
 import { PlannerAgent } from '../agents/planner/planner-agent';
 import { BacklogAgent } from '../agents/backlog/backlog-agent';
 import { SummaryAgent } from '../agents/summary/summary-agent';
+import { FilesystemTool, ShellTool } from '../tools';
 
 import { ChatGateway } from '../gateway/chat-gateway';
 import { HttpGateway } from '../gateway/http-gateway';
@@ -27,17 +29,21 @@ export class Bootstrap {
 		const eventBus = new EventBus(eventStore);
 
 		const agentRegistry = new AgentRegistry();
+		const toolRegistry = new ToolRegistry();
 
 		const llmProvider = new OllamaProvider();
 		const providerRegistry = new ProviderRegistry();
 
 		providerRegistry.register(llmProvider);
+		toolRegistry.register(new FilesystemTool());
+		toolRegistry.register(new ShellTool());
 
 		agentRegistry.register(new BacklogAgent(eventBus));
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 
 		const agentRuntime = new AgentRuntime(eventBus, +(env.AGENT_TIMEOUT_MS ?? 30_000));
+		const toolRuntime = new ToolRuntime(eventBus);
 		const agentRouter = new AgentRouter(eventBus, agentRegistry, agentRuntime);
 		const commandService = new CommandService(eventBus, agentRegistry);
 		const eventService = new EventService(eventStore);
@@ -54,7 +60,9 @@ export class Bootstrap {
 			eventStore,
 			eventBus,
 			agentRegistry,
+			toolRegistry,
 			agentRuntime,
+			toolRuntime,
 			agentRouter,
 			httpGateway,
 			chatGateway,

@@ -8,6 +8,7 @@ import type {
 	AgentStartedPayload,
 	HumanInstructionPayload,
 	ToolFinishedPayload,
+	ToolErrorPayload,
 	ToolStartedPayload,
 } from './event-types';
 
@@ -66,5 +67,9 @@ export type EventEnvelope<TPayload = unknown> = BaseEnvelope &
 		| {
 				type: 'tool.finished';
 				payload: ToolFinishedPayload;
+		  }
+		| {
+				type: 'tool.error';
+				payload: ToolErrorPayload;
 		  }
 	);

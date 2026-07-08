@@ -22,6 +22,10 @@ export class PlannerAgent implements Agent {
 		examples: [
 			'@planner levante o backlog pendente deste projeto',
 			'@planner revise o projeto e rode os testes',
+			'@planner qual o status do projeto e quais tarefas estao pendentes',
+			'@planner estruture as próximas tarefas do projeto e delegue para os agentes apropriados',
+			'@planner, organize as tarefas do projeto e consolide os resultados para o usuario',
+			'preciso de ajuda para organizar as tarefas do projeto @planner',
 		],
 	};
 

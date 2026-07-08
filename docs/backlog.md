@@ -56,6 +56,11 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `AG-002` SummaryAgent consolida conteudo recebido em `agent.result`.
 - `AG-003` BacklogAgent le `docs/backlog.md` e retorna tarefas pendentes/parciais.
 - `LLM-001` OllamaProvider implementado.
+- `TOOL-001` Tool interface implementada em `src/core/tools/tool.ts`.
+- `TOOL-002` ToolRegistry implementado em `src/core/tools/tool-registry.ts`.
+- `TOOL-003` ToolRuntime implementado com eventos `tool.started`, `tool.result`, `tool.finished` e `tool.error`.
+- `TOOL-004` FilesystemTool implementada com leitura/listagem restrita a raiz permitida.
+- `TOOL-005` ShellTool implementada em modo dry-run por padrao e allowlist explicita para execucao real.
 
 ## Ordem executiva recomendada
 
@@ -206,13 +211,13 @@ Critérios de aceite:
 
 Marco: primeira base de ferramentas executaveis com contrato e auditoria.
 
-| ID       | Tarefa                         | Status   | Entregavel validavel                                                   |
-| -------- | ------------------------------ | -------- | ---------------------------------------------------------------------- |
-| TOOL-001 | Tool interface                 | Pendente | Interface comum para ferramentas usando `ToolResult`.                  |
-| TOOL-002 | ToolRegistry                   | Pendente | Registro e descoberta de ferramentas por nome.                         |
-| TOOL-003 | ToolRuntime basico             | Pendente | Publica `tool.started`, `tool.finished` e `tool.error`.                |
-| TOOL-004 | FilesystemTool read/list       | Pendente | Lista diretorio e le arquivos permitidos.                              |
-| TOOL-005 | ShellTool dry-run ou allowlist | Pendente | Execucao controlada com limites claros antes de comandos reais amplos. |
+| ID       | Tarefa                         | Status    | Entregavel validavel                                                   |
+| -------- | ------------------------------ | --------- | ---------------------------------------------------------------------- |
+| TOOL-001 | Tool interface                 | Concluido | Interface comum para ferramentas usando `ToolResult`.                  |
+| TOOL-002 | ToolRegistry                   | Concluido | Registro e descoberta de ferramentas por nome.                         |
+| TOOL-003 | ToolRuntime basico             | Concluido | Publica `tool.started`, `tool.finished` e `tool.error`.                |
+| TOOL-004 | FilesystemTool read/list       | Concluido | Lista diretorio e le arquivos permitidos.                              |
+| TOOL-005 | ShellTool dry-run ou allowlist | Concluido | Execucao controlada com limites claros antes de comandos reais amplos. |
 
 Critérios de aceite:
 
@@ -444,6 +449,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 9 para iniciar a base de Tooling.
+Executar a Sprint 10 para fechar a seguranca de entrada.
 
-Motivo: o `AgentRuntime` agora centraliza inicio, conclusao, erro, duracao e timeout de agentes. O proximo ganho validavel e padronizar ferramentas com Tool interface, ToolRegistry e ToolRuntime.
+Motivo: o sistema ja expoe WebSocket, REST e base de tooling. O proximo ganho validavel e bloquear conexoes anonimas antes de ampliar agentes dinamicos, tools sensiveis e integracoes externas.
