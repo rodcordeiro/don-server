@@ -62,6 +62,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `TOOL-004` FilesystemTool implementada com leitura/listagem restrita a raiz permitida.
 - `TOOL-005` ShellTool implementada em modo dry-run por padrao e allowlist explicita para execucao real.
 - `SEC-001` a `SEC-005` implementados com token estatico, autenticacao REST/WebSocket, `actor` no envelope, suporte a `x-don-user-id` apos token valido, eventos `security.failure` e documentacao operacional.
+- `AG-003.4` a `AG-003.8` implementados com interpretacao por modelo/fallback deterministico e mutacoes controladas em `docs/backlog.md`.
 
 ## Ordem executiva recomendada
 
@@ -242,13 +243,13 @@ Marco: fechar acesso anonimo antes de ampliar superficies de API, agentes dinami
 
 Marco: evoluir o BacklogAgent de leitor deterministico para agente capaz de interpretar solicitacoes e preparar mudancas controladas.
 
-| ID       | Tarefa                       | Status   | Entregavel validavel                                                                |
-| -------- | ---------------------------- | -------- | ----------------------------------------------------------------------------------- |
-| AG-003.4 | BacklogAgent usa modelo      | Pendente | Usar LLM para interpretar a solicitacao do usuario e retornar o recorte solicitado. |
-| AG-003.5 | BacklogAgent adiciona tarefa | Pendente | Criar nova tarefa em `docs/backlog.md` preservando sprint, tabela e formato.        |
-| AG-003.6 | BacklogAgent conclui tarefa  | Pendente | Alterar status de uma tarefa para `Concluido` com evento auditavel.                 |
-| AG-003.7 | BacklogAgent edita tarefa    | Pendente | Atualizar titulo, status ou entregavel sem corromper a tabela Markdown.             |
-| AG-003.8 | BacklogAgent remove tarefa   | Pendente | Remover tarefa existente de forma controlada, com confirmacao ou evento auditavel.  |
+| ID       | Tarefa                       | Status    | Entregavel validavel                                                                               |
+| -------- | ---------------------------- | --------- | -------------------------------------------------------------------------------------------------- |
+| AG-003.4 | BacklogAgent usa modelo      | Concluido | Usa ProviderRegistry/Ollama quando disponivel e fallback deterministico para interpretar recortes. |
+| AG-003.5 | BacklogAgent adiciona tarefa | Concluido | Cria nova tarefa em `docs/backlog.md` preservando sprint, tabela e formato.                        |
+| AG-003.6 | BacklogAgent conclui tarefa  | Concluido | Altera status de tarefa explicita para `Concluido` e retorna antes/depois auditavel.               |
+| AG-003.7 | BacklogAgent edita tarefa    | Concluido | Atualiza titulo, status ou entregavel sem corromper a tabela Markdown.                             |
+| AG-003.8 | BacklogAgent remove tarefa   | Concluido | Remove tarefa existente por ID explicito e retorna resumo auditavel.                               |
 
 ## Sprint 12 - Projetos e backlogs centralizados
 
@@ -450,6 +451,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 11 para tornar o BacklogAgent inteligente e capaz de interpretar recortes e preparar alteracoes controladas no backlog.
+Executar a Sprint 12 para permitir gestao por projeto e preparar backlogs centralizados.
 
-Motivo: a seguranca de entrada ja bloqueia acesso anonimo. O proximo ganho validavel e evoluir o BacklogAgent para interpretar solicitacoes, preparar edicoes auditaveis e reduzir manutencao manual do `docs/backlog.md`.
+Motivo: o BacklogAgent ja interpreta recortes e prepara alteracoes controladas no backlog local. O proximo ganho validavel e sair de um unico `docs/backlog.md` e introduzir contexto de projeto.

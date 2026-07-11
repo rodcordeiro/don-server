@@ -39,7 +39,7 @@ export class Bootstrap {
 		toolRegistry.register(new FilesystemTool());
 		toolRegistry.register(new ShellTool());
 
-		agentRegistry.register(new BacklogAgent(eventBus));
+		agentRegistry.register(new BacklogAgent(eventBus, undefined, providerRegistry));
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 
