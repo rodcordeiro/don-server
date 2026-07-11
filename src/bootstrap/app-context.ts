@@ -13,6 +13,7 @@ import type { ProviderRegistry } from '../core/providers/provider-registry';
 import type { EventStore } from '../store/event-store';
 import { type CommandService } from '../services/command-service';
 import type { EventService } from '../services/event-service';
+import type { AuthService } from '../services/auth-service';
 export type AppContext = {
 	eventStore: EventStore;
 	eventBus: EventBus;
@@ -28,4 +29,5 @@ export type AppContext = {
 	providerRegistry: ProviderRegistry;
 	commandService: CommandService;
 	eventService: EventService;
+	authService: AuthService;
 };

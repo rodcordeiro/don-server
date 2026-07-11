@@ -1,8 +1,19 @@
 // scripts/ws-client.ts
 
+import { existsSync } from 'node:fs';
+import { loadEnvFile } from 'node:process';
 import WebSocket from 'ws';
 
-const socket = new WebSocket('ws://localhost:3001');
+if (existsSync('.env')) {
+	loadEnvFile('.env');
+}
+
+const socket = new WebSocket('ws://localhost:3001', {
+	headers: {
+		authorization: `Bearer ${process.env['DON_SERVER_TOKEN'] ?? ''}`,
+		'x-don-user-id': process.env['DON_SERVER_USER_ID'] ?? 'local-user',
+	},
+});
 
 socket.on('open', () => {
 	socket.send(

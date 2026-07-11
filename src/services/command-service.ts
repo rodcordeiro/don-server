@@ -37,6 +37,7 @@ export class CommandService {
 			type: 'human.instruction',
 			source: input.source,
 			target: parsed.target,
+			actor: input.actor,
 			payload: {
 				rawContent: input.content,
 				content: parsed.content,
@@ -54,6 +55,7 @@ export class CommandService {
 			type: 'agent.command',
 			source: 'command-service',
 			target: parsed.target,
+			actor: input.actor,
 			payload: {
 				content: parsed.content,
 			},

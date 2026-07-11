@@ -111,6 +111,7 @@ export class PlannerAgent implements Agent {
 			rootTaskId: parentEvent.rootTaskId,
 			taskId: crypto.randomUUID(),
 			parentTaskId: parentEvent.taskId,
+			...(parentEvent.actor !== undefined ? { actor: parentEvent.actor } : {}),
 
 			type: 'agent.command',
 			source: this.metadata.name,
@@ -135,6 +136,7 @@ export class PlannerAgent implements Agent {
 			rootTaskId: parentEvent.rootTaskId,
 			taskId: parentEvent.taskId,
 			...(parentEvent.parentTaskId !== undefined ? { parentTaskId: parentEvent.parentTaskId } : {}),
+			...(parentEvent.actor !== undefined ? { actor: parentEvent.actor } : {}),
 
 			type: 'agent.message',
 			source: this.metadata.name,

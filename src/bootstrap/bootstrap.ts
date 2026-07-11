@@ -7,6 +7,7 @@ import { AgentRouter } from '../core/agents/agent-router';
 import { ToolRegistry, ToolRuntime } from '../core/tools';
 import { CommandService } from '../services/command-service';
 import { EventService } from '../services/event-service';
+import { AuthService } from '../services/auth-service';
 import { OllamaProvider } from '../core/providers/ollama-provider';
 import { ProviderRegistry } from '../core/providers/provider-registry';
 import { FileEventStore } from '../store/file-event-store';
@@ -47,10 +48,16 @@ export class Bootstrap {
 		const agentRouter = new AgentRouter(eventBus, agentRegistry, agentRuntime);
 		const commandService = new CommandService(eventBus, agentRegistry);
 		const eventService = new EventService(eventStore);
+		const authService = new AuthService(eventBus, env.DON_SERVER_TOKEN, env.DON_SERVER_USER_ID);
 
 		const httpGateway = new HttpGateway(+(env.PORT ?? 3001));
-		const chatGateway = new ChatGateway(eventBus, commandService, httpGateway.getServer());
-		const restGateway = new RestGateway(commandService, eventService);
+		const chatGateway = new ChatGateway(
+			eventBus,
+			commandService,
+			httpGateway.getServer(),
+			authService,
+		);
+		const restGateway = new RestGateway(commandService, eventService, authService);
 
 		httpGateway.register((request, response) => {
 			return restGateway.handleRequest(request, response);
@@ -71,6 +78,7 @@ export class Bootstrap {
 			providerRegistry,
 			commandService,
 			eventService,
+			authService,
 		};
 	}
 

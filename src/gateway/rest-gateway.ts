@@ -1,6 +1,8 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
+import type { AuthenticatedActor } from '../domain';
 import type { CommandService } from '../services/command-service';
 import type { EventService } from '../services/event-service';
+import type { AuthService } from '../services/auth-service';
 
 type CommandRequest = {
 	conversationId?: string;
@@ -11,14 +13,21 @@ export class RestGateway {
 	constructor(
 		private readonly commandService: CommandService,
 		private readonly eventService: EventService,
+		private readonly authService: AuthService,
 	) {}
 
 	async handleRequest(request: IncomingMessage, response: ServerResponse): Promise<boolean> {
 		const url = new URL(request.url ?? '/', `http://${request.headers.host ?? 'localhost'}`);
 
 		try {
+			const actor = await this.authenticate(request, response, url);
+
+			if (!actor) {
+				return true;
+			}
+
 			if (request.method === 'POST' && url.pathname === '/commands') {
-				await this.handleCommand(request, response);
+				await this.handleCommand(request, response, actor);
 				return true;
 			}
 
@@ -37,7 +46,11 @@ export class RestGateway {
 		}
 	}
 
-	private async handleCommand(request: IncomingMessage, response: ServerResponse): Promise<void> {
+	private async handleCommand(
+		request: IncomingMessage,
+		response: ServerResponse,
+		actor: AuthenticatedActor,
+	): Promise<void> {
 		const body = (await this.readJson(request)) as CommandRequest;
 
 		if (typeof body.content !== 'string' || !body.content.trim()) {
@@ -49,6 +62,7 @@ export class RestGateway {
 			...(body.conversationId !== undefined ? { conversationId: body.conversationId } : {}),
 			content: body.content,
 			source: 'rest',
+			actor,
 		});
 
 		this.sendJson(response, 202, result);
@@ -106,4 +120,50 @@ export class RestGateway {
 		});
 		response.end(JSON.stringify(payload));
 	}
+
+	private async authenticate(
+		request: IncomingMessage,
+		response: ServerResponse,
+		url: URL,
+	): Promise<AuthenticatedActor | undefined> {
+		const result = this.authService.authenticate(
+			extractToken(request),
+			'rest',
+			extractUserId(request),
+		);
+
+		if (result.success) {
+			return result.actor;
+		}
+
+		await this.authService.publishFailure({
+			reason: result.reason,
+			channel: 'rest',
+			path: url.pathname,
+			...(request.socket.remoteAddress !== undefined
+				? { remoteAddress: request.socket.remoteAddress }
+				: {}),
+		});
+
+		this.sendJson(response, 401, { error: 'Autenticacao obrigatoria.' });
+		return undefined;
+	}
+}
+
+function extractUserId(request: IncomingMessage): string | undefined {
+	const userId = request.headers['x-don-user-id'];
+
+	return typeof userId === 'string' ? userId : undefined;
+}
+
+function extractToken(request: IncomingMessage): string | undefined {
+	const authorization = request.headers.authorization;
+
+	if (authorization?.startsWith('Bearer ')) {
+		return authorization.slice('Bearer '.length);
+	}
+
+	const headerToken = request.headers['x-don-token'];
+
+	return typeof headerToken === 'string' ? headerToken : undefined;
 }

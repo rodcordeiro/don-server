@@ -61,6 +61,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `TOOL-003` ToolRuntime implementado com eventos `tool.started`, `tool.result`, `tool.finished` e `tool.error`.
 - `TOOL-004` FilesystemTool implementada com leitura/listagem restrita a raiz permitida.
 - `TOOL-005` ShellTool implementada em modo dry-run por padrao e allowlist explicita para execucao real.
+- `SEC-001` a `SEC-005` implementados com token estatico, autenticacao REST/WebSocket, `actor` no envelope, suporte a `x-don-user-id` apos token valido, eventos `security.failure` e documentacao operacional.
 
 ## Ordem executiva recomendada
 
@@ -229,13 +230,13 @@ Critérios de aceite:
 
 Marco: fechar acesso anonimo antes de ampliar superficies de API, agentes dinamicos e operacoes sensiveis.
 
-| ID      | Tarefa                         | Status   | Entregavel validavel                                                        |
-| ------- | ------------------------------ | -------- | --------------------------------------------------------------------------- |
-| SEC-001 | Contrato de autenticacao       | Pendente | Definir payload/token esperado para conexoes WebSocket e futuras APIs.      |
-| SEC-002 | Autenticacao no WebSocket      | Pendente | Exigir autenticacao para conexoes WebSocket e bloquear conexoes anonimas.   |
-| SEC-003 | Identidade no EventEnvelope    | Pendente | Associar eventos a usuario/origem autenticada sem expor segredo no payload. |
-| SEC-004 | Eventos de falha de seguranca  | Pendente | Publicar evento auditavel para tentativa anonima ou token invalido.         |
-| SEC-005 | Documentar operacao de segredo | Pendente | Registrar configuracao local segura para token/chave sem commitar segredo.  |
+| ID      | Tarefa                         | Status    | Entregavel validavel                                                                                                                     |
+| ------- | ------------------------------ | --------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| SEC-001 | Contrato de autenticacao       | Concluido | Token estatico via `DON_SERVER_TOKEN`; REST aceita `Authorization`, `x-don-token`, `x-don-user-id`, e WebSocket tambem aceita `?token=`. |
+| SEC-002 | Autenticacao no WebSocket      | Concluido | WebSocket exige token valido antes de registrar cliente e fecha conexoes anonimas com politica `1008`.                                   |
+| SEC-003 | Identidade no EventEnvelope    | Concluido | Eventos autenticados propagam `actor` com usuario, metodo e canal, sem expor segredo.                                                    |
+| SEC-004 | Eventos de falha de seguranca  | Concluido | Falhas publicam `security.failure` com motivo, canal, caminho e endereco remoto quando disponivel.                                       |
+| SEC-005 | Documentar operacao de segredo | Concluido | Operacao documentada em `docs/security.md` e `.env.example` declara `DON_SERVER_USER_ID`.                                                |
 
 ## Sprint 11 - Backlog inteligente
 
@@ -449,6 +450,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 10 para fechar a seguranca de entrada.
+Executar a Sprint 11 para tornar o BacklogAgent inteligente e capaz de interpretar recortes e preparar alteracoes controladas no backlog.
 
-Motivo: o sistema ja expoe WebSocket, REST e base de tooling. O proximo ganho validavel e bloquear conexoes anonimas antes de ampliar agentes dinamicos, tools sensiveis e integracoes externas.
+Motivo: a seguranca de entrada ja bloqueia acesso anonimo. O proximo ganho validavel e evoluir o BacklogAgent para interpretar solicitacoes, preparar edicoes auditaveis e reduzir manutencao manual do `docs/backlog.md`.

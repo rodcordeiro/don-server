@@ -52,3 +52,10 @@ export type ToolErrorPayload = {
 	error: string;
 	durationMs: number;
 };
+
+export type SecurityFailurePayload = {
+	reason: 'missing-token' | 'invalid-token' | 'auth-not-configured';
+	channel: 'rest' | 'websocket';
+	path?: string;
+	remoteAddress?: string;
+};

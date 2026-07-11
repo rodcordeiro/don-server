@@ -26,6 +26,7 @@ export class SummaryAgent implements Agent {
 			rootTaskId: event.rootTaskId,
 			taskId: event.taskId,
 			...(event.parentTaskId !== undefined ? { parentTaskId: event.parentTaskId } : {}),
+			...(event.actor !== undefined ? { actor: event.actor } : {}),
 
 			type: 'agent.result',
 			source: this.metadata.name,

@@ -1,4 +1,5 @@
 import type { ToolResult } from '../../domain';
+import type { AuthenticatedActor } from '../../domain';
 import type {
 	AgentCommandPayload,
 	AgentCompletedPayload,
@@ -7,6 +8,7 @@ import type {
 	AgentResultPayload,
 	AgentStartedPayload,
 	HumanInstructionPayload,
+	SecurityFailurePayload,
 	ToolFinishedPayload,
 	ToolErrorPayload,
 	ToolStartedPayload,
@@ -23,6 +25,7 @@ type BaseEnvelope = {
 	parentTaskId?: string;
 	source: string;
 	target?: string;
+	actor?: AuthenticatedActor;
 	createdAt: string;
 };
 export type EventEnvelope<TPayload = unknown> = BaseEnvelope &
@@ -71,5 +74,9 @@ export type EventEnvelope<TPayload = unknown> = BaseEnvelope &
 		| {
 				type: 'tool.error';
 				payload: ToolErrorPayload;
+		  }
+		| {
+				type: 'security.failure';
+				payload: SecurityFailurePayload;
 		  }
 	);
