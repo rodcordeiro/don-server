@@ -58,14 +58,8 @@ export class PlannerAgent implements Agent {
 		}
 
 		const catalog = this.registry.getCatalog().filter(agent => agent.name !== this.metadata.name);
-		const llm = this.providerRegistry.get('ollama');
-
-		if (!llm) {
-			throw new Error('Provider ollama nao encontrado.');
-		}
-
-		const response = await llm.chat({
-			model: 'llama3.1',
+		const response = await this.providerRegistry.chat({
+			...this.metadata.llm,
 			format: 'json',
 			messages: [
 				{ role: 'system', content: buildPlannerPrompt(catalog) },

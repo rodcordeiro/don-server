@@ -64,6 +64,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `SEC-001` a `SEC-005` implementados com token estatico, autenticacao REST/WebSocket, `actor` no envelope, suporte a `x-don-user-id` apos token valido, eventos `security.failure` e documentacao operacional.
 - `AG-003.4` a `AG-003.8` implementados com interpretacao por modelo/fallback deterministico e mutacoes controladas em `docs/backlog.md`.
 - `PRJ-001` a `PRJ-005` implementados com contrato de projeto, indice local, backlog por projeto, consulta de eventos por projeto e propagacao de `projectId`.
+- `LLM-002` a `LLM-007` implementados com provider default por env, selecao por agente, OpenAIProvider, fallback e provider CLI para Cursor/Codex.
 
 ## Ordem executiva recomendada
 
@@ -271,12 +272,12 @@ Marco: trocar ou escolher LLM sem alterar agentes.
 | ID      | Tarefa                           | Status    | Entregavel validavel                                                                                  |
 | ------- | -------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
 | LLM-001 | OllamaProvider                   | Concluido | Provider local inicial.                                                                               |
-| LLM-002 | Configurar provider padrao       | Pendente  | Provider default configuravel por env.                                                                |
-| LLM-003 | Selecao por agente               | Pendente  | Agente pode declarar provider/model preferencial.                                                     |
-| LLM-004 | OpenAIProvider                   | Pendente  | Provider OpenAI atras de interface existente.                                                         |
-| LLM-005 | Fallback de provider             | Pendente  | Falha de provider retorna erro controlado ou fallback configurado.                                    |
-| LLM-006 | CliLlmProvider para Cursor/Codex | Pendente  | Adapter executa Cursor ou Codex instalados via CLI com cwd controlado, timeout, stdout/stderr e erro. |
-| LLM-007 | Formato JSON para provider CLI   | Pendente  | Normalizar prompts e validar respostas JSON de CLI antes de Planner/BacklogAgent consumirem o modelo. |
+| LLM-002 | Configurar provider padrao       | Concluido | Provider default configuravel por env.                                                                |
+| LLM-003 | Selecao por agente               | Concluido | Agente pode declarar provider/model preferencial.                                                     |
+| LLM-004 | OpenAIProvider                   | Concluido | Provider OpenAI atras de interface existente.                                                         |
+| LLM-005 | Fallback de provider             | Concluido | Falha de provider retorna erro controlado ou fallback configurado.                                    |
+| LLM-006 | CliLlmProvider para Cursor/Codex | Concluido | Adapter executa Cursor ou Codex instalados via CLI com cwd controlado, timeout, stdout/stderr e erro. |
+| LLM-007 | Formato JSON para provider CLI   | Concluido | Normalizar prompts e validar respostas JSON de CLI antes de Planner/BacklogAgent consumirem o modelo. |
 
 ## Sprint 14 - Template e registro dinamico de agentes
 
@@ -455,6 +456,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 13 para trocar ou escolher LLM sem alterar agentes.
+Executar a Sprint 14 para permitir expansao controlada de agentes sem alterar manualmente o bootstrap a cada novo agente.
 
-Motivo: a gestao por projeto ja propaga `projectId` e resolve backlogs por projeto. O proximo ganho validavel e permitir providers configuraveis, incluindo alternativas ao Ollama.
+Motivo: providers configuraveis ja permitem trocar o motor LLM. O proximo ganho validavel e registrar novos agentes com definicao validada.
