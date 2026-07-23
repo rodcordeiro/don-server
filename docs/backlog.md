@@ -73,6 +73,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `AG-007.1` a `AG-007.5` implementados com SecurityAgent, revisao inicial, leitura de falhas, delegacao pelo Planner e relatorio de risco.
 - `UI-001` a `UI-005` implementados com UI minima servida em `/ui`, chat WebSocket/REST, timeline, conversas, detalhe de task e destaque de erros.
 - `OPT-001` a `OPT-005` implementados com prompt versionado, replanejamento controlado, score, dependencias e metricas do Planner.
+- `OPT-006` a `OPT-010` implementados com parser Markdown resiliente, validacao antes de gravar, diff auditavel, busca textual e recortes melhores.
 
 ## Ordem executiva recomendada
 
@@ -382,13 +383,13 @@ Marco: melhorar qualidade de planejamento, delegacao e fallback do Planner.
 
 Marco: melhorar confiabilidade, edicao e resposta do BacklogAgent.
 
-| ID      | Tarefa                           | Status   | Entregavel validavel                                                     |
-| ------- | -------------------------------- | -------- | ------------------------------------------------------------------------ |
-| OPT-006 | Parser Markdown resiliente       | Pendente | Preservar tabelas mesmo com colunas extras ou texto entre secoes.        |
-| OPT-007 | Validacao antes de editar        | Pendente | Simular mudanca e validar tabela antes de gravar.                        |
-| OPT-008 | Diff auditavel de backlog        | Pendente | Publicar resumo de alteracoes antes/depois.                              |
-| OPT-009 | Busca semantica de tarefas       | Pendente | Encontrar tarefas por intencao, nao apenas ID literal.                   |
-| OPT-010 | Respostas por recorte solicitado | Pendente | Responder por sprint, status, projeto, prioridade ou agente responsavel. |
+| ID      | Tarefa                           | Status    | Entregavel validavel                                                     |
+| ------- | -------------------------------- | --------- | ------------------------------------------------------------------------ |
+| OPT-006 | Parser Markdown resiliente       | Concluido | Preservar tabelas mesmo com colunas extras ou texto entre secoes.        |
+| OPT-007 | Validacao antes de editar        | Concluido | Simular mudanca e validar tabela antes de gravar.                        |
+| OPT-008 | Diff auditavel de backlog        | Concluido | Publicar resumo de alteracoes antes/depois.                              |
+| OPT-009 | Busca semantica de tarefas       | Concluido | Encontrar tarefas por intencao, nao apenas ID literal.                   |
+| OPT-010 | Respostas por recorte solicitado | Concluido | Responder por sprint, status, projeto, prioridade ou agente responsavel. |
 
 ## Sprint 22 - Otimizacao do SummaryAgent
 
@@ -464,6 +465,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 21 para melhorar confiabilidade, edicao e resposta do BacklogAgent.
+Executar a Sprint 22 para tornar consolidacao util em fluxos multiagente.
 
-Motivo: PlannerAgent ja versiona prompt, replaneja, ordena por dependencia/score e publica metricas. O proximo ganho validavel e reforcar o BacklogAgent.
+Motivo: BacklogAgent ja valida mutacoes e responde melhor por recortes. O proximo ganho validavel e otimizar o SummaryAgent.

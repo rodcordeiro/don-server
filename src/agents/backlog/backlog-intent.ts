@@ -8,6 +8,7 @@ export type BacklogIntent =
 			status?: string;
 			sprint?: string;
 			id?: string;
+			query?: string;
 	  }
 	| {
 			action: 'add';
@@ -95,6 +96,7 @@ function buildBacklogIntentPrompt(tasks: BacklogTask[]): string {
 		'Voce interpreta pedidos sobre um backlog Markdown.',
 		'Responda apenas JSON valido com uma destas formas:',
 		'{"action":"query","status":"Pendente|Parcial|Concluido","sprint":"Sprint 11","id":"AG-003.4"}',
+		'{"action":"query","query":"texto para busca semantica"}',
 		'{"action":"add","sprint":"Sprint 11","id":"AG-003.9","title":"Titulo","status":"Pendente","deliverable":"Entregavel"}',
 		'{"action":"complete","id":"AG-003.4"}',
 		'{"action":"edit","id":"AG-003.4","title":"Novo titulo","status":"Parcial","deliverable":"Novo entregavel"}',
@@ -141,6 +143,7 @@ function parseDeterministicIntent(instruction: string): BacklogIntent {
 		action: 'query',
 		...(id ? { id } : {}),
 		...extractQueryFilters(instruction),
+		...extractSemanticQuery(instruction),
 	};
 }
 
@@ -184,6 +187,15 @@ function extractQueryFilters(
 	};
 }
 
+function extractSemanticQuery(
+	instruction: string,
+): Pick<Extract<BacklogIntent, { action: 'query' }>, 'query'> {
+	const match = instruction.match(/\b(?:busque|buscar|procure|procurar|sobre)\s+(.+)$/i);
+	const query = match?.[1]?.trim();
+
+	return query ? { query } : {};
+}
+
 function extractOptionalFields(instruction: string): {
 	title?: string;
 	status?: string;
@@ -220,6 +232,7 @@ function validateBacklogIntent(input: unknown): BacklogIntent | undefined {
 			...readOptionalString(input, 'status'),
 			...readOptionalString(input, 'sprint'),
 			...readOptionalString(input, 'id'),
+			...readOptionalString(input, 'query'),
 		};
 	}
 

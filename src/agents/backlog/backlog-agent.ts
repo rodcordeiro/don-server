@@ -164,6 +164,10 @@ function filterTasks(
 			return false;
 		}
 
+		if (intent.query && !matchesSemanticQuery(task, intent.query)) {
+			return false;
+		}
+
 		if (intent.sprint && !task.sprint.toLowerCase().startsWith(intent.sprint.toLowerCase())) {
 			return false;
 		}
@@ -171,7 +175,7 @@ function filterTasks(
 		return true;
 	});
 
-	return tasks.length > 0 || intent.id || intent.status || intent.sprint
+	return tasks.length > 0 || intent.id || intent.status || intent.sprint || intent.query
 		? tasks
 		: getOpenTasks(sprints);
 }
@@ -232,6 +236,16 @@ function formatMutationResult(result: BacklogMutationResult): string {
 		lines.push(`Depois: ${formatTask(result.after)}`);
 	}
 
+	if (result.diff) {
+		lines.push('Diff auditavel:');
+		if (result.diff.before) {
+			lines.push(`- Antes: ${result.diff.before}`);
+		}
+		if (result.diff.after) {
+			lines.push(`- Depois: ${result.diff.after}`);
+		}
+	}
+
 	return lines.join('\n');
 }
 
@@ -241,7 +255,7 @@ function formatTask(task: BacklogTask): string {
 
 function describeIntent(intent: BacklogIntent): string {
 	if (intent.action === 'query') {
-		return `consulta${intent.id ? ` por ${intent.id}` : ''}`;
+		return `consulta${intent.id ? ` por ${intent.id}` : ''}${intent.query ? ` sobre ${intent.query}` : ''}`;
 	}
 
 	if (intent.action === 'add') {
@@ -257,4 +271,15 @@ function describeIntent(intent: BacklogIntent): string {
 	}
 
 	return `remocao de ${intent.id}`;
+}
+
+function matchesSemanticQuery(task: BacklogTask, query: string): boolean {
+	const terms = query
+		.toLowerCase()
+		.split(/\s+/)
+		.filter(term => term.length > 2);
+	const haystack =
+		`${task.id} ${task.title} ${task.deliverable} ${task.status} ${task.sprint}`.toLowerCase();
+
+	return terms.length === 0 || terms.some(term => haystack.includes(term));
 }
