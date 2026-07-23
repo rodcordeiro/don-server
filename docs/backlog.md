@@ -67,6 +67,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `LLM-002` a `LLM-007` implementados com provider default por env, selecao por agente, OpenAIProvider, fallback e provider CLI para Cursor/Codex.
 - `AGT-001` a `AGT-005` implementados com template de agente dinamico, contrato validado, registro via chat/REST e catalogo atualizado.
 - `MCP-001` e `MCP-002` implementados com adapter de agente externo HTTP/CLI, registro via REST/chat e alias `/mcp/agents`.
+- `AUD-001` a `AUD-005` implementados com exportacao filtravel, metricas, replay somente leitura e relatorio de falhas.
 
 ## Ordem executiva recomendada
 
@@ -306,13 +307,13 @@ Marco: permitir que agentes de outras fontes se conectem ao Don Server e apareca
 
 Marco: eventos persistidos viram material confiavel de analise e recuperacao.
 
-| ID      | Tarefa                             | Status   | Entregavel validavel                                                |
-| ------- | ---------------------------------- | -------- | ------------------------------------------------------------------- |
-| AUD-001 | Export JSON                        | Pendente | Exporta eventos filtrados por conversation/task/correlation.        |
-| AUD-002 | Metricas basicas de execucao       | Pendente | Conta eventos por tipo, agente, status e duracao quando disponivel. |
-| AUD-003 | Replay somente leitura de task     | Pendente | Reconstrui timeline de uma task sem reexecutar agentes.             |
-| AUD-004 | Replay somente leitura de conversa | Pendente | Reconstrui timeline de uma conversa sem reexecutar agentes.         |
-| AUD-005 | Relatorio de falhas                | Pendente | Lista `agent.error` e `tool.error` por periodo/filtro.              |
+| ID      | Tarefa                             | Status    | Entregavel validavel                                                |
+| ------- | ---------------------------------- | --------- | ------------------------------------------------------------------- |
+| AUD-001 | Export JSON                        | Concluido | Exporta eventos filtrados por conversation/task/correlation.        |
+| AUD-002 | Metricas basicas de execucao       | Concluido | Conta eventos por tipo, agente, status e duracao quando disponivel. |
+| AUD-003 | Replay somente leitura de task     | Concluido | Reconstrui timeline de uma task sem reexecutar agentes.             |
+| AUD-004 | Replay somente leitura de conversa | Concluido | Reconstrui timeline de uma conversa sem reexecutar agentes.         |
+| AUD-005 | Relatorio de falhas                | Concluido | Lista `agent.error` e `tool.error` por periodo/filtro.              |
 
 ## Sprint 16 - Agentes tecnicos por dominio
 
@@ -458,6 +459,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 15 para transformar eventos persistidos em material confiavel de analise e recuperacao.
+Executar a Sprint 16 para substituir o CodeAgent generico por agentes especializados por dominio tecnico.
 
-Motivo: agentes dinamicos e externos ja podem ser registrados em runtime. O proximo ganho validavel e fortalecer auditoria sobre a historia operacional.
+Motivo: a auditoria operacional ja expoe exportacao, metricas, replay e falhas. O proximo ganho validavel e especializar analises tecnicas por dominio.
