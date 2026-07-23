@@ -175,10 +175,6 @@ function mentionsGit(normalizedRequest: string): boolean {
 }
 
 function selectTechnicalTarget(normalizedRequest: string): string | undefined {
-	if (mentionsGit(normalizedRequest)) {
-		return 'git-agent';
-	}
-
 	if (normalizedRequest.includes('backend') || normalizedRequest.includes('api')) {
 		return 'backend-agent';
 	}
@@ -205,6 +201,10 @@ function selectTechnicalTarget(normalizedRequest: string): string | undefined {
 		normalizedRequest.includes('release')
 	) {
 		return 'devops-release-agent';
+	}
+
+	if (mentionsGit(normalizedRequest)) {
+		return 'git-agent';
 	}
 
 	return undefined;
