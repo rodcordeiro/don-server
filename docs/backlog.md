@@ -75,6 +75,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `OPT-001` a `OPT-005` implementados com prompt versionado, replanejamento controlado, score, dependencias e metricas do Planner.
 - `OPT-006` a `OPT-010` implementados com parser Markdown resiliente, validacao antes de gravar, diff auditavel, busca textual e recortes melhores.
 - `OPT-011` a `OPT-015` implementados com correlacao de resultados, audiencia, riscos, limite de tamanho e evidencias no SummaryAgent.
+- `OPT-016` a `OPT-020` implementados com rubricas por dominio, saida padronizada, escopo de arquivos, delegacao cruzada e roteamento tecnico.
 
 ## Ordem executiva recomendada
 
@@ -408,13 +409,13 @@ Marco: tornar consolidacao util em fluxos multiagente.
 
 Marco: melhorar especializacao e consistencia dos agentes Backend, Frontend, Mobile, DBA e DevOps.
 
-| ID      | Tarefa                         | Status   | Entregavel validavel                                                       |
-| ------- | ------------------------------ | -------- | -------------------------------------------------------------------------- |
-| OPT-016 | Rubricas por dominio           | Pendente | Definir criterios de analise para cada agente tecnico.                     |
-| OPT-017 | Saida padronizada de review    | Pendente | Todos os agentes retornam achados, severidade, evidencia e recomendacao.   |
-| OPT-018 | Escopo de arquivos por dominio | Pendente | Cada agente sugere arquivos relevantes sem varrer tudo desnecessariamente. |
-| OPT-019 | Delegacao cruzada controlada   | Pendente | Agente tecnico pode sugerir outro dominio sem chamar diretamente.          |
-| OPT-020 | Testes de roteamento tecnico   | Pendente | Validar que Planner escolhe agentes corretos por tipo de pedido.           |
+| ID      | Tarefa                         | Status    | Entregavel validavel                                                       |
+| ------- | ------------------------------ | --------- | -------------------------------------------------------------------------- |
+| OPT-016 | Rubricas por dominio           | Concluido | Definir criterios de analise para cada agente tecnico.                     |
+| OPT-017 | Saida padronizada de review    | Concluido | Todos os agentes retornam achados, severidade, evidencia e recomendacao.   |
+| OPT-018 | Escopo de arquivos por dominio | Concluido | Cada agente sugere arquivos relevantes sem varrer tudo desnecessariamente. |
+| OPT-019 | Delegacao cruzada controlada   | Concluido | Agente tecnico pode sugerir outro dominio sem chamar diretamente.          |
+| OPT-020 | Testes de roteamento tecnico   | Concluido | Validar que Planner escolhe agentes corretos por tipo de pedido.           |
 
 ## Sprint 24 - Otimizacao do GitAgent
 
@@ -466,6 +467,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 23 para melhorar especializacao e consistencia dos agentes Backend, Frontend, Mobile, DBA e DevOps.
+Executar a Sprint 24 para reforcar o GitAgent como fronteira unica de operacoes Git.
 
-Motivo: SummaryAgent ja correlaciona resultados e publica evidencias. O proximo ganho validavel e padronizar rubricas e reviews dos agentes tecnicos.
+Motivo: agentes tecnicos ja retornam rubrica, escopo, achados e delegacao sugerida. O proximo ganho validavel e endurecer politicas do GitAgent.

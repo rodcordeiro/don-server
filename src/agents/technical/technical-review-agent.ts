@@ -8,6 +8,8 @@ export type TechnicalReviewProfile = {
 	capabilities: string[];
 	focusAreas: string[];
 	evidenceHints: string[];
+	rubric: string[];
+	delegationHints: string[];
 };
 
 export class TechnicalReviewAgent implements Agent {
@@ -58,10 +60,19 @@ export class TechnicalReviewAgent implements Agent {
 			'Focos:',
 			...this.profile.focusAreas.map(area => `- ${area}`),
 			'',
-			'Evidencias sugeridas:',
+			'Rubrica:',
+			...this.profile.rubric.map(item => `- ${item}`),
+			'',
+			'Escopo sugerido de arquivos:',
 			...this.profile.evidenceHints.map(hint => `- ${hint}`),
 			'',
-			'Resultado: agente especializado registrado e pronto para receber tarefas deste dominio.',
+			'Achados:',
+			'- Severidade: info',
+			`  Evidencia: ${this.profile.evidenceHints.join(', ')}`,
+			'  Recomendacao: coletar contexto Git/testes e aprofundar nos arquivos do escopo antes de alterar codigo.',
+			'',
+			'Delegacao cruzada sugerida:',
+			...this.profile.delegationHints.map(hint => `- ${hint}`),
 		].join('\n');
 	}
 }
@@ -79,6 +90,16 @@ export function createTechnicalReviewProfiles(): TechnicalReviewProfile[] {
 				'persistencia e erros',
 			],
 			evidenceHints: ['src/gateway', 'src/services', 'src/domain', 'src/store'],
+			rubric: [
+				'contratos estaveis',
+				'tratamento de erro',
+				'limites de autorizacao',
+				'persistencia consistente',
+			],
+			delegationHints: [
+				'Acionar dba-agent para risco de dados.',
+				'Acionar security-agent para auth/autorizacao.',
+			],
 		},
 		{
 			name: 'frontend-agent',
@@ -91,6 +112,16 @@ export function createTechnicalReviewProfiles(): TechnicalReviewProfile[] {
 				'acessibilidade',
 			],
 			evidenceHints: ['src/ui', 'src/components', 'rotas REST/WebSocket expostas'],
+			rubric: [
+				'estado previsivel',
+				'feedback visual',
+				'acessibilidade basica',
+				'contratos de API claros',
+			],
+			delegationHints: [
+				'Acionar backend-agent para contratos REST/WebSocket.',
+				'Acionar security-agent para tokens no browser.',
+			],
 		},
 		{
 			name: 'mobile-agent',
@@ -103,6 +134,16 @@ export function createTechnicalReviewProfiles(): TechnicalReviewProfile[] {
 				'restricoes de dispositivo',
 			],
 			evidenceHints: ['app mobile', 'Expo config', 'contratos REST/WebSocket'],
+			rubric: [
+				'navegacao consistente',
+				'resiliencia offline',
+				'uso seguro de storage',
+				'limites de rede',
+			],
+			delegationHints: [
+				'Acionar backend-agent para contratos.',
+				'Acionar devops-release-agent para distribuicao.',
+			],
 		},
 		{
 			name: 'dba-agent',
@@ -115,6 +156,16 @@ export function createTechnicalReviewProfiles(): TechnicalReviewProfile[] {
 				'retencao e auditoria de dados',
 			],
 			evidenceHints: ['src/store', 'sqlite migrations', 'data/events.jsonl'],
+			rubric: [
+				'integridade de schema',
+				'indices adequados',
+				'migracoes reversiveis',
+				'retencao auditavel',
+			],
+			delegationHints: [
+				'Acionar backend-agent para uso de queries.',
+				'Acionar security-agent para dados sensiveis.',
+			],
 		},
 		{
 			name: 'devops-release-agent',
@@ -127,6 +178,11 @@ export function createTechnicalReviewProfiles(): TechnicalReviewProfile[] {
 				'rollback e operacao',
 			],
 			evidenceHints: ['package.json', '.env.example', 'docs/security.md', 'logs operacionais'],
+			rubric: ['build reproduzivel', 'env documentado', 'observabilidade minima', 'rollback claro'],
+			delegationHints: [
+				'Acionar security-agent para checklist seguro.',
+				'Acionar git-agent para diff/status.',
+			],
 		},
 	];
 }
