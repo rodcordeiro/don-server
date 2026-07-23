@@ -72,6 +72,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `TOOL-006`, `AG-005.1` e `AG-005.2` implementados com GitTool read-only, GitAgent e delegacao tecnica deterministica no Planner.
 - `AG-007.1` a `AG-007.5` implementados com SecurityAgent, revisao inicial, leitura de falhas, delegacao pelo Planner e relatorio de risco.
 - `UI-001` a `UI-005` implementados com UI minima servida em `/ui`, chat WebSocket/REST, timeline, conversas, detalhe de task e destaque de erros.
+- `OPT-001` a `OPT-005` implementados com prompt versionado, replanejamento controlado, score, dependencias e metricas do Planner.
 
 ## Ordem executiva recomendada
 
@@ -369,13 +370,13 @@ Marco: primeira central visual de comando e observabilidade.
 
 Marco: melhorar qualidade de planejamento, delegacao e fallback do Planner.
 
-| ID      | Tarefa                        | Status   | Entregavel validavel                                                 |
-| ------- | ----------------------------- | -------- | -------------------------------------------------------------------- |
-| OPT-001 | Prompt versionado do Planner  | Pendente | Versionar prompt e registrar mudancas relevantes.                    |
-| OPT-002 | Replanejamento controlado     | Pendente | Permitir nova tentativa quando plano vier vazio ou invalido.         |
-| OPT-003 | Selecao de agente por score   | Pendente | Considerar capacidades, exemplos e contexto para ordenar candidatos. |
-| OPT-004 | Planos com dependencias reais | Pendente | Respeitar `dependsOn` antes de disparar steps dependentes.           |
-| OPT-005 | Metricas do Planner           | Pendente | Registrar tempo, provider, modelo e sucesso/falha do plano.          |
+| ID      | Tarefa                        | Status    | Entregavel validavel                                                 |
+| ------- | ----------------------------- | --------- | -------------------------------------------------------------------- |
+| OPT-001 | Prompt versionado do Planner  | Concluido | Versionar prompt e registrar mudancas relevantes.                    |
+| OPT-002 | Replanejamento controlado     | Concluido | Permitir nova tentativa quando plano vier vazio ou invalido.         |
+| OPT-003 | Selecao de agente por score   | Concluido | Considerar capacidades, exemplos e contexto para ordenar candidatos. |
+| OPT-004 | Planos com dependencias reais | Concluido | Respeitar `dependsOn` antes de disparar steps dependentes.           |
+| OPT-005 | Metricas do Planner           | Concluido | Registrar tempo, provider, modelo e sucesso/falha do plano.          |
 
 ## Sprint 21 - Otimizacao do BacklogAgent
 
@@ -463,6 +464,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 20 para melhorar qualidade de planejamento, delegacao e fallback do Planner.
+Executar a Sprint 21 para melhorar confiabilidade, edicao e resposta do BacklogAgent.
 
-Motivo: a UI minima ja permite comando e observabilidade basica. O proximo ganho validavel e otimizar o PlannerAgent.
+Motivo: PlannerAgent ja versiona prompt, replaneja, ordena por dependencia/score e publica metricas. O proximo ganho validavel e reforcar o BacklogAgent.

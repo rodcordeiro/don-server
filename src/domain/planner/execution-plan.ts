@@ -3,6 +3,7 @@ export type ExecutionStep = {
 	target: string;
 	instruction: string;
 	reason: string;
+	score?: number;
 	dependsOn?: string[];
 };
 

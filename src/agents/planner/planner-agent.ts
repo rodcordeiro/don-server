@@ -7,7 +7,7 @@ import { type ProviderRegistry } from '../../core/providers/provider-registry';
 import type { EventEnvelope } from '../../core/events/event-envelope';
 import type { ExecutionPlan, ExecutionStep } from '../../domain';
 import { parseExecutionPlan } from './execution-plan-validator';
-import { buildPlannerPrompt } from './planner-prompt-builder';
+import { buildPlannerPrompt, PLANNER_PROMPT_VERSION } from './planner-prompt-builder';
 
 export class PlannerAgent implements Agent {
 	metadata: AgentMetadata = {
@@ -36,18 +36,25 @@ export class PlannerAgent implements Agent {
 	) {}
 
 	async handle(event: EventEnvelope) {
+		const startedAt = Date.now();
 		const payload = event.payload as Record<string, unknown>;
 		const content = typeof payload['content'] === 'string' ? payload['content'] : '';
 
 		await this.say(event, 'Vou analisar quais agentes devem ser acionados.');
 
 		const plan = await this.createPlan(content);
+		const orderedSteps = orderStepsByDependencies(plan.steps);
 
-		await this.say(event, `Vou acionar: ${plan.steps.map(step => step.target).join(', ')}.`);
+		await this.say(event, `Vou acionar: ${orderedSteps.map(step => step.target).join(', ')}.`);
 
-		for (const step of plan.steps) {
+		for (const step of orderedSteps) {
 			await this.dispatch(event, step);
 		}
+
+		await this.say(
+			event,
+			`Metricas do Planner: prompt=${PLANNER_PROMPT_VERSION}; steps=${orderedSteps.length}; durationMs=${Date.now() - startedAt}.`,
+		);
 	}
 
 	private async createPlan(userRequest: string): Promise<ExecutionPlan> {
@@ -58,16 +65,43 @@ export class PlannerAgent implements Agent {
 		}
 
 		const catalog = this.registry.getCatalog().filter(agent => agent.name !== this.metadata.name);
-		const response = await this.providerRegistry.chat({
-			...this.metadata.llm,
-			format: 'json',
-			messages: [
-				{ role: 'system', content: buildPlannerPrompt(catalog) },
-				{ role: 'user', content: userRequest },
-			],
-		});
+		return await this.createModelPlan(userRequest, catalog);
+	}
 
-		return parseExecutionPlan(response, new Set(catalog.map(agent => agent.name)));
+	private async createModelPlan(
+		userRequest: string,
+		catalog: ReturnType<AgentRegistry['getCatalog']>,
+	) {
+		const availableAgents = new Set(catalog.map(agent => agent.name));
+		const systemPrompt = buildPlannerPrompt(catalog);
+		let lastError: unknown;
+
+		for (let attempt = 1; attempt <= 2; attempt += 1) {
+			try {
+				const response = await this.providerRegistry.chat({
+					...this.metadata.llm,
+					format: 'json',
+					messages: [
+						{ role: 'system', content: systemPrompt },
+						{
+							role: 'user',
+							content:
+								attempt === 1
+									? userRequest
+									: `${userRequest}\n\nReplaneje retornando JSON valido e steps nao vazios.`,
+						},
+					],
+				});
+
+				return parseExecutionPlan(response, availableAgents);
+			} catch (error) {
+				lastError = error;
+			}
+		}
+
+		throw lastError instanceof Error
+			? lastError
+			: new Error('Planner nao conseguiu gerar plano valido.');
 	}
 
 	private createDeterministicPlan(userRequest: string): ExecutionPlan | undefined {
@@ -86,6 +120,7 @@ export class PlannerAgent implements Agent {
 					target: technicalTarget,
 					instruction: userRequest,
 					reason: 'Pedido menciona analise tecnica de dominio.',
+					score: 0.9,
 				},
 			];
 
@@ -95,6 +130,7 @@ export class PlannerAgent implements Agent {
 					target: 'git-agent',
 					instruction: userRequest,
 					reason: 'Pedido tambem precisa de contexto Git read-only.',
+					score: 0.8,
 				});
 			}
 
@@ -108,12 +144,14 @@ export class PlannerAgent implements Agent {
 					target: 'backlog-agent',
 					instruction: userRequest,
 					reason: 'Pedido menciona backlog do projeto.',
+					score: 0.95,
 				},
 				{
 					id: 'summary-1',
 					target: 'summary-agent',
 					instruction: 'Consolide o resultado do levantamento de backlog para o usuario.',
 					reason: 'Pedido de backlog precisa de resposta final resumida.',
+					score: 0.7,
 					dependsOn: ['backlog-1'],
 				},
 			],
@@ -172,6 +210,30 @@ export class PlannerAgent implements Agent {
 
 function mentionsGit(normalizedRequest: string): boolean {
 	return normalizedRequest.includes('git') || normalizedRequest.includes('diff');
+}
+
+function orderStepsByDependencies(steps: ExecutionStep[]): ExecutionStep[] {
+	const remaining = new Map(steps.map(step => [step.id, step]));
+	const ordered: ExecutionStep[] = [];
+	const resolved = new Set<string>();
+
+	while (remaining.size > 0) {
+		const ready = [...remaining.values()].filter(step => {
+			return (step.dependsOn ?? []).every(dependency => resolved.has(dependency));
+		});
+
+		if (ready.length === 0) {
+			throw new Error('Plano contem dependencias circulares ou inexistentes.');
+		}
+
+		for (const step of ready.sort((left, right) => (right.score ?? 0) - (left.score ?? 0))) {
+			ordered.push(step);
+			resolved.add(step.id);
+			remaining.delete(step.id);
+		}
+	}
+
+	return ordered;
 }
 
 function selectTechnicalTarget(normalizedRequest: string): string | undefined {
