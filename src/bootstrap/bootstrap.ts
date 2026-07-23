@@ -9,6 +9,7 @@ import { CommandService } from '../services/command-service';
 import { EventService } from '../services/event-service';
 import { AuthService } from '../services/auth-service';
 import { ProjectService } from '../services/project-service';
+import { DynamicAgentService } from '../services/dynamic-agent-service';
 import { OllamaProvider } from '../core/providers/ollama-provider';
 import { OpenAIProvider } from '../core/providers/openai-provider';
 import { CliLlmProvider } from '../core/providers/cli-llm-provider';
@@ -62,7 +63,8 @@ export class Bootstrap {
 		const agentRuntime = new AgentRuntime(eventBus, +(env.AGENT_TIMEOUT_MS ?? 30_000));
 		const toolRuntime = new ToolRuntime(eventBus);
 		const agentRouter = new AgentRouter(eventBus, agentRegistry, agentRuntime);
-		const commandService = new CommandService(eventBus, agentRegistry);
+		const dynamicAgentService = new DynamicAgentService(agentRegistry, eventBus, providerRegistry);
+		const commandService = new CommandService(eventBus, agentRegistry, dynamicAgentService);
 		const eventService = new EventService(eventStore);
 		const authService = new AuthService(eventBus, env.DON_SERVER_TOKEN, env.DON_SERVER_USER_ID);
 
@@ -73,7 +75,14 @@ export class Bootstrap {
 			httpGateway.getServer(),
 			authService,
 		);
-		const restGateway = new RestGateway(commandService, eventService, authService, projectService);
+		const restGateway = new RestGateway(
+			commandService,
+			eventService,
+			authService,
+			projectService,
+			agentRegistry,
+			dynamicAgentService,
+		);
 
 		httpGateway.register((request, response) => {
 			return restGateway.handleRequest(request, response);
@@ -93,6 +102,7 @@ export class Bootstrap {
 			llmProvider,
 			providerRegistry,
 			projectService,
+			dynamicAgentService,
 			commandService,
 			eventService,
 			authService,

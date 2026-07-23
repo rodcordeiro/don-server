@@ -9,6 +9,10 @@ export type AgentMetadata = {
 	capabilities?: string[];
 	examples?: string[];
 	llm?: LlmSelection;
+	limits?: {
+		timeoutMs?: number;
+	};
+	source?: 'static' | 'dynamic' | 'external';
 };
 
 export interface Agent {

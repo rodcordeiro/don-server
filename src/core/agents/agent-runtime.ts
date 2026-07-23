@@ -10,14 +10,15 @@ export class AgentRuntime {
 
 	async execute(agent: Agent, event: EventEnvelope): Promise<void> {
 		const startedAt = Date.now();
+		const timeoutMs = agent.metadata.limits?.timeoutMs ?? this.timeoutMs;
 
 		await this.publishStarted(agent, event);
 
 		try {
-			await withTimeout(agent.handle(event), this.timeoutMs);
+			await withTimeout(agent.handle(event), timeoutMs);
 			await this.publishCompleted(agent, event, Date.now() - startedAt);
 		} catch (error) {
-			await this.publishError(agent, event, error, Date.now() - startedAt);
+			await this.publishError(agent, event, error, Date.now() - startedAt, timeoutMs);
 		}
 	}
 
@@ -71,6 +72,7 @@ export class AgentRuntime {
 		event: EventEnvelope,
 		error: unknown,
 		durationMs: number,
+		timeoutMs: number,
 	): Promise<void> {
 		await this.eventBus.publish({
 			eventId: crypto.randomUUID(),
@@ -87,7 +89,7 @@ export class AgentRuntime {
 			payload: {
 				error: error instanceof Error ? error.message : 'Erro desconhecido ao executar agente.',
 				durationMs,
-				timeoutMs: this.timeoutMs,
+				timeoutMs,
 			},
 			createdAt: new Date().toISOString(),
 		});

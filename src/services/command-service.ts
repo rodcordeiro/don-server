@@ -4,6 +4,7 @@ import { type EventBus } from '../core/events/event-bus';
 import { type AgentRegistry } from '../core/agents/agent-registry';
 import { parseCommand } from '../gateway/command-parser';
 import type { UserCommand } from '../domain';
+import type { DynamicAgentService } from './dynamic-agent-service';
 
 export type HandleUserCommandInput = UserCommand;
 
@@ -19,10 +20,14 @@ export class CommandService {
 	constructor(
 		private readonly eventBus: EventBus,
 		private readonly agentRegistry: AgentRegistry,
+		private readonly dynamicAgentService?: DynamicAgentService,
 	) {}
 
 	async handleUserCommand(input: HandleUserCommandInput): Promise<HandleUserCommandResult> {
-		const parsed = parseCommand(input.content, this.agentRegistry);
+		const registrationDefinition = parseAgentRegistration(input.content);
+		const parsed = registrationDefinition
+			? { target: 'agent-registry', content: input.content, mention: undefined }
+			: parseCommand(input.content, this.agentRegistry);
 
 		const conversationId = input.conversationId ?? 'conv-local';
 		const taskId = randomUUID();
@@ -47,6 +52,36 @@ export class CommandService {
 			},
 			createdAt,
 		});
+
+		if (registrationDefinition) {
+			const result = this.registerDynamicAgent(registrationDefinition);
+
+			await this.eventBus.publish({
+				eventId: randomUUID(),
+				correlationId,
+				conversationId,
+				...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
+				rootTaskId: taskId,
+				taskId,
+				type: 'agent.result',
+				source: 'agent-registry',
+				actor: input.actor,
+				payload: {
+					status: 'completed',
+					result: `Agente registrado: ${result.name}.`,
+					data: result,
+				},
+				createdAt: new Date().toISOString(),
+			});
+
+			return {
+				conversationId,
+				...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
+				taskId,
+				correlationId,
+				target: parsed.target,
+			};
+		}
 
 		await this.eventBus.publish({
 			eventId: randomUUID(),
@@ -73,4 +108,23 @@ export class CommandService {
 			target: parsed.target,
 		};
 	}
+
+	private registerDynamicAgent(definition: unknown) {
+		if (!this.dynamicAgentService) {
+			throw new Error('Registro dinamico de agentes nao configurado.');
+		}
+
+		return this.dynamicAgentService.register(definition);
+	}
+}
+
+function parseAgentRegistration(content: string): unknown | undefined {
+	const trimmed = content.trim();
+	const prefixMatch = trimmed.match(/^\/agents?\s+register\s+/i);
+
+	if (!prefixMatch) {
+		return undefined;
+	}
+
+	return JSON.parse(trimmed.slice(prefixMatch[0].length)) as unknown;
 }
