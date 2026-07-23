@@ -26,6 +26,7 @@ import {
 } from '../agents/technical/technical-review-agent';
 import { GitAgent } from '../agents/git/git-agent';
 import { SecurityAgent } from '../agents/security/security-agent';
+import { RabbitAgent } from '../agents/rabbit/rabbit-agent';
 import { FilesystemTool, GitTool, ShellTool } from '../tools';
 
 import { ChatGateway } from '../gateway/chat-gateway';
@@ -70,6 +71,7 @@ export class Bootstrap {
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 		agentRegistry.register(new GitAgent(eventBus));
 		agentRegistry.register(new SecurityAgent(eventBus, eventService));
+		agentRegistry.register(new RabbitAgent(eventBus));
 		for (const profile of createTechnicalReviewProfiles()) {
 			agentRegistry.register(new TechnicalReviewAgent(profile, eventBus));
 		}

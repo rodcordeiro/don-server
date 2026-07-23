@@ -251,6 +251,14 @@ function selectTechnicalTarget(normalizedRequest: string): string | undefined {
 		return 'security-agent';
 	}
 
+	if (
+		normalizedRequest.includes('rabbit') ||
+		normalizedRequest.includes('fila') ||
+		normalizedRequest.includes('queue')
+	) {
+		return 'rabbit-agent';
+	}
+
 	if (normalizedRequest.includes('frontend') || normalizedRequest.includes('ui')) {
 		return 'frontend-agent';
 	}
