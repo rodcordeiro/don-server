@@ -6,6 +6,7 @@ import type { AuthService } from '../services/auth-service';
 import type { ProjectService } from '../services/project-service';
 import type { AgentRegistry } from '../core/agents/agent-registry';
 import type { DynamicAgentService } from '../services/dynamic-agent-service';
+import type { ExternalAgentService } from '../services/external-agent-service';
 
 type CommandRequest = {
 	conversationId?: string;
@@ -21,6 +22,7 @@ export class RestGateway {
 		private readonly projectService: ProjectService,
 		private readonly agentRegistry: AgentRegistry,
 		private readonly dynamicAgentService: DynamicAgentService,
+		private readonly externalAgentService: ExternalAgentService,
 	) {}
 
 	async handleRequest(request: IncomingMessage, response: ServerResponse): Promise<boolean> {
@@ -40,6 +42,14 @@ export class RestGateway {
 
 			if (request.method === 'POST' && url.pathname === '/agents') {
 				await this.handleAgentRegistration(request, response);
+				return true;
+			}
+
+			if (
+				request.method === 'POST' &&
+				(url.pathname === '/external-agents' || url.pathname === '/mcp/agents')
+			) {
+				await this.handleExternalAgentRegistration(request, response);
 				return true;
 			}
 
@@ -95,6 +105,15 @@ export class RestGateway {
 		response: ServerResponse,
 	): Promise<void> {
 		const result = this.dynamicAgentService.register(await this.readJson(request));
+
+		this.sendJson(response, 201, result);
+	}
+
+	private async handleExternalAgentRegistration(
+		request: IncomingMessage,
+		response: ServerResponse,
+	): Promise<void> {
+		const result = this.externalAgentService.register(await this.readJson(request));
 
 		this.sendJson(response, 201, result);
 	}

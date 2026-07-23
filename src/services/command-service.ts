@@ -5,6 +5,7 @@ import { type AgentRegistry } from '../core/agents/agent-registry';
 import { parseCommand } from '../gateway/command-parser';
 import type { UserCommand } from '../domain';
 import type { DynamicAgentService } from './dynamic-agent-service';
+import type { ExternalAgentService } from './external-agent-service';
 
 export type HandleUserCommandInput = UserCommand;
 
@@ -21,13 +22,16 @@ export class CommandService {
 		private readonly eventBus: EventBus,
 		private readonly agentRegistry: AgentRegistry,
 		private readonly dynamicAgentService?: DynamicAgentService,
+		private readonly externalAgentService?: ExternalAgentService,
 	) {}
 
 	async handleUserCommand(input: HandleUserCommandInput): Promise<HandleUserCommandResult> {
 		const registration = parseAgentRegistration(input.content);
-		const parsed = registration
-			? { target: 'agent-registry', content: input.content, mention: undefined }
-			: parseCommand(input.content, this.agentRegistry);
+		const externalRegistration = parseExternalAgentRegistration(input.content);
+		const parsed =
+			registration || externalRegistration
+				? { target: 'agent-registry', content: input.content, mention: undefined }
+				: parseCommand(input.content, this.agentRegistry);
 
 		const conversationId = input.conversationId ?? 'conv-local';
 		const taskId = randomUUID();
@@ -55,24 +59,20 @@ export class CommandService {
 
 		if (registration) {
 			const result = this.registerDynamicAgent(registration.definition);
+			await this.publishRegistrationResult(input, conversationId, taskId, correlationId, result);
 
-			await this.eventBus.publish({
-				eventId: randomUUID(),
-				correlationId,
+			return {
 				conversationId,
 				...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
-				rootTaskId: taskId,
 				taskId,
-				type: 'agent.result',
-				source: 'agent-registry',
-				actor: input.actor,
-				payload: {
-					status: 'completed',
-					result: `Agente registrado: ${result.name}.`,
-					data: result,
-				},
-				createdAt: new Date().toISOString(),
-			});
+				correlationId,
+				target: parsed.target,
+			};
+		}
+
+		if (externalRegistration) {
+			const result = this.registerExternalAgent(externalRegistration.definition);
+			await this.publishRegistrationResult(input, conversationId, taskId, correlationId, result);
 
 			return {
 				conversationId,
@@ -109,6 +109,32 @@ export class CommandService {
 		};
 	}
 
+	private async publishRegistrationResult(
+		input: HandleUserCommandInput,
+		conversationId: string,
+		taskId: string,
+		correlationId: string,
+		result: { name: string; description: string },
+	): Promise<void> {
+		await this.eventBus.publish({
+			eventId: randomUUID(),
+			correlationId,
+			conversationId,
+			...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
+			rootTaskId: taskId,
+			taskId,
+			type: 'agent.result',
+			source: 'agent-registry',
+			actor: input.actor,
+			payload: {
+				status: 'completed',
+				result: `Agente registrado: ${result.name}.`,
+				data: result,
+			},
+			createdAt: new Date().toISOString(),
+		});
+	}
+
 	private registerDynamicAgent(definition: unknown) {
 		if (!this.dynamicAgentService) {
 			throw new Error('Registro dinamico de agentes nao configurado.');
@@ -116,11 +142,32 @@ export class CommandService {
 
 		return this.dynamicAgentService.register(definition);
 	}
+
+	private registerExternalAgent(definition: unknown) {
+		if (!this.externalAgentService) {
+			throw new Error('Registro de agentes externos nao configurado.');
+		}
+
+		return this.externalAgentService.register(definition);
+	}
 }
 
 function parseAgentRegistration(content: string): { definition: unknown } | undefined {
 	const trimmed = content.trim();
 	const prefixMatch = trimmed.match(/^\/agents?\s+register\s+/i);
+
+	if (!prefixMatch) {
+		return undefined;
+	}
+
+	return {
+		definition: JSON.parse(trimmed.slice(prefixMatch[0].length)) as unknown,
+	};
+}
+
+function parseExternalAgentRegistration(content: string): { definition: unknown } | undefined {
+	const trimmed = content.trim();
+	const prefixMatch = trimmed.match(/^\/external-agents?\s+register\s+/i);
 
 	if (!prefixMatch) {
 		return undefined;

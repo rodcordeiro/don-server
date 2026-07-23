@@ -10,6 +10,7 @@ import { EventService } from '../services/event-service';
 import { AuthService } from '../services/auth-service';
 import { ProjectService } from '../services/project-service';
 import { DynamicAgentService } from '../services/dynamic-agent-service';
+import { ExternalAgentService } from '../services/external-agent-service';
 import { OllamaProvider } from '../core/providers/ollama-provider';
 import { OpenAIProvider } from '../core/providers/openai-provider';
 import { CliLlmProvider } from '../core/providers/cli-llm-provider';
@@ -64,7 +65,13 @@ export class Bootstrap {
 		const toolRuntime = new ToolRuntime(eventBus);
 		const agentRouter = new AgentRouter(eventBus, agentRegistry, agentRuntime);
 		const dynamicAgentService = new DynamicAgentService(agentRegistry, eventBus, providerRegistry);
-		const commandService = new CommandService(eventBus, agentRegistry, dynamicAgentService);
+		const externalAgentService = new ExternalAgentService(agentRegistry, eventBus);
+		const commandService = new CommandService(
+			eventBus,
+			agentRegistry,
+			dynamicAgentService,
+			externalAgentService,
+		);
 		const eventService = new EventService(eventStore);
 		const authService = new AuthService(eventBus, env.DON_SERVER_TOKEN, env.DON_SERVER_USER_ID);
 
@@ -82,6 +89,7 @@ export class Bootstrap {
 			projectService,
 			agentRegistry,
 			dynamicAgentService,
+			externalAgentService,
 		);
 
 		httpGateway.register((request, response) => {
@@ -103,6 +111,7 @@ export class Bootstrap {
 			providerRegistry,
 			projectService,
 			dynamicAgentService,
+			externalAgentService,
 			commandService,
 			eventService,
 			authService,
