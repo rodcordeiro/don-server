@@ -5,10 +5,10 @@ import type { ChatMessage, LlmChatParams, LlmProvider } from './llm-provider';
 export type CliLlmProviderOptions = {
 	name: string;
 	command: string;
-	args?: string[];
-	cwd?: string;
-	timeoutMs?: number;
-	maxOutputBytes?: number;
+	args?: string[] | undefined;
+	cwd?: string | undefined;
+	timeoutMs?: number | undefined;
+	maxOutputBytes?: number | undefined;
 };
 
 export class CliLlmProvider implements LlmProvider {
@@ -126,16 +126,16 @@ function normalizeJsonResponse(output: string): string {
 		throw new Error('Provider CLI nao retornou JSON valido.');
 	}
 
-	return JSON.stringify(parsed);
+	return JSON.stringify(parsed.value);
 }
 
-function parseJson(content: string | undefined): unknown | undefined {
+function parseJson(content: string | undefined): { value: unknown } | undefined {
 	if (!content) {
 		return undefined;
 	}
 
 	try {
-		return JSON.parse(content) as unknown;
+		return { value: JSON.parse(content) as unknown };
 	} catch {
 		return undefined;
 	}
