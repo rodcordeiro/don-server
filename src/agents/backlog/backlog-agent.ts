@@ -42,7 +42,7 @@ export class BacklogAgent implements Agent {
 		private readonly backlogSource = new BacklogSource(),
 		providerRegistry?: ProviderRegistry,
 	) {
-		this.intentInterpreter = new BacklogIntentInterpreter(providerRegistry);
+		this.intentInterpreter = new BacklogIntentInterpreter(providerRegistry, this.metadata.llm);
 	}
 
 	async handle(event: EventEnvelope) {

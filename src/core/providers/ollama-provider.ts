@@ -1,16 +1,12 @@
 // src/core/providers/ollama-provider.ts
 
 import ollama from 'ollama';
-import type { LlmProvider } from './llm-provider';
+import type { LlmChatParams, LlmProvider } from './llm-provider';
 
 export class OllamaProvider implements LlmProvider {
 	name = 'ollama';
 
-	async chat(params: {
-		model: string;
-		messages: { role: 'system' | 'user' | 'assistant'; content: string }[];
-		format?: 'json';
-	}) {
+	async chat(params: LlmChatParams) {
 		const response = await ollama.chat({
 			model: params.model,
 			messages: params.messages,
