@@ -99,7 +99,7 @@ function readArgs(
 		throw new Error('Campo transport.args deve ser lista de strings.');
 	}
 
-	return { args: value as string[] };
+	return { args: value };
 }
 
 function readStringArray(

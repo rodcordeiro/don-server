@@ -68,12 +68,14 @@ export class ExternalAgent implements Agent {
 	}
 
 	private async callCli(event: EventEnvelope): Promise<string> {
-		if (this.definition.transport.type !== 'cli') {
+		const transport = this.definition.transport;
+
+		if (transport.type !== 'cli') {
 			throw new Error('Transporte externo CLI nao configurado.');
 		}
 
 		return await new Promise((resolve, reject) => {
-			const child = spawn(this.definition.transport.command, this.definition.transport.args ?? [], {
+			const child = spawn(transport.command, transport.args ?? [], {
 				shell: false,
 				windowsHide: true,
 				stdio: ['pipe', 'pipe', 'pipe'],
