@@ -72,6 +72,16 @@ export class CliLlmProvider implements LlmProvider {
 			});
 
 			child.stderr.on('data', (chunk: Buffer) => stderr.push(chunk));
+			child.stdin.on('error', error => {
+				if (!isBrokenPipe(error)) {
+					child.kill('SIGTERM');
+					if (!settled) {
+						settled = true;
+						clearTimeout(timeout);
+						reject(error);
+					}
+				}
+			});
 			child.on('error', error => {
 				if (!settled) {
 					settled = true;
@@ -144,4 +154,8 @@ function parseJson(content: string | undefined): { value: unknown } | undefined 
 function extractFencedJson(content: string): string | undefined {
 	const match = content.match(/```(?:json)?\s*([\s\S]*?)```/i);
 	return match?.[1]?.trim();
+}
+
+function isBrokenPipe(error: Error): boolean {
+	return 'code' in error && error.code === 'EPIPE';
 }
