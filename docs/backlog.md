@@ -66,6 +66,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `PRJ-001` a `PRJ-005` implementados com contrato de projeto, indice local, backlog por projeto, consulta de eventos por projeto e propagacao de `projectId`.
 - `LLM-002` a `LLM-007` implementados com provider default por env, selecao por agente, OpenAIProvider, fallback e provider CLI para Cursor/Codex.
 - `AGT-001` a `AGT-005` implementados com template de agente dinamico, contrato validado, registro via chat/REST e catalogo atualizado.
+- `MCP-001` e `MCP-002` implementados com adapter de agente externo HTTP/CLI, registro via REST/chat e alias `/mcp/agents`.
 
 ## Ordem executiva recomendada
 
@@ -296,10 +297,10 @@ Marco: permitir expansao controlada de agentes sem alterar manualmente o bootstr
 
 Marco: permitir que agentes de outras fontes se conectem ao Don Server e aparecam no chat como agentes registraveis.
 
-| ID      | Tarefa                                      | Status   | Entregavel validavel                                                                                         |
-| ------- | ------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| MCP-001 | MCP para registro de agentes externos       | Pendente | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
-| MCP-002 | Cursor/Codex como agente externo temporario | Pendente | Permitir registrar Cursor ou Codex instalado como agente externo enquanto Ollama nao for viavel localmente.  |
+| ID      | Tarefa                                      | Status    | Entregavel validavel                                                                                         |
+| ------- | ------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
+| MCP-001 | MCP para registro de agentes externos       | Concluido | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
+| MCP-002 | Cursor/Codex como agente externo temporario | Concluido | Permitir registrar Cursor ou Codex instalado como agente externo enquanto Ollama nao for viavel localmente.  |
 
 ## Sprint 15 - Auditoria operacional
 
@@ -457,6 +458,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 14.1 para permitir que agentes externos se conectem ao Don Server e aparecam no chat como agentes registraveis.
+Executar a Sprint 15 para transformar eventos persistidos em material confiavel de analise e recuperacao.
 
-Motivo: agentes dinamicos ja podem ser registrados em runtime. O proximo ganho validavel e permitir agentes externos via adapter/MCP.
+Motivo: agentes dinamicos e externos ja podem ser registrados em runtime. O proximo ganho validavel e fortalecer auditoria sobre a historia operacional.
