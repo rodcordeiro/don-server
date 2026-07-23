@@ -7,6 +7,7 @@ import type { ProjectService } from '../services/project-service';
 import type { AgentRegistry } from '../core/agents/agent-registry';
 import type { DynamicAgentService } from '../services/dynamic-agent-service';
 import type { ExternalAgentService } from '../services/external-agent-service';
+import { renderUiPage } from './ui-page';
 
 type CommandRequest = {
 	conversationId?: string;
@@ -29,6 +30,11 @@ export class RestGateway {
 		const url = new URL(request.url ?? '/', `http://${request.headers.host ?? 'localhost'}`);
 
 		try {
+			if (request.method === 'GET' && (url.pathname === '/' || url.pathname === '/ui')) {
+				this.sendHtml(response, 200, renderUiPage());
+				return true;
+			}
+
 			const actor = await this.authenticate(request, response, url);
 
 			if (!actor) {
@@ -239,6 +245,13 @@ export class RestGateway {
 			'content-type': 'application/json; charset=utf-8',
 		});
 		response.end(JSON.stringify(payload));
+	}
+
+	private sendHtml(response: ServerResponse, statusCode: number, content: string): void {
+		response.writeHead(statusCode, {
+			'content-type': 'text/html; charset=utf-8',
+		});
+		response.end(content);
 	}
 
 	private async authenticate(

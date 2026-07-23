@@ -71,6 +71,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `AG-004.1` a `AG-004.5` implementados com agentes tecnicos especializados para backend, frontend, mobile, DBA e DevOps/release.
 - `TOOL-006`, `AG-005.1` e `AG-005.2` implementados com GitTool read-only, GitAgent e delegacao tecnica deterministica no Planner.
 - `AG-007.1` a `AG-007.5` implementados com SecurityAgent, revisao inicial, leitura de falhas, delegacao pelo Planner e relatorio de risco.
+- `UI-001` a `UI-005` implementados com UI minima servida em `/ui`, chat WebSocket/REST, timeline, conversas, detalhe de task e destaque de erros.
 
 ## Ordem executiva recomendada
 
@@ -356,13 +357,13 @@ Marco: criar agente especializado para revisao de seguranca em fluxos, codigo e 
 
 Marco: primeira central visual de comando e observabilidade.
 
-| ID     | Tarefa                | Status   | Entregavel validavel                              |
-| ------ | --------------------- | -------- | ------------------------------------------------- |
-| UI-001 | Chat WebSocket        | Pendente | Enviar comando e receber eventos em tempo real.   |
-| UI-002 | Timeline de conversa  | Pendente | Mostrar eventos de uma conversa via API.          |
-| UI-003 | Lista de conversas    | Pendente | Listar conversas conhecidas a partir dos eventos. |
-| UI-004 | Detalhe de task       | Pendente | Mostrar root task, subtasks e status.             |
-| UI-005 | Estado visual de erro | Pendente | Destacar `agent.error` e `tool.error`.            |
+| ID     | Tarefa                | Status    | Entregavel validavel                              |
+| ------ | --------------------- | --------- | ------------------------------------------------- |
+| UI-001 | Chat WebSocket        | Concluido | Enviar comando e receber eventos em tempo real.   |
+| UI-002 | Timeline de conversa  | Concluido | Mostrar eventos de uma conversa via API.          |
+| UI-003 | Lista de conversas    | Concluido | Listar conversas conhecidas a partir dos eventos. |
+| UI-004 | Detalhe de task       | Concluido | Mostrar root task, subtasks e status.             |
+| UI-005 | Estado visual de erro | Concluido | Destacar `agent.error` e `tool.error`.            |
 
 ## Sprint 20 - Otimizacao do PlannerAgent
 
@@ -462,6 +463,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 19 para criar primeira central visual de comando e observabilidade.
+Executar a Sprint 20 para melhorar qualidade de planejamento, delegacao e fallback do Planner.
 
-Motivo: SecurityAgent ja publica relatorio de risco e usa falhas persistidas como evidencia. O proximo ganho validavel e expor chat/timeline em UI minima.
+Motivo: a UI minima ja permite comando e observabilidade basica. O proximo ganho validavel e otimizar o PlannerAgent.
