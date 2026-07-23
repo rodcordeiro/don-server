@@ -22,6 +22,14 @@ export class FileEventStore implements EventStore {
 		});
 	}
 
+	async listByProject(projectId: string): Promise<EventEnvelope[]> {
+		const events = await this.readAll();
+
+		return events.filter(event => {
+			return event.projectId === projectId;
+		});
+	}
+
 	async listByTask(taskId: string): Promise<EventEnvelope[]> {
 		const events = await this.readAll();
 

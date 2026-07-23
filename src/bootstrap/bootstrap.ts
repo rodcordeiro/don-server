@@ -8,11 +8,13 @@ import { ToolRegistry, ToolRuntime } from '../core/tools';
 import { CommandService } from '../services/command-service';
 import { EventService } from '../services/event-service';
 import { AuthService } from '../services/auth-service';
+import { ProjectService } from '../services/project-service';
 import { OllamaProvider } from '../core/providers/ollama-provider';
 import { ProviderRegistry } from '../core/providers/provider-registry';
 import { FileEventStore } from '../store/file-event-store';
 import { PlannerAgent } from '../agents/planner/planner-agent';
 import { BacklogAgent } from '../agents/backlog/backlog-agent';
+import { BacklogSource } from '../agents/backlog/backlog-source';
 import { SummaryAgent } from '../agents/summary/summary-agent';
 import { FilesystemTool, ShellTool } from '../tools';
 
@@ -31,6 +33,7 @@ export class Bootstrap {
 
 		const agentRegistry = new AgentRegistry();
 		const toolRegistry = new ToolRegistry();
+		const projectService = new ProjectService();
 
 		const llmProvider = new OllamaProvider();
 		const providerRegistry = new ProviderRegistry();
@@ -39,7 +42,9 @@ export class Bootstrap {
 		toolRegistry.register(new FilesystemTool());
 		toolRegistry.register(new ShellTool());
 
-		agentRegistry.register(new BacklogAgent(eventBus, undefined, providerRegistry));
+		agentRegistry.register(
+			new BacklogAgent(eventBus, new BacklogSource(undefined, projectService), providerRegistry),
+		);
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 
@@ -57,7 +62,7 @@ export class Bootstrap {
 			httpGateway.getServer(),
 			authService,
 		);
-		const restGateway = new RestGateway(commandService, eventService, authService);
+		const restGateway = new RestGateway(commandService, eventService, authService, projectService);
 
 		httpGateway.register((request, response) => {
 			return restGateway.handleRequest(request, response);
@@ -76,6 +81,7 @@ export class Bootstrap {
 			restGateway,
 			llmProvider,
 			providerRegistry,
+			projectService,
 			commandService,
 			eventService,
 			authService,

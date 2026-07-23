@@ -46,16 +46,18 @@ export class BacklogAgent implements Agent {
 	}
 
 	async handle(event: EventEnvelope) {
-		const sprints = await this.backlogSource.read();
+		const projectId = event.projectId;
+		const sprints = await this.backlogSource.read(projectId);
 		const content = readInstructionContent(event);
 		const intentResult = await this.intentInterpreter.interpret(content, getAllTasks(sprints));
-		const result = await this.executeIntent(intentResult.intent, sprints);
+		const result = await this.executeIntent(intentResult.intent, sprints, projectId);
 
 		await this.eventBus.publish({
 			eventId: crypto.randomUUID(),
 			correlationId: event.correlationId,
 
 			conversationId: event.conversationId,
+			...(projectId !== undefined ? { projectId } : {}),
 			rootTaskId: event.rootTaskId,
 			taskId: event.taskId,
 			...(event.parentTaskId !== undefined ? { parentTaskId: event.parentTaskId } : {}),
@@ -77,10 +79,15 @@ export class BacklogAgent implements Agent {
 		});
 	}
 
-	private async executeIntent(intent: BacklogIntent, sprints: BacklogSprint[]): Promise<string> {
+	private async executeIntent(
+		intent: BacklogIntent,
+		sprints: BacklogSprint[],
+		projectId?: string,
+	): Promise<string> {
 		if (intent.action === 'add') {
 			return formatMutationResult(
 				await this.backlogSource.addTask({
+					...(projectId !== undefined ? { projectId } : {}),
 					sprint: intent.sprint,
 					id: intent.id,
 					title: intent.title,
@@ -92,9 +99,13 @@ export class BacklogAgent implements Agent {
 
 		if (intent.action === 'complete') {
 			return formatMutationResult(
-				await this.backlogSource.updateTask(intent.id, {
-					status: 'Concluido',
-				}),
+				await this.backlogSource.updateTask(
+					intent.id,
+					{
+						status: 'Concluido',
+					},
+					projectId,
+				),
 			);
 		}
 
@@ -104,16 +115,20 @@ export class BacklogAgent implements Agent {
 			}
 
 			return formatMutationResult(
-				await this.backlogSource.updateTask(intent.id, {
-					...(intent.title !== undefined ? { title: intent.title } : {}),
-					...(intent.status !== undefined ? { status: intent.status } : {}),
-					...(intent.deliverable !== undefined ? { deliverable: intent.deliverable } : {}),
-				}),
+				await this.backlogSource.updateTask(
+					intent.id,
+					{
+						...(intent.title !== undefined ? { title: intent.title } : {}),
+						...(intent.status !== undefined ? { status: intent.status } : {}),
+						...(intent.deliverable !== undefined ? { deliverable: intent.deliverable } : {}),
+					},
+					projectId,
+				),
 			);
 		}
 
 		if (intent.action === 'remove') {
-			return formatMutationResult(await this.backlogSource.removeTask(intent.id));
+			return formatMutationResult(await this.backlogSource.removeTask(intent.id, projectId));
 		}
 
 		return formatQueryResult(filterTasks(sprints, intent), intent, getNextSprint(sprints));

@@ -3,9 +3,11 @@ import type { AuthenticatedActor } from '../domain';
 import type { CommandService } from '../services/command-service';
 import type { EventService } from '../services/event-service';
 import type { AuthService } from '../services/auth-service';
+import type { ProjectService } from '../services/project-service';
 
 type CommandRequest = {
 	conversationId?: string;
+	projectId?: string;
 	content?: string;
 };
 
@@ -14,6 +16,7 @@ export class RestGateway {
 		private readonly commandService: CommandService,
 		private readonly eventService: EventService,
 		private readonly authService: AuthService,
+		private readonly projectService: ProjectService,
 	) {}
 
 	async handleRequest(request: IncomingMessage, response: ServerResponse): Promise<boolean> {
@@ -32,6 +35,10 @@ export class RestGateway {
 			}
 
 			if (request.method === 'GET') {
+				if (await this.handleProjectQuery(url, response)) {
+					return true;
+				}
+
 				if (await this.handleEventQuery(url, response)) {
 					return true;
 				}
@@ -60,12 +67,32 @@ export class RestGateway {
 
 		const result = await this.commandService.handleUserCommand({
 			...(body.conversationId !== undefined ? { conversationId: body.conversationId } : {}),
+			...(body.projectId !== undefined ? { projectId: body.projectId } : {}),
 			content: body.content,
 			source: 'rest',
 			actor,
 		});
 
 		this.sendJson(response, 202, result);
+	}
+
+	private async handleProjectQuery(url: URL, response: ServerResponse): Promise<boolean> {
+		if (url.pathname === '/projects') {
+			this.sendJson(response, 200, { projects: await this.projectService.listProjects() });
+			return true;
+		}
+
+		const projectEventsMatch = url.pathname.match(/^\/projects\/([^/]+)\/events$/);
+
+		if (projectEventsMatch?.[1]) {
+			const events = await this.eventService.listByProject(
+				decodeURIComponent(projectEventsMatch[1]),
+			);
+			this.sendJson(response, 200, { events });
+			return true;
+		}
+
+		return false;
 	}
 
 	private async handleEventQuery(url: URL, response: ServerResponse): Promise<boolean> {

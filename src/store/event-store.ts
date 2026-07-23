@@ -7,6 +7,8 @@ export interface EventStore {
 
 	listByConversation(conversationId: string): Promise<EventEnvelope[]>;
 
+	listByProject(projectId: string): Promise<EventEnvelope[]>;
+
 	listByTask(taskId: string): Promise<EventEnvelope[]>;
 
 	listByCorrelation(correlationId: string): Promise<EventEnvelope[]>;

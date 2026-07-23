@@ -108,6 +108,7 @@ export class PlannerAgent implements Agent {
 			correlationId: parentEvent.correlationId,
 
 			conversationId: parentEvent.conversationId,
+			...(parentEvent.projectId !== undefined ? { projectId: parentEvent.projectId } : {}),
 			rootTaskId: parentEvent.rootTaskId,
 			taskId: crypto.randomUUID(),
 			parentTaskId: parentEvent.taskId,
@@ -133,6 +134,7 @@ export class PlannerAgent implements Agent {
 			correlationId: parentEvent.correlationId,
 
 			conversationId: parentEvent.conversationId,
+			...(parentEvent.projectId !== undefined ? { projectId: parentEvent.projectId } : {}),
 			rootTaskId: parentEvent.rootTaskId,
 			taskId: parentEvent.taskId,
 			...(parentEvent.parentTaskId !== undefined ? { parentTaskId: parentEvent.parentTaskId } : {}),
