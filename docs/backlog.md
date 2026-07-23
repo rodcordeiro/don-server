@@ -267,13 +267,15 @@ Marco: sair de um backlog unico local e permitir gestao por projeto, preparando 
 
 Marco: trocar ou escolher LLM sem alterar agentes.
 
-| ID      | Tarefa                     | Status    | Entregavel validavel                                               |
-| ------- | -------------------------- | --------- | ------------------------------------------------------------------ |
-| LLM-001 | OllamaProvider             | Concluido | Provider local inicial.                                            |
-| LLM-002 | Configurar provider padrao | Pendente  | Provider default configuravel por env.                             |
-| LLM-003 | Selecao por agente         | Pendente  | Agente pode declarar provider/model preferencial.                  |
-| LLM-004 | OpenAIProvider             | Pendente  | Provider OpenAI atras de interface existente.                      |
-| LLM-005 | Fallback de provider       | Pendente  | Falha de provider retorna erro controlado ou fallback configurado. |
+| ID      | Tarefa                          | Status    | Entregavel validavel                                                                                  |
+| ------- | ------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| LLM-001 | OllamaProvider                  | Concluido | Provider local inicial.                                                                               |
+| LLM-002 | Configurar provider padrao      | Pendente  | Provider default configuravel por env.                                                                |
+| LLM-003 | Selecao por agente              | Pendente  | Agente pode declarar provider/model preferencial.                                                     |
+| LLM-004 | OpenAIProvider                  | Pendente  | Provider OpenAI atras de interface existente.                                                         |
+| LLM-005 | Fallback de provider            | Pendente  | Falha de provider retorna erro controlado ou fallback configurado.                                    |
+| LLM-006 | CliLlmProvider para Cursor/Codex | Pendente  | Adapter executa Cursor ou Codex instalados via CLI com cwd controlado, timeout, stdout/stderr e erro. |
+| LLM-007 | Formato JSON para provider CLI   | Pendente  | Normalizar prompts e validar respostas JSON de CLI antes de Planner/BacklogAgent consumirem o modelo. |
 
 ## Sprint 14 - Template e registro dinamico de agentes
 
@@ -291,9 +293,10 @@ Marco: permitir expansao controlada de agentes sem alterar manualmente o bootstr
 
 Marco: permitir que agentes de outras fontes se conectem ao Don Server e aparecam no chat como agentes registraveis.
 
-| ID      | Tarefa                                | Status   | Entregavel validavel                                                                                         |
-| ------- | ------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| MCP-001 | MCP para registro de agentes externos | Pendente | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
+| ID      | Tarefa                                      | Status   | Entregavel validavel                                                                                         |
+| ------- | ------------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
+| MCP-001 | MCP para registro de agentes externos       | Pendente | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
+| MCP-002 | Cursor/Codex como agente externo temporario | Pendente | Permitir registrar Cursor ou Codex instalado como agente externo enquanto Ollama nao for viavel localmente.   |
 
 ## Sprint 15 - Auditoria operacional
 
