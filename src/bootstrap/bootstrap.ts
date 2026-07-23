@@ -66,7 +66,7 @@ export class Bootstrap {
 		agentRegistry.register(
 			new BacklogAgent(eventBus, new BacklogSource(undefined, projectService), providerRegistry),
 		);
-		agentRegistry.register(new SummaryAgent(eventBus));
+		agentRegistry.register(new SummaryAgent(eventBus, eventService));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 		agentRegistry.register(new GitAgent(eventBus));
 		agentRegistry.register(new SecurityAgent(eventBus, eventService));

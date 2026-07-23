@@ -74,6 +74,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `UI-001` a `UI-005` implementados com UI minima servida em `/ui`, chat WebSocket/REST, timeline, conversas, detalhe de task e destaque de erros.
 - `OPT-001` a `OPT-005` implementados com prompt versionado, replanejamento controlado, score, dependencias e metricas do Planner.
 - `OPT-006` a `OPT-010` implementados com parser Markdown resiliente, validacao antes de gravar, diff auditavel, busca textual e recortes melhores.
+- `OPT-011` a `OPT-015` implementados com correlacao de resultados, audiencia, riscos, limite de tamanho e evidencias no SummaryAgent.
 
 ## Ordem executiva recomendada
 
@@ -395,13 +396,13 @@ Marco: melhorar confiabilidade, edicao e resposta do BacklogAgent.
 
 Marco: tornar consolidacao util em fluxos multiagente.
 
-| ID      | Tarefa                          | Status   | Entregavel validavel                                               |
-| ------- | ------------------------------- | -------- | ------------------------------------------------------------------ |
-| OPT-011 | Correlacionar resultados filhos | Pendente | Buscar resultados relacionados por `parentTaskId` ou `rootTaskId`. |
-| OPT-012 | Resumo por audiencia            | Pendente | Gerar resumo tecnico, executivo ou operacional conforme pedido.    |
-| OPT-013 | Destaque de riscos              | Pendente | Extrair riscos, bloqueios e proximos passos dos resultados.        |
-| OPT-014 | Limite de verbosidade           | Pendente | Controlar tamanho da resposta final.                               |
-| OPT-015 | Evidencias no resumo            | Pendente | Incluir IDs de eventos/tarefas que sustentam a conclusao.          |
+| ID      | Tarefa                          | Status    | Entregavel validavel                                               |
+| ------- | ------------------------------- | --------- | ------------------------------------------------------------------ |
+| OPT-011 | Correlacionar resultados filhos | Concluido | Buscar resultados relacionados por `parentTaskId` ou `rootTaskId`. |
+| OPT-012 | Resumo por audiencia            | Concluido | Gerar resumo tecnico, executivo ou operacional conforme pedido.    |
+| OPT-013 | Destaque de riscos              | Concluido | Extrair riscos, bloqueios e proximos passos dos resultados.        |
+| OPT-014 | Limite de verbosidade           | Concluido | Controlar tamanho da resposta final.                               |
+| OPT-015 | Evidencias no resumo            | Concluido | Incluir IDs de eventos/tarefas que sustentam a conclusao.          |
 
 ## Sprint 23 - Otimizacao dos agentes tecnicos
 
@@ -465,6 +466,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 22 para tornar consolidacao util em fluxos multiagente.
+Executar a Sprint 23 para melhorar especializacao e consistencia dos agentes Backend, Frontend, Mobile, DBA e DevOps.
 
-Motivo: BacklogAgent ja valida mutacoes e responde melhor por recortes. O proximo ganho validavel e otimizar o SummaryAgent.
+Motivo: SummaryAgent ja correlaciona resultados e publica evidencias. O proximo ganho validavel e padronizar rubricas e reviews dos agentes tecnicos.
