@@ -24,7 +24,8 @@ import {
 	createTechnicalReviewProfiles,
 	TechnicalReviewAgent,
 } from '../agents/technical/technical-review-agent';
-import { FilesystemTool, ShellTool } from '../tools';
+import { GitAgent } from '../agents/git/git-agent';
+import { FilesystemTool, GitTool, ShellTool } from '../tools';
 
 import { ChatGateway } from '../gateway/chat-gateway';
 import { HttpGateway } from '../gateway/http-gateway';
@@ -57,6 +58,7 @@ export class Bootstrap {
 		providerRegistry.register(new OpenAIProvider());
 		registerCliProviders(providerRegistry);
 		toolRegistry.register(new FilesystemTool());
+		toolRegistry.register(new GitTool());
 		toolRegistry.register(new ShellTool());
 
 		agentRegistry.register(
@@ -64,6 +66,7 @@ export class Bootstrap {
 		);
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
+		agentRegistry.register(new GitAgent(eventBus));
 		for (const profile of createTechnicalReviewProfiles()) {
 			agentRegistry.register(new TechnicalReviewAgent(profile, eventBus));
 		}
