@@ -24,8 +24,8 @@ export class CommandService {
 	) {}
 
 	async handleUserCommand(input: HandleUserCommandInput): Promise<HandleUserCommandResult> {
-		const registrationDefinition = parseAgentRegistration(input.content);
-		const parsed = registrationDefinition
+		const registration = parseAgentRegistration(input.content);
+		const parsed = registration
 			? { target: 'agent-registry', content: input.content, mention: undefined }
 			: parseCommand(input.content, this.agentRegistry);
 
@@ -53,8 +53,8 @@ export class CommandService {
 			createdAt,
 		});
 
-		if (registrationDefinition) {
-			const result = this.registerDynamicAgent(registrationDefinition);
+		if (registration) {
+			const result = this.registerDynamicAgent(registration.definition);
 
 			await this.eventBus.publish({
 				eventId: randomUUID(),
@@ -118,7 +118,7 @@ export class CommandService {
 	}
 }
 
-function parseAgentRegistration(content: string): unknown | undefined {
+function parseAgentRegistration(content: string): { definition: unknown } | undefined {
 	const trimmed = content.trim();
 	const prefixMatch = trimmed.match(/^\/agents?\s+register\s+/i);
 
@@ -126,5 +126,7 @@ function parseAgentRegistration(content: string): unknown | undefined {
 		return undefined;
 	}
 
-	return JSON.parse(trimmed.slice(prefixMatch[0].length)) as unknown;
+	return {
+		definition: JSON.parse(trimmed.slice(prefixMatch[0].length)) as unknown,
+	};
 }

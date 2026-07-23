@@ -86,12 +86,14 @@ function readStringArray(
 		throw new Error(`Campo ${key} deve ser uma lista de strings.`);
 	}
 
-	return {
-		[key]: value.map(item => item.trim()),
-	};
+	const items = (value as string[]).map(item => item.trim());
+
+	return key === 'capabilities' ? { capabilities: items } : { examples: items };
 }
 
-function readLlmSelection(definition: Record<string, unknown>): Pick<AgentDefinition, 'llm'> {
+function readLlmSelection(
+	definition: Record<string, unknown>,
+): Partial<Pick<AgentDefinition, 'llm'>> {
 	const value = definition['llm'];
 
 	if (value === undefined) {
@@ -116,7 +118,7 @@ function readLlmSelection(definition: Record<string, unknown>): Pick<AgentDefini
 	};
 }
 
-function readLimits(definition: Record<string, unknown>): Pick<AgentDefinition, 'limits'> {
+function readLimits(definition: Record<string, unknown>): Partial<Pick<AgentDefinition, 'limits'>> {
 	const value = definition['limits'];
 
 	if (value === undefined) {
