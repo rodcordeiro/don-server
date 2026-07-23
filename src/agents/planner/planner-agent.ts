@@ -179,6 +179,16 @@ function selectTechnicalTarget(normalizedRequest: string): string | undefined {
 		return 'backend-agent';
 	}
 
+	if (
+		normalizedRequest.includes('seguranca') ||
+		normalizedRequest.includes('security') ||
+		normalizedRequest.includes('auth') ||
+		normalizedRequest.includes('token') ||
+		normalizedRequest.includes('secret')
+	) {
+		return 'security-agent';
+	}
+
 	if (normalizedRequest.includes('frontend') || normalizedRequest.includes('ui')) {
 		return 'frontend-agent';
 	}

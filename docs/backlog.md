@@ -70,6 +70,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `AUD-001` a `AUD-005` implementados com exportacao filtravel, metricas, replay somente leitura e relatorio de falhas.
 - `AG-004.1` a `AG-004.5` implementados com agentes tecnicos especializados para backend, frontend, mobile, DBA e DevOps/release.
 - `TOOL-006`, `AG-005.1` e `AG-005.2` implementados com GitTool read-only, GitAgent e delegacao tecnica deterministica no Planner.
+- `AG-007.1` a `AG-007.5` implementados com SecurityAgent, revisao inicial, leitura de falhas, delegacao pelo Planner e relatorio de risco.
 
 ## Ordem executiva recomendada
 
@@ -343,13 +344,13 @@ Marco: permitir que agentes tecnicos consultem contexto Git sem cada agente inte
 
 Marco: criar agente especializado para revisao de seguranca em fluxos, codigo e operacao.
 
-| ID       | Tarefa                        | Status   | Entregavel validavel                                                       |
-| -------- | ----------------------------- | -------- | -------------------------------------------------------------------------- |
-| AG-007.1 | SecurityAgent metadata        | Pendente | Registrar agente com capacidades de autenticacao, autorizacao e dados.     |
-| AG-007.2 | SecurityAgent analise inicial | Pendente | Avaliar riscos de auth, autorizacao, dados sensiveis e superficie exposta. |
-| AG-007.3 | SecurityAgent revisa eventos  | Pendente | Identificar eventos com dados sensiveis ou ausencia de identidade.         |
-| AG-007.4 | Planner delega seguranca      | Pendente | Planner aciona SecurityAgent quando pedido envolver seguranca.             |
-| AG-007.5 | Relatorio de risco            | Pendente | Publicar severidade, evidencia, impacto e recomendacao.                    |
+| ID       | Tarefa                        | Status    | Entregavel validavel                                                       |
+| -------- | ----------------------------- | --------- | -------------------------------------------------------------------------- |
+| AG-007.1 | SecurityAgent metadata        | Concluido | Registrar agente com capacidades de autenticacao, autorizacao e dados.     |
+| AG-007.2 | SecurityAgent analise inicial | Concluido | Avaliar riscos de auth, autorizacao, dados sensiveis e superficie exposta. |
+| AG-007.3 | SecurityAgent revisa eventos  | Concluido | Identificar eventos com dados sensiveis ou ausencia de identidade.         |
+| AG-007.4 | Planner delega seguranca      | Concluido | Planner aciona SecurityAgent quando pedido envolver seguranca.             |
+| AG-007.5 | Relatorio de risco            | Concluido | Publicar severidade, evidencia, impacto e recomendacao.                    |
 
 ## Sprint 19 - UI minima
 
@@ -461,6 +462,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 18 para criar agente especializado para revisao de seguranca em fluxos, codigo e operacao.
+Executar a Sprint 19 para criar primeira central visual de comando e observabilidade.
 
-Motivo: agentes tecnicos ja podem receber contexto Git read-only via GitAgent. O proximo ganho validavel e especializar revisao de seguranca.
+Motivo: SecurityAgent ja publica relatorio de risco e usa falhas persistidas como evidencia. O proximo ganho validavel e expor chat/timeline em UI minima.

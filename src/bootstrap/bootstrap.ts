@@ -25,6 +25,7 @@ import {
 	TechnicalReviewAgent,
 } from '../agents/technical/technical-review-agent';
 import { GitAgent } from '../agents/git/git-agent';
+import { SecurityAgent } from '../agents/security/security-agent';
 import { FilesystemTool, GitTool, ShellTool } from '../tools';
 
 import { ChatGateway } from '../gateway/chat-gateway';
@@ -39,6 +40,7 @@ export class Bootstrap {
 		const eventStore = new FileEventStore('data/events.jsonl');
 
 		const eventBus = new EventBus(eventStore);
+		const eventService = new EventService(eventStore);
 
 		const agentRegistry = new AgentRegistry();
 		const toolRegistry = new ToolRegistry();
@@ -67,6 +69,7 @@ export class Bootstrap {
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
 		agentRegistry.register(new GitAgent(eventBus));
+		agentRegistry.register(new SecurityAgent(eventBus, eventService));
 		for (const profile of createTechnicalReviewProfiles()) {
 			agentRegistry.register(new TechnicalReviewAgent(profile, eventBus));
 		}
@@ -82,7 +85,6 @@ export class Bootstrap {
 			dynamicAgentService,
 			externalAgentService,
 		);
-		const eventService = new EventService(eventStore);
 		const authService = new AuthService(eventBus, env.DON_SERVER_TOKEN, env.DON_SERVER_USER_ID);
 
 		const httpGateway = new HttpGateway(+(env.PORT ?? 3001));
