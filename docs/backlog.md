@@ -76,6 +76,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `OPT-006` a `OPT-010` implementados com parser Markdown resiliente, validacao antes de gravar, diff auditavel, busca textual e recortes melhores.
 - `OPT-011` a `OPT-015` implementados com correlacao de resultados, audiencia, riscos, limite de tamanho e evidencias no SummaryAgent.
 - `OPT-016` a `OPT-020` implementados com rubricas por dominio, saida padronizada, escopo de arquivos, delegacao cruzada e roteamento tecnico.
+- `OPT-021` a `OPT-025` implementados com politica Git read-only, diff redigido, guardrails, integracao com SecurityAgent e auditoria por eventos.
 
 ## Ordem executiva recomendada
 
@@ -421,13 +422,13 @@ Marco: melhorar especializacao e consistencia dos agentes Backend, Frontend, Mob
 
 Marco: reforcar o GitAgent como fronteira unica de operacoes Git.
 
-| ID      | Tarefa                       | Status   | Entregavel validavel                                     |
-| ------- | ---------------------------- | -------- | -------------------------------------------------------- |
-| OPT-021 | Politica de comandos Git     | Pendente | Definir comandos permitidos, restritos e proibidos.      |
-| OPT-022 | Resumo seguro de diff        | Pendente | Resumir diff sem vazar segredo ou arquivo sensivel.      |
-| OPT-023 | Guardrail para escrita Git   | Pendente | Bloquear commit/tag/push sem confirmacao explicita.      |
-| OPT-024 | Integracao com SecurityAgent | Pendente | Solicitar revisao de seguranca para operacoes sensiveis. |
-| OPT-025 | Auditoria de operacoes Git   | Pendente | Emitir eventos para cada consulta ou acao Git.           |
+| ID      | Tarefa                       | Status    | Entregavel validavel                                     |
+| ------- | ---------------------------- | --------- | -------------------------------------------------------- |
+| OPT-021 | Politica de comandos Git     | Concluido | Definir comandos permitidos, restritos e proibidos.      |
+| OPT-022 | Resumo seguro de diff        | Concluido | Resumir diff sem vazar segredo ou arquivo sensivel.      |
+| OPT-023 | Guardrail para escrita Git   | Concluido | Bloquear commit/tag/push sem confirmacao explicita.      |
+| OPT-024 | Integracao com SecurityAgent | Concluido | Solicitar revisao de seguranca para operacoes sensiveis. |
+| OPT-025 | Auditoria de operacoes Git   | Concluido | Emitir eventos para cada consulta ou acao Git.           |
 
 ## Sprint 25 - Otimizacao do SecurityAgent
 
@@ -467,6 +468,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 24 para reforcar o GitAgent como fronteira unica de operacoes Git.
+Executar a Sprint 25 para amadurecer seguranca como capacidade transversal.
 
-Motivo: agentes tecnicos ja retornam rubrica, escopo, achados e delegacao sugerida. O proximo ganho validavel e endurecer politicas do GitAgent.
+Motivo: GitAgent ja explicita politica, redige saidas e audita consultas por eventos. O proximo ganho validavel e amadurecer o SecurityAgent.

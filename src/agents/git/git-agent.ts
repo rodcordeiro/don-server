@@ -47,6 +47,9 @@ export class GitAgent implements Agent {
 function formatGitResult(status: string | undefined, diff: string | undefined): string {
 	return [
 		'GitAgent: contexto Git read-only.',
+		'Politica: apenas status/diff sao permitidos; commit, tag, push, merge e checkout ficam bloqueados fora deste agente.',
+		'Seguranca: saidas passam por redaction basica de token/secret/password/api key.',
+		'Integracao: acione security-agent antes de qualquer operacao Git sensivel ou diffs com credenciais.',
 		'',
 		'Status:',
 		status?.trim() || 'Sem saida de status.',
