@@ -76,7 +76,7 @@ function buildSummary(
 
 	for (const result of relatedResults.slice(0, 3)) {
 		const payload = result.payload as Record<string, unknown>;
-		lines.push(`- ${result.source}: ${String(payload['result'] ?? '').slice(0, 240)}`);
+		lines.push(`- ${result.source}: ${stringifySummaryValue(payload['result']).slice(0, 240)}`);
 	}
 
 	if (failures.length > 0) {
@@ -115,4 +115,16 @@ function detectAudience(content: string): 'tecnico' | 'executivo' | 'operacional
 
 function limitSummary(content: string): string {
 	return content.length <= 1_500 ? content : `${content.slice(0, 1_497)}...`;
+}
+
+function stringifySummaryValue(value: unknown): string {
+	if (typeof value === 'string') {
+		return value;
+	}
+
+	if (value === undefined || value === null) {
+		return '';
+	}
+
+	return JSON.stringify(value);
 }
