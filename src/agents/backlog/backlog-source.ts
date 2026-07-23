@@ -7,6 +7,7 @@ export type BacklogTask = {
 	status: string;
 	deliverable: string;
 	sprint: string;
+	extraColumns?: string[];
 };
 
 export type BacklogSprint = {
@@ -84,6 +85,10 @@ export type BacklogMutationResult = {
 	summary: string;
 	before?: BacklogTask;
 	after?: BacklogTask;
+	diff?: {
+		before?: string;
+		after?: string;
+	};
 };
 
 export function parseBacklogMarkdown(content: string): BacklogSprint[] {
@@ -124,7 +129,7 @@ function parseTaskRow(line: string, sprint: string): BacklogTask | undefined {
 		return undefined;
 	}
 
-	const [id, title, status, deliverable] = columns;
+	const [id, title, status, deliverable, ...extraColumns] = columns;
 
 	if (!id || id === 'ID' || id.startsWith('-')) {
 		return undefined;
@@ -136,6 +141,7 @@ function parseTaskRow(line: string, sprint: string): BacklogTask | undefined {
 		status: status ?? '',
 		deliverable: deliverable ?? '',
 		sprint,
+		...(extraColumns.length > 0 ? { extraColumns } : {}),
 	};
 }
 
@@ -179,9 +185,11 @@ function addTaskToMarkdown(
 	});
 
 	lines.splice(tableEnd, 0, row);
+	const nextContent = lines.join('\n');
+	validateBacklogMarkdown(nextContent);
 
 	return {
-		content: lines.join('\n'),
+		content: nextContent,
 		summary: `Tarefa adicionada: ${input.id}.`,
 		after: {
 			id: input.id,
@@ -189,6 +197,9 @@ function addTaskToMarkdown(
 			status: input.status,
 			deliverable: input.deliverable,
 			sprint: input.sprint,
+		},
+		diff: {
+			after: row,
 		},
 	};
 }
@@ -216,13 +227,21 @@ function updateTaskInMarkdown(
 		...(patch.deliverable !== undefined ? { deliverable: patch.deliverable } : {}),
 	};
 
-	lines[located.index] = formatTaskRow(after);
+	const beforeRow = lines[located.index] ?? '';
+	const afterRow = formatTaskRow(after);
+	lines[located.index] = afterRow;
+	const nextContent = lines.join('\n');
+	validateBacklogMarkdown(nextContent);
 
 	return {
-		content: lines.join('\n'),
+		content: nextContent,
 		summary: `Tarefa atualizada: ${id}.`,
 		before: located.task,
 		after,
+		diff: {
+			before: beforeRow,
+			after: afterRow,
+		},
 	};
 }
 
@@ -234,12 +253,18 @@ function removeTaskFromMarkdown(content: string, id: string): BacklogMutationRes
 		throw new Error(`Tarefa nao encontrada: ${id}.`);
 	}
 
+	const beforeRow = lines[located.index] ?? '';
 	lines.splice(located.index, 1);
+	const nextContent = lines.join('\n');
+	validateBacklogMarkdown(nextContent);
 
 	return {
-		content: lines.join('\n'),
+		content: nextContent,
 		summary: `Tarefa removida: ${id}.`,
 		before: located.task,
+		diff: {
+			before: beforeRow,
+		},
 	};
 }
 
@@ -329,7 +354,7 @@ function findTaskLine(
 }
 
 function formatTaskRow(task: BacklogTask): string {
-	return `| ${task.id} | ${task.title} | ${task.status} | ${task.deliverable} |`;
+	return `| ${[task.id, task.title, task.status, task.deliverable, ...(task.extraColumns ?? [])].join(' | ')} |`;
 }
 
 function sameTaskId(left: string, right: string): boolean {
@@ -341,4 +366,10 @@ function normalizeSprint(sprint: string): string {
 		.toLowerCase()
 		.replace(/^sprint\s+/, 'sprint ')
 		.trim();
+}
+
+function validateBacklogMarkdown(content: string): void {
+	if (parseBacklogMarkdown(content).length === 0) {
+		throw new Error('Backlog Markdown invalido apos mutacao.');
+	}
 }
