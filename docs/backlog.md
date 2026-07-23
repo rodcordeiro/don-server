@@ -68,6 +68,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `AGT-001` a `AGT-005` implementados com template de agente dinamico, contrato validado, registro via chat/REST e catalogo atualizado.
 - `MCP-001` e `MCP-002` implementados com adapter de agente externo HTTP/CLI, registro via REST/chat e alias `/mcp/agents`.
 - `AUD-001` a `AUD-005` implementados com exportacao filtravel, metricas, replay somente leitura e relatorio de falhas.
+- `AG-004.1` a `AG-004.5` implementados com agentes tecnicos especializados para backend, frontend, mobile, DBA e DevOps/release.
 
 ## Ordem executiva recomendada
 
@@ -319,13 +320,13 @@ Marco: eventos persistidos viram material confiavel de analise e recuperacao.
 
 Marco: substituir o CodeAgent generico por agentes especializados por dominio tecnico.
 
-| ID       | Tarefa             | Status   | Entregavel validavel                                                         |
-| -------- | ------------------ | -------- | ---------------------------------------------------------------------------- |
-| AG-004.1 | BackendAgent       | Pendente | Analisa APIs, services, regras de negocio, contratos e persistencia backend. |
-| AG-004.2 | FrontendAgent      | Pendente | Analisa UI web, componentes, estado, integracao e acessibilidade.            |
-| AG-004.3 | MobileAgent        | Pendente | Analisa React Native/Expo, navegacao, estado e comportamento mobile.         |
-| AG-004.4 | DbaAgent           | Pendente | Analisa schema, queries, indices, migrations e riscos de dados.              |
-| AG-004.5 | DevOpsReleaseAgent | Pendente | Analisa build, deploy, ambiente, rollback e confiabilidade operacional.      |
+| ID       | Tarefa             | Status    | Entregavel validavel                                                         |
+| -------- | ------------------ | --------- | ---------------------------------------------------------------------------- |
+| AG-004.1 | BackendAgent       | Concluido | Analisa APIs, services, regras de negocio, contratos e persistencia backend. |
+| AG-004.2 | FrontendAgent      | Concluido | Analisa UI web, componentes, estado, integracao e acessibilidade.            |
+| AG-004.3 | MobileAgent        | Concluido | Analisa React Native/Expo, navegacao, estado e comportamento mobile.         |
+| AG-004.4 | DbaAgent           | Concluido | Analisa schema, queries, indices, migrations e riscos de dados.              |
+| AG-004.5 | DevOpsReleaseAgent | Concluido | Analisa build, deploy, ambiente, rollback e confiabilidade operacional.      |
 
 ## Sprint 17 - Git e delegacao tecnica
 
@@ -459,6 +460,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 16 para substituir o CodeAgent generico por agentes especializados por dominio tecnico.
+Executar a Sprint 17 para permitir que agentes tecnicos consultem contexto Git sem interagir diretamente com Git.
 
-Motivo: a auditoria operacional ja expoe exportacao, metricas, replay e falhas. O proximo ganho validavel e especializar analises tecnicas por dominio.
+Motivo: agentes tecnicos por dominio ja estao registrados. O proximo ganho validavel e oferecer contexto Git seguro para analises tecnicas.

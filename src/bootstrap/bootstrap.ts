@@ -20,6 +20,10 @@ import { PlannerAgent } from '../agents/planner/planner-agent';
 import { BacklogAgent } from '../agents/backlog/backlog-agent';
 import { BacklogSource } from '../agents/backlog/backlog-source';
 import { SummaryAgent } from '../agents/summary/summary-agent';
+import {
+	createTechnicalReviewProfiles,
+	TechnicalReviewAgent,
+} from '../agents/technical/technical-review-agent';
 import { FilesystemTool, ShellTool } from '../tools';
 
 import { ChatGateway } from '../gateway/chat-gateway';
@@ -60,6 +64,9 @@ export class Bootstrap {
 		);
 		agentRegistry.register(new SummaryAgent(eventBus));
 		agentRegistry.register(new PlannerAgent(eventBus, agentRegistry, providerRegistry));
+		for (const profile of createTechnicalReviewProfiles()) {
+			agentRegistry.register(new TechnicalReviewAgent(profile, eventBus));
+		}
 
 		const agentRuntime = new AgentRuntime(eventBus, +(env.AGENT_TIMEOUT_MS ?? 30_000));
 		const toolRuntime = new ToolRuntime(eventBus);
