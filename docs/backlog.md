@@ -77,6 +77,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `OPT-011` a `OPT-015` implementados com correlacao de resultados, audiencia, riscos, limite de tamanho e evidencias no SummaryAgent.
 - `OPT-016` a `OPT-020` implementados com rubricas por dominio, saida padronizada, escopo de arquivos, delegacao cruzada e roteamento tecnico.
 - `OPT-021` a `OPT-025` implementados com politica Git read-only, diff redigido, guardrails, integracao com SecurityAgent e auditoria por eventos.
+- `OPT-026` a `OPT-030` implementados com catalogo de riscos, politicas por ferramenta, deteccao de segredo, checklist seguro e relatorio consolidado.
 
 ## Ordem executiva recomendada
 
@@ -434,13 +435,13 @@ Marco: reforcar o GitAgent como fronteira unica de operacoes Git.
 
 Marco: amadurecer seguranca como capacidade transversal.
 
-| ID      | Tarefa                     | Status   | Entregavel validavel                                                   |
-| ------- | -------------------------- | -------- | ---------------------------------------------------------------------- |
-| OPT-026 | Catalogo de riscos         | Pendente | Padronizar severidade, categoria e recomendacao.                       |
-| OPT-027 | Politicas por ferramenta   | Pendente | Avaliar Shell, Filesystem, Git, HTTP e RabbitMQ antes de uso sensivel. |
-| OPT-028 | Detecção de segredo        | Pendente | Sinalizar tokens, chaves e credenciais em outputs/eventos.             |
-| OPT-029 | Checklist de deploy seguro | Pendente | Revisar auth, env, logs, CORS/origem e secrets antes de exposicao.     |
-| OPT-030 | Relatorio consolidado      | Pendente | Gerar resumo final com riscos aceitos, mitigados e pendentes.          |
+| ID      | Tarefa                     | Status    | Entregavel validavel                                                   |
+| ------- | -------------------------- | --------- | ---------------------------------------------------------------------- |
+| OPT-026 | Catalogo de riscos         | Concluido | Padronizar severidade, categoria e recomendacao.                       |
+| OPT-027 | Politicas por ferramenta   | Concluido | Avaliar Shell, Filesystem, Git, HTTP e RabbitMQ antes de uso sensivel. |
+| OPT-028 | Detecção de segredo        | Concluido | Sinalizar tokens, chaves e credenciais em outputs/eventos.             |
+| OPT-029 | Checklist de deploy seguro | Concluido | Revisar auth, env, logs, CORS/origem e secrets antes de exposicao.     |
+| OPT-030 | Relatorio consolidado      | Concluido | Gerar resumo final com riscos aceitos, mitigados e pendentes.          |
 
 ## Sprint 26 - Otimizacao do RabbitAgent
 
@@ -468,6 +469,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 25 para amadurecer seguranca como capacidade transversal.
+Executar a Sprint 26 para preparar evolucao operacional do RabbitAgent quando a integracao RabbitMQ existir.
 
-Motivo: GitAgent ja explicita politica, redige saidas e audita consultas por eventos. O proximo ganho validavel e amadurecer o SecurityAgent.
+Motivo: SecurityAgent ja consolida riscos, politicas, deteccao de segredos e checklist seguro. O proximo ganho validavel e preparar RabbitAgent operacional.
