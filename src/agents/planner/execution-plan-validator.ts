@@ -41,6 +41,7 @@ function validateExecutionStep(
 	const target = readRequiredString(input, 'target', index);
 	const instruction = readRequiredString(input, 'instruction', index);
 	const reason = readRequiredString(input, 'reason', index);
+	const score = readOptionalScore(input, index);
 
 	if (!availableAgents.has(target)) {
 		throw new Error(`Step ${index + 1} referencia agente inexistente: ${target}.`);
@@ -53,6 +54,7 @@ function validateExecutionStep(
 		target,
 		instruction,
 		reason,
+		...(score !== undefined ? { score } : {}),
 		...(Array.isArray(dependsOn) ? { dependsOn: dependsOn.filter(isString) } : {}),
 	};
 }
@@ -73,4 +75,18 @@ function isRecord(input: unknown): input is Record<string, unknown> {
 
 function isString(input: unknown): input is string {
 	return typeof input === 'string';
+}
+
+function readOptionalScore(input: Record<string, unknown>, index: number): number | undefined {
+	const value = input['score'];
+
+	if (value === undefined) {
+		return undefined;
+	}
+
+	if (typeof value !== 'number' || value < 0 || value > 1) {
+		throw new Error(`Step ${index + 1} deve conter score entre 0 e 1.`);
+	}
+
+	return value;
 }
