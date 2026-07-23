@@ -1,15 +1,15 @@
 import type { LlmChatParams, LlmProvider } from './llm-provider';
 
 export type ProviderRegistryOptions = {
-	defaultProviderName?: string;
-	defaultModel?: string;
-	fallbackProviderName?: string;
-	fallbackModel?: string;
+	defaultProviderName?: string | undefined;
+	defaultModel?: string | undefined;
+	fallbackProviderName?: string | undefined;
+	fallbackModel?: string | undefined;
 };
 
 export type LlmSelection = {
-	providerName?: string;
-	model?: string;
+	providerName?: string | undefined;
+	model?: string | undefined;
 };
 
 export type LlmChatRequest = Omit<LlmChatParams, 'model'> & LlmSelection;
