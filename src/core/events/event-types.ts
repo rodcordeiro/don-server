@@ -19,6 +19,7 @@ export type AgentMessagePayload = {
 export type AgentResultPayload = {
 	status: 'completed' | 'failed';
 	result: string;
+	data?: unknown;
 };
 
 export type AgentErrorPayload = {
