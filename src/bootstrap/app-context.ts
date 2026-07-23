@@ -15,6 +15,7 @@ import { type CommandService } from '../services/command-service';
 import type { EventService } from '../services/event-service';
 import type { AuthService } from '../services/auth-service';
 import type { ProjectService } from '../services/project-service';
+import type { DynamicAgentService } from '../services/dynamic-agent-service';
 export type AppContext = {
 	eventStore: EventStore;
 	eventBus: EventBus;
@@ -29,6 +30,7 @@ export type AppContext = {
 	llmProvider: LlmProvider;
 	providerRegistry: ProviderRegistry;
 	projectService: ProjectService;
+	dynamicAgentService: DynamicAgentService;
 	commandService: CommandService;
 	eventService: EventService;
 	authService: AuthService;

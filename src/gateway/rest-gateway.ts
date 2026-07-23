@@ -4,6 +4,8 @@ import type { CommandService } from '../services/command-service';
 import type { EventService } from '../services/event-service';
 import type { AuthService } from '../services/auth-service';
 import type { ProjectService } from '../services/project-service';
+import type { AgentRegistry } from '../core/agents/agent-registry';
+import type { DynamicAgentService } from '../services/dynamic-agent-service';
 
 type CommandRequest = {
 	conversationId?: string;
@@ -17,6 +19,8 @@ export class RestGateway {
 		private readonly eventService: EventService,
 		private readonly authService: AuthService,
 		private readonly projectService: ProjectService,
+		private readonly agentRegistry: AgentRegistry,
+		private readonly dynamicAgentService: DynamicAgentService,
 	) {}
 
 	async handleRequest(request: IncomingMessage, response: ServerResponse): Promise<boolean> {
@@ -34,7 +38,17 @@ export class RestGateway {
 				return true;
 			}
 
+			if (request.method === 'POST' && url.pathname === '/agents') {
+				await this.handleAgentRegistration(request, response);
+				return true;
+			}
+
 			if (request.method === 'GET') {
+				if (url.pathname === '/agents') {
+					this.sendJson(response, 200, { agents: this.agentRegistry.getCatalog() });
+					return true;
+				}
+
 				if (await this.handleProjectQuery(url, response)) {
 					return true;
 				}
@@ -74,6 +88,15 @@ export class RestGateway {
 		});
 
 		this.sendJson(response, 202, result);
+	}
+
+	private async handleAgentRegistration(
+		request: IncomingMessage,
+		response: ServerResponse,
+	): Promise<void> {
+		const result = this.dynamicAgentService.register(await this.readJson(request));
+
+		this.sendJson(response, 201, result);
 	}
 
 	private async handleProjectQuery(url: URL, response: ServerResponse): Promise<boolean> {

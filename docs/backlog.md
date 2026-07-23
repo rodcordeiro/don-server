@@ -65,6 +65,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `AG-003.4` a `AG-003.8` implementados com interpretacao por modelo/fallback deterministico e mutacoes controladas em `docs/backlog.md`.
 - `PRJ-001` a `PRJ-005` implementados com contrato de projeto, indice local, backlog por projeto, consulta de eventos por projeto e propagacao de `projectId`.
 - `LLM-002` a `LLM-007` implementados com provider default por env, selecao por agente, OpenAIProvider, fallback e provider CLI para Cursor/Codex.
+- `AGT-001` a `AGT-005` implementados com template de agente dinamico, contrato validado, registro via chat/REST e catalogo atualizado.
 
 ## Ordem executiva recomendada
 
@@ -283,13 +284,13 @@ Marco: trocar ou escolher LLM sem alterar agentes.
 
 Marco: permitir expansao controlada de agentes sem alterar manualmente o bootstrap a cada novo agente.
 
-| ID      | Tarefa                          | Status   | Entregavel validavel                                                         |
-| ------- | ------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| AGT-001 | Template base de agente         | Pendente | Criar modelo base de agente, similar ao Planner, para novos agentes.         |
-| AGT-002 | Contrato de definicao de agente | Pendente | Definir nome, descricao, capacidades, exemplos, provider/model e limites.    |
-| AGT-003 | Validacao de definicao          | Pendente | Rejeitar definicoes duplicadas, inseguras ou incompletas.                    |
-| AGT-004 | Registro de agentes via chat    | Pendente | Permitir enviar definicao pelo chat e registrar agente em tempo de execucao. |
-| AGT-005 | Listagem de agentes dinamicos   | Pendente | Expor catalogo atualizado incluindo agentes registrados em runtime.          |
+| ID      | Tarefa                          | Status    | Entregavel validavel                                                         |
+| ------- | ------------------------------- | --------- | ---------------------------------------------------------------------------- |
+| AGT-001 | Template base de agente         | Concluido | Criar modelo base de agente, similar ao Planner, para novos agentes.         |
+| AGT-002 | Contrato de definicao de agente | Concluido | Definir nome, descricao, capacidades, exemplos, provider/model e limites.    |
+| AGT-003 | Validacao de definicao          | Concluido | Rejeitar definicoes duplicadas, inseguras ou incompletas.                    |
+| AGT-004 | Registro de agentes via chat    | Concluido | Permitir enviar definicao pelo chat e registrar agente em tempo de execucao. |
+| AGT-005 | Listagem de agentes dinamicos   | Concluido | Expor catalogo atualizado incluindo agentes registrados em runtime.          |
 
 ## Sprint 14.1 - MCP para agentes externos
 
@@ -456,6 +457,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 14 para permitir expansao controlada de agentes sem alterar manualmente o bootstrap a cada novo agente.
+Executar a Sprint 14.1 para permitir que agentes externos se conectem ao Don Server e aparecam no chat como agentes registraveis.
 
-Motivo: providers configuraveis ja permitem trocar o motor LLM. O proximo ganho validavel e registrar novos agentes com definicao validada.
+Motivo: agentes dinamicos ja podem ser registrados em runtime. O proximo ganho validavel e permitir agentes externos via adapter/MCP.
