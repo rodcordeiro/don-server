@@ -78,6 +78,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `OPT-016` a `OPT-020` implementados com rubricas por dominio, saida padronizada, escopo de arquivos, delegacao cruzada e roteamento tecnico.
 - `OPT-021` a `OPT-025` implementados com politica Git read-only, diff redigido, guardrails, integracao com SecurityAgent e auditoria por eventos.
 - `OPT-026` a `OPT-030` implementados com catalogo de riscos, politicas por ferramenta, deteccao de segredo, checklist seguro e relatorio consolidado.
+- `OPT-031` a `OPT-035` implementados com RabbitAgent preparatorio, relatorio operacional, guardrails e auditoria planejada sem RabbitMQTool real.
 
 ## Ordem executiva recomendada
 
@@ -447,13 +448,13 @@ Marco: amadurecer seguranca como capacidade transversal.
 
 Marco: preparar evolucao operacional do RabbitAgent quando a integracao RabbitMQ existir.
 
-| ID      | Tarefa                | Status   | Entregavel validavel                                                 |
-| ------- | --------------------- | -------- | -------------------------------------------------------------------- |
-| OPT-031 | Diagnostico de filas  | Pendente | Avaliar tamanho, consumidores, mensagens prontas e nao reconhecidas. |
-| OPT-032 | Alertas por limiar    | Pendente | Sugerir alerta quando filas excederem limite configurado.            |
-| OPT-033 | Relatorio operacional | Pendente | Resumir riscos e recomendacoes por exchange/fila.                    |
-| OPT-034 | Acoes seguras         | Pendente | Bloquear purge/requeue sem confirmacao explicita.                    |
-| OPT-035 | Auditoria RabbitMQ    | Pendente | Registrar toda consulta ou acao operacional como evento.             |
+| ID      | Tarefa                | Status    | Entregavel validavel                                                 |
+| ------- | --------------------- | --------- | -------------------------------------------------------------------- |
+| OPT-031 | Diagnostico de filas  | Concluido | Avaliar tamanho, consumidores, mensagens prontas e nao reconhecidas. |
+| OPT-032 | Alertas por limiar    | Concluido | Sugerir alerta quando filas excederem limite configurado.            |
+| OPT-033 | Relatorio operacional | Concluido | Resumir riscos e recomendacoes por exchange/fila.                    |
+| OPT-034 | Acoes seguras         | Concluido | Bloquear purge/requeue sem confirmacao explicita.                    |
+| OPT-035 | Auditoria RabbitMQ    | Concluido | Registrar toda consulta ou acao operacional como evento.             |
 
 ## Sprint 27 - Expansoes futuras
 
@@ -469,6 +470,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 26 para preparar evolucao operacional do RabbitAgent quando a integracao RabbitMQ existir.
+Sprint 27 permanece como expansao futura e foi ignorada nesta iteracao conforme solicitado.
 
-Motivo: SecurityAgent ja consolida riscos, politicas, deteccao de segredos e checklist seguro. O proximo ganho validavel e preparar RabbitAgent operacional.
+Motivo: as sprints pendentes ate a Sprint 26 foram executadas; as integracoes futuras dependem de decisao especifica de escopo.
