@@ -5,8 +5,14 @@ export type ChatMessage = {
 	content: string;
 };
 
+export type LlmChatParams = {
+	model: string;
+	messages: ChatMessage[];
+	format?: 'json';
+};
+
 export interface LlmProvider {
 	name: string;
 
-	chat(params: { model: string; messages: ChatMessage[]; format?: 'json' }): Promise<string>;
+	chat(params: LlmChatParams): Promise<string>;
 }

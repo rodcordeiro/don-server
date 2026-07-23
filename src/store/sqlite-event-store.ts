@@ -9,6 +9,7 @@ type EventRow = {
 	event_id: string;
 	correlation_id: string;
 	conversation_id: string;
+	project_id: string | null;
 	root_task_id: string;
 	task_id: string;
 	parent_task_id: string | null;
@@ -34,6 +35,7 @@ export class SqliteEventStore implements EventStore {
         event_id TEXT PRIMARY KEY,
         correlation_id TEXT NOT NULL,
         conversation_id TEXT NOT NULL,
+        project_id TEXT,
         root_task_id TEXT NOT NULL,
         task_id TEXT NOT NULL,
         parent_task_id TEXT,
@@ -60,6 +62,12 @@ export class SqliteEventStore implements EventStore {
         ON events(type, created_at);
     `);
 
+		await store.ensureProjectColumn();
+		await store.db.exec(`
+      CREATE INDEX IF NOT EXISTS idx_events_project
+        ON events(project_id, created_at);
+    `);
+
 		return store;
 	}
 
@@ -70,6 +78,7 @@ export class SqliteEventStore implements EventStore {
         event_id,
         correlation_id,
         conversation_id,
+        project_id,
         root_task_id,
         task_id,
         parent_task_id,
@@ -79,12 +88,13 @@ export class SqliteEventStore implements EventStore {
         payload,
         created_at
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `,
 			[
 				event.eventId,
 				event.correlationId,
 				event.conversationId,
+				event.projectId ?? null,
 				event.rootTaskId,
 				event.taskId,
 				event.parentTaskId ?? null,
@@ -97,6 +107,17 @@ export class SqliteEventStore implements EventStore {
 		);
 	}
 
+	async listAll(): Promise<EventEnvelope[]> {
+		const rows = await this.db.all<EventRow[]>(
+			`
+      SELECT * FROM events
+      ORDER BY created_at ASC
+      `,
+		);
+
+		return rows.map(row => this.toEvent(row));
+	}
+
 	async listByConversation(conversationId: string): Promise<EventEnvelope[]> {
 		const rows = await this.db.all<EventRow[]>(
 			`
@@ -105,6 +126,19 @@ export class SqliteEventStore implements EventStore {
       ORDER BY created_at ASC
       `,
 			conversationId,
+		);
+
+		return rows.map(row => this.toEvent(row));
+	}
+
+	async listByProject(projectId: string): Promise<EventEnvelope[]> {
+		const rows = await this.db.all<EventRow[]>(
+			`
+      SELECT * FROM events
+      WHERE project_id = ?
+      ORDER BY created_at ASC
+      `,
+			projectId,
 		);
 
 		return rows.map(row => this.toEvent(row));
@@ -142,6 +176,7 @@ export class SqliteEventStore implements EventStore {
 			eventId: row.event_id,
 			correlationId: row.correlation_id,
 			conversationId: row.conversation_id,
+			...(row.project_id !== null ? { projectId: row.project_id } : {}),
 			rootTaskId: row.root_task_id,
 			taskId: row.task_id,
 			parentTaskId: row.parent_task_id ?? undefined,
@@ -151,5 +186,17 @@ export class SqliteEventStore implements EventStore {
 			payload: JSON.parse(row.payload) as unknown,
 			createdAt: row.created_at,
 		} as EventEnvelope;
+	}
+
+	private async ensureProjectColumn(): Promise<void> {
+		try {
+			await this.db.exec('ALTER TABLE events ADD COLUMN project_id TEXT;');
+		} catch (error) {
+			if (error instanceof Error && error.message.includes('duplicate column name')) {
+				return;
+			}
+
+			throw error;
+		}
 	}
 }

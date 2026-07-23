@@ -23,6 +23,7 @@ export class SummaryAgent implements Agent {
 			correlationId: event.correlationId,
 
 			conversationId: event.conversationId,
+			...(event.projectId !== undefined ? { projectId: event.projectId } : {}),
 			rootTaskId: event.rootTaskId,
 			taskId: event.taskId,
 			...(event.parentTaskId !== undefined ? { parentTaskId: event.parentTaskId } : {}),

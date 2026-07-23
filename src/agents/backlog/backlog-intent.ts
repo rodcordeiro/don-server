@@ -1,4 +1,5 @@
 import type { ProviderRegistry } from '../../core/providers/provider-registry';
+import type { LlmSelection } from '../../core/providers/provider-registry';
 import type { BacklogTask } from './backlog-source';
 
 export type BacklogIntent =
@@ -38,7 +39,10 @@ export type BacklogIntentResult = {
 };
 
 export class BacklogIntentInterpreter {
-	constructor(private readonly providerRegistry?: ProviderRegistry) {}
+	constructor(
+		private readonly providerRegistry?: ProviderRegistry,
+		private readonly llmSelection?: LlmSelection,
+	) {}
 
 	async interpret(instruction: string, tasks: BacklogTask[]): Promise<BacklogIntentResult> {
 		const modelIntent = await this.tryModel(instruction, tasks);
@@ -60,15 +64,13 @@ export class BacklogIntentInterpreter {
 		instruction: string,
 		tasks: BacklogTask[],
 	): Promise<BacklogIntent | undefined> {
-		const provider = this.providerRegistry?.get('ollama');
-
-		if (!provider) {
+		if (!this.providerRegistry) {
 			return undefined;
 		}
 
 		try {
-			const response = await provider.chat({
-				model: 'llama3.1',
+			const response = await this.providerRegistry.chat({
+				...this.llmSelection,
 				format: 'json',
 				messages: [
 					{ role: 'system', content: buildBacklogIntentPrompt(tasks) },

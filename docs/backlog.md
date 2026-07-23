@@ -63,6 +63,14 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `TOOL-005` ShellTool implementada em modo dry-run por padrao e allowlist explicita para execucao real.
 - `SEC-001` a `SEC-005` implementados com token estatico, autenticacao REST/WebSocket, `actor` no envelope, suporte a `x-don-user-id` apos token valido, eventos `security.failure` e documentacao operacional.
 - `AG-003.4` a `AG-003.8` implementados com interpretacao por modelo/fallback deterministico e mutacoes controladas em `docs/backlog.md`.
+- `PRJ-001` a `PRJ-005` implementados com contrato de projeto, indice local, backlog por projeto, consulta de eventos por projeto e propagacao de `projectId`.
+- `LLM-002` a `LLM-007` implementados com provider default por env, selecao por agente, OpenAIProvider, fallback e provider CLI para Cursor/Codex.
+- `AGT-001` a `AGT-005` implementados com template de agente dinamico, contrato validado, registro via chat/REST e catalogo atualizado.
+- `MCP-001` e `MCP-002` implementados com adapter de agente externo HTTP/CLI, registro via REST/chat e alias `/mcp/agents`.
+- `AUD-001` a `AUD-005` implementados com exportacao filtravel, metricas, replay somente leitura e relatorio de falhas.
+- `AG-004.1` a `AG-004.5` implementados com agentes tecnicos especializados para backend, frontend, mobile, DBA e DevOps/release.
+- `TOOL-006`, `AG-005.1` e `AG-005.2` implementados com GitTool read-only, GitAgent e delegacao tecnica deterministica no Planner.
+- `AG-007.1` a `AG-007.5` implementados com SecurityAgent, revisao inicial, leitura de falhas, delegacao pelo Planner e relatorio de risco.
 
 ## Ordem executiva recomendada
 
@@ -255,91 +263,94 @@ Marco: evoluir o BacklogAgent de leitor deterministico para agente capaz de inte
 
 Marco: sair de um backlog unico local e permitir gestao por projeto, preparando armazenamento centralizado.
 
-| ID      | Tarefa                          | Status   | Entregavel validavel                                                           |
-| ------- | ------------------------------- | -------- | ------------------------------------------------------------------------------ |
-| PRJ-001 | Contrato de projeto             | Pendente | Definir `projectId`, nome, origem e repositorio associado.                     |
-| PRJ-002 | Backlog por projeto             | Pendente | Resolver backlog por `projectId`, mantendo fallback para `docs/backlog.md`.    |
-| PRJ-003 | Indice local de projetos        | Pendente | Listar projetos conhecidos e seus backlogs locais.                             |
-| PRJ-004 | Backlog centralizado em nuvem   | Pendente | Definir adapter para persistencia remota sem acoplar agente ao provedor.       |
-| PRJ-005 | Eventos com contexto de projeto | Pendente | Propagar `projectId` nos fluxos de comando, agente e auditoria quando existir. |
+| ID      | Tarefa                          | Status    | Entregavel validavel                                                           |
+| ------- | ------------------------------- | --------- | ------------------------------------------------------------------------------ |
+| PRJ-001 | Contrato de projeto             | Concluido | Definir `projectId`, nome, origem e repositorio associado.                     |
+| PRJ-002 | Backlog por projeto             | Concluido | Resolver backlog por `projectId`, mantendo fallback para `docs/backlog.md`.    |
+| PRJ-003 | Indice local de projetos        | Concluido | Listar projetos conhecidos e seus backlogs locais.                             |
+| PRJ-004 | Backlog centralizado em nuvem   | Concluido | Definir adapter para persistencia remota sem acoplar agente ao provedor.       |
+| PRJ-005 | Eventos com contexto de projeto | Concluido | Propagar `projectId` nos fluxos de comando, agente e auditoria quando existir. |
 
 ## Sprint 13 - Providers avancados
 
 Marco: trocar ou escolher LLM sem alterar agentes.
 
-| ID      | Tarefa                     | Status    | Entregavel validavel                                               |
-| ------- | -------------------------- | --------- | ------------------------------------------------------------------ |
-| LLM-001 | OllamaProvider             | Concluido | Provider local inicial.                                            |
-| LLM-002 | Configurar provider padrao | Pendente  | Provider default configuravel por env.                             |
-| LLM-003 | Selecao por agente         | Pendente  | Agente pode declarar provider/model preferencial.                  |
-| LLM-004 | OpenAIProvider             | Pendente  | Provider OpenAI atras de interface existente.                      |
-| LLM-005 | Fallback de provider       | Pendente  | Falha de provider retorna erro controlado ou fallback configurado. |
+| ID      | Tarefa                           | Status    | Entregavel validavel                                                                                  |
+| ------- | -------------------------------- | --------- | ----------------------------------------------------------------------------------------------------- |
+| LLM-001 | OllamaProvider                   | Concluido | Provider local inicial.                                                                               |
+| LLM-002 | Configurar provider padrao       | Concluido | Provider default configuravel por env.                                                                |
+| LLM-003 | Selecao por agente               | Concluido | Agente pode declarar provider/model preferencial.                                                     |
+| LLM-004 | OpenAIProvider                   | Concluido | Provider OpenAI atras de interface existente.                                                         |
+| LLM-005 | Fallback de provider             | Concluido | Falha de provider retorna erro controlado ou fallback configurado.                                    |
+| LLM-006 | CliLlmProvider para Cursor/Codex | Concluido | Adapter executa Cursor ou Codex instalados via CLI com cwd controlado, timeout, stdout/stderr e erro. |
+| LLM-007 | Formato JSON para provider CLI   | Concluido | Normalizar prompts e validar respostas JSON de CLI antes de Planner/BacklogAgent consumirem o modelo. |
 
 ## Sprint 14 - Template e registro dinamico de agentes
 
 Marco: permitir expansao controlada de agentes sem alterar manualmente o bootstrap a cada novo agente.
 
-| ID      | Tarefa                          | Status   | Entregavel validavel                                                         |
-| ------- | ------------------------------- | -------- | ---------------------------------------------------------------------------- |
-| AGT-001 | Template base de agente         | Pendente | Criar modelo base de agente, similar ao Planner, para novos agentes.         |
-| AGT-002 | Contrato de definicao de agente | Pendente | Definir nome, descricao, capacidades, exemplos, provider/model e limites.    |
-| AGT-003 | Validacao de definicao          | Pendente | Rejeitar definicoes duplicadas, inseguras ou incompletas.                    |
-| AGT-004 | Registro de agentes via chat    | Pendente | Permitir enviar definicao pelo chat e registrar agente em tempo de execucao. |
-| AGT-005 | Listagem de agentes dinamicos   | Pendente | Expor catalogo atualizado incluindo agentes registrados em runtime.          |
+| ID      | Tarefa                          | Status    | Entregavel validavel                                                         |
+| ------- | ------------------------------- | --------- | ---------------------------------------------------------------------------- |
+| AGT-001 | Template base de agente         | Concluido | Criar modelo base de agente, similar ao Planner, para novos agentes.         |
+| AGT-002 | Contrato de definicao de agente | Concluido | Definir nome, descricao, capacidades, exemplos, provider/model e limites.    |
+| AGT-003 | Validacao de definicao          | Concluido | Rejeitar definicoes duplicadas, inseguras ou incompletas.                    |
+| AGT-004 | Registro de agentes via chat    | Concluido | Permitir enviar definicao pelo chat e registrar agente em tempo de execucao. |
+| AGT-005 | Listagem de agentes dinamicos   | Concluido | Expor catalogo atualizado incluindo agentes registrados em runtime.          |
 
 ## Sprint 14.1 - MCP para agentes externos
 
 Marco: permitir que agentes de outras fontes se conectem ao Don Server e aparecam no chat como agentes registraveis.
 
-| ID      | Tarefa                                | Status   | Entregavel validavel                                                                                         |
-| ------- | ------------------------------------- | -------- | ------------------------------------------------------------------------------------------------------------ |
-| MCP-001 | MCP para registro de agentes externos | Pendente | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
+| ID      | Tarefa                                      | Status    | Entregavel validavel                                                                                         |
+| ------- | ------------------------------------------- | --------- | ------------------------------------------------------------------------------------------------------------ |
+| MCP-001 | MCP para registro de agentes externos       | Concluido | Servidor MCP permite que agentes externos se conectem, registrem metadata e sejam expostos no catalogo/chat. |
+| MCP-002 | Cursor/Codex como agente externo temporario | Concluido | Permitir registrar Cursor ou Codex instalado como agente externo enquanto Ollama nao for viavel localmente.  |
 
 ## Sprint 15 - Auditoria operacional
 
 Marco: eventos persistidos viram material confiavel de analise e recuperacao.
 
-| ID      | Tarefa                             | Status   | Entregavel validavel                                                |
-| ------- | ---------------------------------- | -------- | ------------------------------------------------------------------- |
-| AUD-001 | Export JSON                        | Pendente | Exporta eventos filtrados por conversation/task/correlation.        |
-| AUD-002 | Metricas basicas de execucao       | Pendente | Conta eventos por tipo, agente, status e duracao quando disponivel. |
-| AUD-003 | Replay somente leitura de task     | Pendente | Reconstrui timeline de uma task sem reexecutar agentes.             |
-| AUD-004 | Replay somente leitura de conversa | Pendente | Reconstrui timeline de uma conversa sem reexecutar agentes.         |
-| AUD-005 | Relatorio de falhas                | Pendente | Lista `agent.error` e `tool.error` por periodo/filtro.              |
+| ID      | Tarefa                             | Status    | Entregavel validavel                                                |
+| ------- | ---------------------------------- | --------- | ------------------------------------------------------------------- |
+| AUD-001 | Export JSON                        | Concluido | Exporta eventos filtrados por conversation/task/correlation.        |
+| AUD-002 | Metricas basicas de execucao       | Concluido | Conta eventos por tipo, agente, status e duracao quando disponivel. |
+| AUD-003 | Replay somente leitura de task     | Concluido | Reconstrui timeline de uma task sem reexecutar agentes.             |
+| AUD-004 | Replay somente leitura de conversa | Concluido | Reconstrui timeline de uma conversa sem reexecutar agentes.         |
+| AUD-005 | Relatorio de falhas                | Concluido | Lista `agent.error` e `tool.error` por periodo/filtro.              |
 
 ## Sprint 16 - Agentes tecnicos por dominio
 
 Marco: substituir o CodeAgent generico por agentes especializados por dominio tecnico.
 
-| ID       | Tarefa             | Status   | Entregavel validavel                                                         |
-| -------- | ------------------ | -------- | ---------------------------------------------------------------------------- |
-| AG-004.1 | BackendAgent       | Pendente | Analisa APIs, services, regras de negocio, contratos e persistencia backend. |
-| AG-004.2 | FrontendAgent      | Pendente | Analisa UI web, componentes, estado, integracao e acessibilidade.            |
-| AG-004.3 | MobileAgent        | Pendente | Analisa React Native/Expo, navegacao, estado e comportamento mobile.         |
-| AG-004.4 | DbaAgent           | Pendente | Analisa schema, queries, indices, migrations e riscos de dados.              |
-| AG-004.5 | DevOpsReleaseAgent | Pendente | Analisa build, deploy, ambiente, rollback e confiabilidade operacional.      |
+| ID       | Tarefa             | Status    | Entregavel validavel                                                         |
+| -------- | ------------------ | --------- | ---------------------------------------------------------------------------- |
+| AG-004.1 | BackendAgent       | Concluido | Analisa APIs, services, regras de negocio, contratos e persistencia backend. |
+| AG-004.2 | FrontendAgent      | Concluido | Analisa UI web, componentes, estado, integracao e acessibilidade.            |
+| AG-004.3 | MobileAgent        | Concluido | Analisa React Native/Expo, navegacao, estado e comportamento mobile.         |
+| AG-004.4 | DbaAgent           | Concluido | Analisa schema, queries, indices, migrations e riscos de dados.              |
+| AG-004.5 | DevOpsReleaseAgent | Concluido | Analisa build, deploy, ambiente, rollback e confiabilidade operacional.      |
 
 ## Sprint 17 - Git e delegacao tecnica
 
 Marco: permitir que agentes tecnicos consultem contexto Git sem cada agente interagir diretamente com Git.
 
-| ID       | Tarefa                         | Status   | Entregavel validavel                                                        |
-| -------- | ------------------------------ | -------- | --------------------------------------------------------------------------- |
-| TOOL-006 | GitTool status/diff            | Pendente | Consulta `git status` e diff sem alterar repositorio.                       |
-| AG-005.1 | GitAgent status                | Pendente | Usa GitTool para resumir estado do repositorio e centraliza permissoes Git. |
-| AG-005.2 | Planner delega analise tecnica | Pendente | Planner aciona agentes de dominio e GitAgent quando pedido exigir.          |
+| ID       | Tarefa                         | Status    | Entregavel validavel                                                        |
+| -------- | ------------------------------ | --------- | --------------------------------------------------------------------------- |
+| TOOL-006 | GitTool status/diff            | Concluido | Consulta `git status` e diff sem alterar repositorio.                       |
+| AG-005.1 | GitAgent status                | Concluido | Usa GitTool para resumir estado do repositorio e centraliza permissoes Git. |
+| AG-005.2 | Planner delega analise tecnica | Concluido | Planner aciona agentes de dominio e GitAgent quando pedido exigir.          |
 
 ## Sprint 18 - SecurityAgent
 
 Marco: criar agente especializado para revisao de seguranca em fluxos, codigo e operacao.
 
-| ID       | Tarefa                        | Status   | Entregavel validavel                                                       |
-| -------- | ----------------------------- | -------- | -------------------------------------------------------------------------- |
-| AG-007.1 | SecurityAgent metadata        | Pendente | Registrar agente com capacidades de autenticacao, autorizacao e dados.     |
-| AG-007.2 | SecurityAgent analise inicial | Pendente | Avaliar riscos de auth, autorizacao, dados sensiveis e superficie exposta. |
-| AG-007.3 | SecurityAgent revisa eventos  | Pendente | Identificar eventos com dados sensiveis ou ausencia de identidade.         |
-| AG-007.4 | Planner delega seguranca      | Pendente | Planner aciona SecurityAgent quando pedido envolver seguranca.             |
-| AG-007.5 | Relatorio de risco            | Pendente | Publicar severidade, evidencia, impacto e recomendacao.                    |
+| ID       | Tarefa                        | Status    | Entregavel validavel                                                       |
+| -------- | ----------------------------- | --------- | -------------------------------------------------------------------------- |
+| AG-007.1 | SecurityAgent metadata        | Concluido | Registrar agente com capacidades de autenticacao, autorizacao e dados.     |
+| AG-007.2 | SecurityAgent analise inicial | Concluido | Avaliar riscos de auth, autorizacao, dados sensiveis e superficie exposta. |
+| AG-007.3 | SecurityAgent revisa eventos  | Concluido | Identificar eventos com dados sensiveis ou ausencia de identidade.         |
+| AG-007.4 | Planner delega seguranca      | Concluido | Planner aciona SecurityAgent quando pedido envolver seguranca.             |
+| AG-007.5 | Relatorio de risco            | Concluido | Publicar severidade, evidencia, impacto e recomendacao.                    |
 
 ## Sprint 19 - UI minima
 
@@ -451,6 +462,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 12 para permitir gestao por projeto e preparar backlogs centralizados.
+Executar a Sprint 19 para criar primeira central visual de comando e observabilidade.
 
-Motivo: o BacklogAgent ja interpreta recortes e prepara alteracoes controladas no backlog local. O proximo ganho validavel e sair de um unico `docs/backlog.md` e introduzir contexto de projeto.
+Motivo: SecurityAgent ja publica relatorio de risco e usa falhas persistidas como evidencia. O proximo ganho validavel e expor chat/timeline em UI minima.
