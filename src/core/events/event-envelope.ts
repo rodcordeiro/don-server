@@ -20,6 +20,7 @@ type BaseEnvelope = {
 	correlationId: string;
 
 	conversationId: string;
+	projectId?: string;
 	rootTaskId: string;
 	taskId: string;
 	parentTaskId?: string;

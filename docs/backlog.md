@@ -63,6 +63,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `TOOL-005` ShellTool implementada em modo dry-run por padrao e allowlist explicita para execucao real.
 - `SEC-001` a `SEC-005` implementados com token estatico, autenticacao REST/WebSocket, `actor` no envelope, suporte a `x-don-user-id` apos token valido, eventos `security.failure` e documentacao operacional.
 - `AG-003.4` a `AG-003.8` implementados com interpretacao por modelo/fallback deterministico e mutacoes controladas em `docs/backlog.md`.
+- `PRJ-001` a `PRJ-005` implementados com contrato de projeto, indice local, backlog por projeto, consulta de eventos por projeto e propagacao de `projectId`.
 
 ## Ordem executiva recomendada
 
@@ -255,13 +256,13 @@ Marco: evoluir o BacklogAgent de leitor deterministico para agente capaz de inte
 
 Marco: sair de um backlog unico local e permitir gestao por projeto, preparando armazenamento centralizado.
 
-| ID      | Tarefa                          | Status   | Entregavel validavel                                                           |
-| ------- | ------------------------------- | -------- | ------------------------------------------------------------------------------ |
-| PRJ-001 | Contrato de projeto             | Pendente | Definir `projectId`, nome, origem e repositorio associado.                     |
-| PRJ-002 | Backlog por projeto             | Pendente | Resolver backlog por `projectId`, mantendo fallback para `docs/backlog.md`.    |
-| PRJ-003 | Indice local de projetos        | Pendente | Listar projetos conhecidos e seus backlogs locais.                             |
-| PRJ-004 | Backlog centralizado em nuvem   | Pendente | Definir adapter para persistencia remota sem acoplar agente ao provedor.       |
-| PRJ-005 | Eventos com contexto de projeto | Pendente | Propagar `projectId` nos fluxos de comando, agente e auditoria quando existir. |
+| ID      | Tarefa                          | Status    | Entregavel validavel                                                           |
+| ------- | ------------------------------- | --------- | ------------------------------------------------------------------------------ |
+| PRJ-001 | Contrato de projeto             | Concluido | Definir `projectId`, nome, origem e repositorio associado.                     |
+| PRJ-002 | Backlog por projeto             | Concluido | Resolver backlog por `projectId`, mantendo fallback para `docs/backlog.md`.    |
+| PRJ-003 | Indice local de projetos        | Concluido | Listar projetos conhecidos e seus backlogs locais.                             |
+| PRJ-004 | Backlog centralizado em nuvem   | Concluido | Definir adapter para persistencia remota sem acoplar agente ao provedor.       |
+| PRJ-005 | Eventos com contexto de projeto | Concluido | Propagar `projectId` nos fluxos de comando, agente e auditoria quando existir. |
 
 ## Sprint 13 - Providers avancados
 
@@ -454,6 +455,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 12 para permitir gestao por projeto e preparar backlogs centralizados.
+Executar a Sprint 13 para trocar ou escolher LLM sem alterar agentes.
 
-Motivo: o BacklogAgent ja interpreta recortes e prepara alteracoes controladas no backlog local. O proximo ganho validavel e sair de um unico `docs/backlog.md` e introduzir contexto de projeto.
+Motivo: a gestao por projeto ja propaga `projectId` e resolve backlogs por projeto. O proximo ganho validavel e permitir providers configuraveis, incluindo alternativas ao Ollama.

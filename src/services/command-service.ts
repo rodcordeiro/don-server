@@ -9,6 +9,7 @@ export type HandleUserCommandInput = UserCommand;
 
 export type HandleUserCommandResult = {
 	conversationId: string;
+	projectId?: string;
 	taskId: string;
 	correlationId: string;
 	target: string;
@@ -32,6 +33,7 @@ export class CommandService {
 			eventId: randomUUID(),
 			correlationId,
 			conversationId,
+			...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
 			rootTaskId: taskId,
 			taskId,
 			type: 'human.instruction',
@@ -50,6 +52,7 @@ export class CommandService {
 			eventId: randomUUID(),
 			correlationId,
 			conversationId,
+			...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
 			rootTaskId: taskId,
 			taskId,
 			type: 'agent.command',
@@ -64,6 +67,7 @@ export class CommandService {
 
 		return {
 			conversationId,
+			...(input.projectId !== undefined ? { projectId: input.projectId } : {}),
 			taskId,
 			correlationId,
 			target: parsed.target,

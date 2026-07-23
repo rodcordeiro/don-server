@@ -10,6 +10,7 @@ import type { AuthenticatedActor } from '../domain';
 
 type ClientMessage = {
 	conversationId?: string;
+	projectId?: string;
 	content: string;
 };
 
@@ -88,7 +89,8 @@ export class ChatGateway {
 			}
 
 			const result = await this.commandService.handleUserCommand({
-				conversationId: message.conversationId as string,
+				...(message.conversationId !== undefined ? { conversationId: message.conversationId } : {}),
+				...(message.projectId !== undefined ? { projectId: message.projectId } : {}),
 				content: message.content,
 				source: 'websocket',
 				actor,

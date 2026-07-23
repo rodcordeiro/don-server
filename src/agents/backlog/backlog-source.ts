@@ -1,4 +1,5 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { ProjectService } from '../../services/project-service';
 
 export type BacklogTask = {
 	id: string;
@@ -14,24 +15,29 @@ export type BacklogSprint = {
 };
 
 export class BacklogSource {
-	constructor(private readonly filePath = 'docs/backlog.md') {}
+	constructor(
+		private readonly filePath = 'docs/backlog.md',
+		private readonly projectService = new ProjectService(),
+	) {}
 
-	async read(): Promise<BacklogSprint[]> {
-		const content = await readFile(this.filePath, 'utf8');
+	async read(projectId?: string): Promise<BacklogSprint[]> {
+		const content = await readFile(await this.resolveFilePath(projectId), 'utf8');
 		return parseBacklogMarkdown(content);
 	}
 
 	async addTask(input: {
+		projectId?: string;
 		sprint: string;
 		id: string;
 		title: string;
 		status: string;
 		deliverable: string;
 	}): Promise<BacklogMutationResult> {
-		const content = await readFile(this.filePath, 'utf8');
+		const filePath = await this.resolveFilePath(input.projectId);
+		const content = await readFile(filePath, 'utf8');
 		const next = addTaskToMarkdown(content, input);
 
-		await writeFile(this.filePath, next.content);
+		await writeFile(filePath, next.content);
 
 		return next;
 	}
@@ -43,22 +49,33 @@ export class BacklogSource {
 			status?: string;
 			deliverable?: string;
 		},
+		projectId?: string,
 	): Promise<BacklogMutationResult> {
-		const content = await readFile(this.filePath, 'utf8');
+		const filePath = await this.resolveFilePath(projectId);
+		const content = await readFile(filePath, 'utf8');
 		const next = updateTaskInMarkdown(content, id, patch);
 
-		await writeFile(this.filePath, next.content);
+		await writeFile(filePath, next.content);
 
 		return next;
 	}
 
-	async removeTask(id: string): Promise<BacklogMutationResult> {
-		const content = await readFile(this.filePath, 'utf8');
+	async removeTask(id: string, projectId?: string): Promise<BacklogMutationResult> {
+		const filePath = await this.resolveFilePath(projectId);
+		const content = await readFile(filePath, 'utf8');
 		const next = removeTaskFromMarkdown(content, id);
 
-		await writeFile(this.filePath, next.content);
+		await writeFile(filePath, next.content);
 
 		return next;
+	}
+
+	private async resolveFilePath(projectId?: string): Promise<string> {
+		if (!projectId) {
+			return this.filePath;
+		}
+
+		return await this.projectService.resolveBacklogPath(projectId);
 	}
 }
 

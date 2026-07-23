@@ -8,6 +8,10 @@ export class EventService {
 		return this.toTimeline(await this.eventStore.listByConversation(conversationId));
 	}
 
+	async listByProject(projectId: string): Promise<EventEnvelope[]> {
+		return this.toTimeline(await this.eventStore.listByProject(projectId));
+	}
+
 	async listByTask(taskId: string): Promise<EventEnvelope[]> {
 		return this.toTimeline(await this.eventStore.listByTask(taskId));
 	}

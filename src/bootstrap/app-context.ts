@@ -14,6 +14,7 @@ import type { EventStore } from '../store/event-store';
 import { type CommandService } from '../services/command-service';
 import type { EventService } from '../services/event-service';
 import type { AuthService } from '../services/auth-service';
+import type { ProjectService } from '../services/project-service';
 export type AppContext = {
 	eventStore: EventStore;
 	eventBus: EventBus;
@@ -27,6 +28,7 @@ export type AppContext = {
 	restGateway: RestGateway;
 	llmProvider: LlmProvider;
 	providerRegistry: ProviderRegistry;
+	projectService: ProjectService;
 	commandService: CommandService;
 	eventService: EventService;
 	authService: AuthService;
