@@ -21,8 +21,8 @@ export class GitTool implements Tool<GitToolInput, GitToolOutput> {
 	readonly metadata: ToolMetadata = {
 		name: 'git-tool',
 		description: 'Consulta status e diff do repositorio sem executar operacoes de escrita.',
-		capabilities: ['git.status', 'git.diff.readonly'],
-		examples: ['Consultar git status', 'Resumir git diff'],
+		capabilities: ['git.status', 'git.diff.readonly', 'git.redact-secrets', 'git.write-blocked'],
+		examples: ['Consultar git status', 'Resumir git diff com segredos mascarados'],
 	};
 
 	async execute(input: GitToolInput): Promise<ToolResult<GitToolOutput>> {
@@ -37,11 +37,17 @@ export class GitTool implements Tool<GitToolInput, GitToolOutput> {
 			...(result.exitCode === 0 ? {} : { error: `git ${args.join(' ')} falhou.` }),
 			output: {
 				operation: input.operation,
-				stdout: result.stdout,
-				stderr: result.stderr,
+				stdout: redactSensitiveOutput(result.stdout),
+				stderr: redactSensitiveOutput(result.stderr),
 			},
 		};
 	}
+}
+
+function redactSensitiveOutput(output: string): string {
+	return output
+		.replace(/(token|secret|password|api[_-]?key)(\s*[:=]\s*)([^\s'"]+)/gi, '$1$2[REDACTED]')
+		.replace(/(Authorization:\s*Bearer\s+)[^\s'"]+/gi, '$1[REDACTED]');
 }
 
 function runGit(
