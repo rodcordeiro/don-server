@@ -69,6 +69,7 @@ O Don Server esta sendo estruturado como uma plataforma local de multiagentes or
 - `MCP-001` e `MCP-002` implementados com adapter de agente externo HTTP/CLI, registro via REST/chat e alias `/mcp/agents`.
 - `AUD-001` a `AUD-005` implementados com exportacao filtravel, metricas, replay somente leitura e relatorio de falhas.
 - `AG-004.1` a `AG-004.5` implementados com agentes tecnicos especializados para backend, frontend, mobile, DBA e DevOps/release.
+- `TOOL-006`, `AG-005.1` e `AG-005.2` implementados com GitTool read-only, GitAgent e delegacao tecnica deterministica no Planner.
 
 ## Ordem executiva recomendada
 
@@ -332,11 +333,11 @@ Marco: substituir o CodeAgent generico por agentes especializados por dominio te
 
 Marco: permitir que agentes tecnicos consultem contexto Git sem cada agente interagir diretamente com Git.
 
-| ID       | Tarefa                         | Status   | Entregavel validavel                                                        |
-| -------- | ------------------------------ | -------- | --------------------------------------------------------------------------- |
-| TOOL-006 | GitTool status/diff            | Pendente | Consulta `git status` e diff sem alterar repositorio.                       |
-| AG-005.1 | GitAgent status                | Pendente | Usa GitTool para resumir estado do repositorio e centraliza permissoes Git. |
-| AG-005.2 | Planner delega analise tecnica | Pendente | Planner aciona agentes de dominio e GitAgent quando pedido exigir.          |
+| ID       | Tarefa                         | Status    | Entregavel validavel                                                        |
+| -------- | ------------------------------ | --------- | --------------------------------------------------------------------------- |
+| TOOL-006 | GitTool status/diff            | Concluido | Consulta `git status` e diff sem alterar repositorio.                       |
+| AG-005.1 | GitAgent status                | Concluido | Usa GitTool para resumir estado do repositorio e centraliza permissoes Git. |
+| AG-005.2 | Planner delega analise tecnica | Concluido | Planner aciona agentes de dominio e GitAgent quando pedido exigir.          |
 
 ## Sprint 18 - SecurityAgent
 
@@ -460,6 +461,6 @@ Marco: novas integracoes depois do nucleo estar validado.
 
 ## Proximo passo recomendado
 
-Executar a Sprint 17 para permitir que agentes tecnicos consultem contexto Git sem interagir diretamente com Git.
+Executar a Sprint 18 para criar agente especializado para revisao de seguranca em fluxos, codigo e operacao.
 
-Motivo: agentes tecnicos por dominio ja estao registrados. O proximo ganho validavel e oferecer contexto Git seguro para analises tecnicas.
+Motivo: agentes tecnicos ja podem receber contexto Git read-only via GitAgent. O proximo ganho validavel e especializar revisao de seguranca.

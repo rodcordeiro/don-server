@@ -74,7 +74,31 @@ export class PlannerAgent implements Agent {
 		const normalized = userRequest.toLowerCase();
 
 		if (!normalized.includes('backlog')) {
-			return undefined;
+			const technicalTarget = selectTechnicalTarget(normalized);
+
+			if (!technicalTarget) {
+				return undefined;
+			}
+
+			const steps: ExecutionStep[] = [
+				{
+					id: 'technical-1',
+					target: technicalTarget,
+					instruction: userRequest,
+					reason: 'Pedido menciona analise tecnica de dominio.',
+				},
+			];
+
+			if (mentionsGit(normalized) && technicalTarget !== 'git-agent') {
+				steps.push({
+					id: 'git-1',
+					target: 'git-agent',
+					instruction: userRequest,
+					reason: 'Pedido tambem precisa de contexto Git read-only.',
+				});
+			}
+
+			return { steps };
 		}
 
 		return {
@@ -144,4 +168,44 @@ export class PlannerAgent implements Agent {
 			createdAt: new Date().toISOString(),
 		});
 	}
+}
+
+function mentionsGit(normalizedRequest: string): boolean {
+	return normalizedRequest.includes('git') || normalizedRequest.includes('diff');
+}
+
+function selectTechnicalTarget(normalizedRequest: string): string | undefined {
+	if (mentionsGit(normalizedRequest)) {
+		return 'git-agent';
+	}
+
+	if (normalizedRequest.includes('backend') || normalizedRequest.includes('api')) {
+		return 'backend-agent';
+	}
+
+	if (normalizedRequest.includes('frontend') || normalizedRequest.includes('ui')) {
+		return 'frontend-agent';
+	}
+
+	if (normalizedRequest.includes('mobile') || normalizedRequest.includes('react native')) {
+		return 'mobile-agent';
+	}
+
+	if (
+		normalizedRequest.includes('banco') ||
+		normalizedRequest.includes('database') ||
+		normalizedRequest.includes('sql')
+	) {
+		return 'dba-agent';
+	}
+
+	if (
+		normalizedRequest.includes('devops') ||
+		normalizedRequest.includes('deploy') ||
+		normalizedRequest.includes('release')
+	) {
+		return 'devops-release-agent';
+	}
+
+	return undefined;
 }
