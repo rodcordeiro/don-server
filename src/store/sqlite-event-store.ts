@@ -107,6 +107,17 @@ export class SqliteEventStore implements EventStore {
 		);
 	}
 
+	async listAll(): Promise<EventEnvelope[]> {
+		const rows = await this.db.all<EventRow[]>(
+			`
+      SELECT * FROM events
+      ORDER BY created_at ASC
+      `,
+		);
+
+		return rows.map(row => this.toEvent(row));
+	}
+
 	async listByConversation(conversationId: string): Promise<EventEnvelope[]> {
 		const rows = await this.db.all<EventRow[]>(
 			`

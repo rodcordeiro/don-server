@@ -14,6 +14,10 @@ export class FileEventStore implements EventStore {
 		await appendFile(this.path, `${JSON.stringify(event)}\n`, 'utf-8');
 	}
 
+	async listAll(): Promise<EventEnvelope[]> {
+		return await this.readAll();
+	}
+
 	async listByConversation(conversationId: string): Promise<EventEnvelope[]> {
 		const events = await this.readAll();
 

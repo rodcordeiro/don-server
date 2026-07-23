@@ -1,7 +1,7 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { AuthenticatedActor } from '../domain';
 import type { CommandService } from '../services/command-service';
-import type { EventService } from '../services/event-service';
+import type { EventQueryFilters, EventService } from '../services/event-service';
 import type { AuthService } from '../services/auth-service';
 import type { ProjectService } from '../services/project-service';
 import type { AgentRegistry } from '../core/agents/agent-registry';
@@ -54,6 +54,10 @@ export class RestGateway {
 			}
 
 			if (request.method === 'GET') {
+				if (await this.handleAuditQuery(url, response)) {
+					return true;
+				}
+
 				if (url.pathname === '/agents') {
 					this.sendJson(response, 200, { agents: this.agentRegistry.getCatalog() });
 					return true;
@@ -116,6 +120,53 @@ export class RestGateway {
 		const result = this.externalAgentService.register(await this.readJson(request));
 
 		this.sendJson(response, 201, result);
+	}
+
+	private async handleAuditQuery(url: URL, response: ServerResponse): Promise<boolean> {
+		if (url.pathname === '/events/export') {
+			this.sendJson(response, 200, {
+				events: await this.eventService.exportEvents(readFilters(url)),
+			});
+			return true;
+		}
+
+		if (url.pathname === '/events/metrics') {
+			this.sendJson(response, 200, {
+				metrics: await this.eventService.getMetrics(readFilters(url)),
+			});
+			return true;
+		}
+
+		if (url.pathname === '/events/failures') {
+			this.sendJson(response, 200, {
+				events: await this.eventService.listFailures(readFilters(url)),
+			});
+			return true;
+		}
+
+		const taskReplayMatch = url.pathname.match(/^\/tasks\/([^/]+)\/replay$/);
+
+		if (taskReplayMatch?.[1]) {
+			this.sendJson(
+				response,
+				200,
+				await this.eventService.replayTask(decodeURIComponent(taskReplayMatch[1])),
+			);
+			return true;
+		}
+
+		const conversationReplayMatch = url.pathname.match(/^\/conversations\/([^/]+)\/replay$/);
+
+		if (conversationReplayMatch?.[1]) {
+			this.sendJson(
+				response,
+				200,
+				await this.eventService.replayConversation(decodeURIComponent(conversationReplayMatch[1])),
+			);
+			return true;
+		}
+
+		return false;
 	}
 
 	private async handleProjectQuery(url: URL, response: ServerResponse): Promise<boolean> {
@@ -235,4 +286,25 @@ function extractToken(request: IncomingMessage): string | undefined {
 	const headerToken = request.headers['x-don-token'];
 
 	return typeof headerToken === 'string' ? headerToken : undefined;
+}
+
+function readFilters(url: URL): EventQueryFilters {
+	const filters: EventQueryFilters = {};
+
+	addFilter(filters, 'conversationId', url.searchParams.get('conversationId'));
+	addFilter(filters, 'projectId', url.searchParams.get('projectId'));
+	addFilter(filters, 'taskId', url.searchParams.get('taskId'));
+	addFilter(filters, 'correlationId', url.searchParams.get('correlationId'));
+
+	return filters;
+}
+
+function addFilter(
+	filters: EventQueryFilters,
+	key: keyof EventQueryFilters,
+	value: string | null,
+): void {
+	if (value?.trim()) {
+		filters[key] = value;
+	}
 }
