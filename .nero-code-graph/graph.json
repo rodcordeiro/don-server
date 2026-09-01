@@ -1,0 +1,6479 @@
+{
+  "schemaVersion": 1,
+  "target": {
+    "repoKey": "don-server",
+    "rootLabel": "don-server"
+  },
+  "builtAt": "2026-09-01T05:14:49.318Z",
+  "sourceFingerprint": "f71866949a222096",
+  "extractorId": "typescript-ast",
+  "extractorVersion": "0.1.0",
+  "nodes": [
+    {
+      "id": "file:scripts/ws-client.ts#ws-client.ts",
+      "kind": "file",
+      "name": "ws-client.ts",
+      "location": {
+        "file": "scripts/ws-client.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "kind": "file",
+      "name": "backlog-agent.ts",
+      "location": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/backlog/backlog-agent.ts#BacklogAgent",
+      "kind": "class",
+      "name": "BacklogAgent",
+      "location": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 15
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 48
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-agent.ts#executeIntent",
+      "kind": "method",
+      "name": "executeIntent",
+      "location": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 82
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/backlog/backlog-intent.ts#backlog-intent.ts",
+      "kind": "file",
+      "name": "backlog-intent.ts",
+      "location": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/backlog/backlog-intent.ts#BacklogIntentInterpreter",
+      "kind": "class",
+      "name": "BacklogIntentInterpreter",
+      "location": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 42
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-intent.ts#interpret",
+      "kind": "method",
+      "name": "interpret",
+      "location": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 48
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-intent.ts#tryModel",
+      "kind": "method",
+      "name": "tryModel",
+      "location": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 64
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/backlog/backlog-source.ts#backlog-source.ts",
+      "kind": "file",
+      "name": "backlog-source.ts",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "kind": "class",
+      "name": "BacklogSource",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 18
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-source.ts#read",
+      "kind": "method",
+      "name": "read",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 24
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-source.ts#addTask",
+      "kind": "method",
+      "name": "addTask",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 29
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-source.ts#updateTask",
+      "kind": "method",
+      "name": "updateTask",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 46
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-source.ts#removeTask",
+      "kind": "method",
+      "name": "removeTask",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 64
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/backlog/backlog-source.ts#resolveFilePath",
+      "kind": "method",
+      "name": "resolveFilePath",
+      "location": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 74
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "kind": "file",
+      "name": "dynamic-agent.ts",
+      "location": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/dynamic/dynamic-agent.ts#DynamicAgent",
+      "kind": "class",
+      "name": "DynamicAgent",
+      "location": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 7
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/dynamic/dynamic-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 26
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "kind": "file",
+      "name": "external-agent.ts",
+      "location": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/external/external-agent.ts#ExternalAgent",
+      "kind": "class",
+      "name": "ExternalAgent",
+      "location": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 7
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/external/external-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 24
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/external/external-agent.ts#callHttp",
+      "kind": "method",
+      "name": "callHttp",
+      "location": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 49
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/external/external-agent.ts#callCli",
+      "kind": "method",
+      "name": "callCli",
+      "location": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 70
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "kind": "file",
+      "name": "git-agent.ts",
+      "location": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/git/git-agent.ts#GitAgent",
+      "kind": "class",
+      "name": "GitAgent",
+      "location": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 6
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/git/git-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 20
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/planner/execution-plan-validator.ts#execution-plan-validator.ts",
+      "kind": "file",
+      "name": "execution-plan-validator.ts",
+      "location": {
+        "file": "src/agents/planner/execution-plan-validator.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "kind": "file",
+      "name": "planner-agent.ts",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "kind": "class",
+      "name": "PlannerAgent",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 12
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/planner/planner-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 38
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/planner/planner-agent.ts#createPlan",
+      "kind": "method",
+      "name": "createPlan",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 60
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/planner/planner-agent.ts#createModelPlan",
+      "kind": "method",
+      "name": "createModelPlan",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 71
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/planner/planner-agent.ts#createDeterministicPlan",
+      "kind": "method",
+      "name": "createDeterministicPlan",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 107
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/planner/planner-agent.ts#dispatch",
+      "kind": "method",
+      "name": "dispatch",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 161
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/planner/planner-agent.ts#say",
+      "kind": "method",
+      "name": "say",
+      "location": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 187
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/planner/planner-prompt-builder.ts#planner-prompt-builder.ts",
+      "kind": "file",
+      "name": "planner-prompt-builder.ts",
+      "location": {
+        "file": "src/agents/planner/planner-prompt-builder.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/rabbit/rabbit-agent.ts#rabbit-agent.ts",
+      "kind": "file",
+      "name": "rabbit-agent.ts",
+      "location": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/rabbit/rabbit-agent.ts#RabbitAgent",
+      "kind": "class",
+      "name": "RabbitAgent",
+      "location": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 5
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/rabbit/rabbit-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 21
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "kind": "file",
+      "name": "security-agent.ts",
+      "location": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/security/security-agent.ts#SecurityAgent",
+      "kind": "class",
+      "name": "SecurityAgent",
+      "location": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 6
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/security/security-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 26
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "kind": "file",
+      "name": "summary-agent.ts",
+      "location": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/summary/summary-agent.ts#SummaryAgent",
+      "kind": "class",
+      "name": "SummaryAgent",
+      "location": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 8
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/summary/summary-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 21
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/agents/technical/technical-review-agent.ts#technical-review-agent.ts",
+      "kind": "file",
+      "name": "technical-review-agent.ts",
+      "location": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/agents/technical/technical-review-agent.ts#TechnicalReviewAgent",
+      "kind": "class",
+      "name": "TechnicalReviewAgent",
+      "location": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 15
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/technical/technical-review-agent.ts#handle",
+      "kind": "method",
+      "name": "handle",
+      "location": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 31
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/agents/technical/technical-review-agent.ts#buildReview",
+      "kind": "method",
+      "name": "buildReview",
+      "location": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 54
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "kind": "file",
+      "name": "app-context.ts",
+      "location": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "kind": "file",
+      "name": "bootstrap.ts",
+      "location": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/bootstrap/bootstrap.ts#Bootstrap",
+      "kind": "class",
+      "name": "Bootstrap",
+      "location": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 38
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/bootstrap/bootstrap.ts#create",
+      "kind": "method",
+      "name": "create",
+      "location": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 39
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/bootstrap/bootstrap.ts#start",
+      "kind": "method",
+      "name": "start",
+      "location": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 135
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "file",
+      "name": "agent-registry.ts",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "kind": "class",
+      "name": "AgentRegistry",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 5
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "method",
+      "name": "register",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 8
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-registry.ts#get",
+      "kind": "method",
+      "name": "get",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 12
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-registry.ts#has",
+      "kind": "method",
+      "name": "has",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 16
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-registry.ts#getAll",
+      "kind": "method",
+      "name": "getAll",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 20
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-registry.ts#getCatalog",
+      "kind": "method",
+      "name": "getCatalog",
+      "location": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 24
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "kind": "file",
+      "name": "agent-router.ts",
+      "location": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/agents/agent-router.ts#AgentRouter",
+      "kind": "class",
+      "name": "AgentRouter",
+      "location": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 8
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-router.ts#start",
+      "kind": "method",
+      "name": "start",
+      "location": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 15
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-router.ts#publishError",
+      "kind": "method",
+      "name": "publishError",
+      "location": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 35
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "kind": "file",
+      "name": "agent-runtime.ts",
+      "location": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/agents/agent-runtime.ts#AgentRuntime",
+      "kind": "class",
+      "name": "AgentRuntime",
+      "location": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 5
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-runtime.ts#execute",
+      "kind": "method",
+      "name": "execute",
+      "location": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 11
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-runtime.ts#publishStarted",
+      "kind": "method",
+      "name": "publishStarted",
+      "location": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 25
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-runtime.ts#publishCompleted",
+      "kind": "method",
+      "name": "publishCompleted",
+      "location": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 45
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/agents/agent-runtime.ts#publishError",
+      "kind": "method",
+      "name": "publishError",
+      "location": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 70
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "file",
+      "name": "agent.ts",
+      "location": {
+        "file": "src/core/agents/agent.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "file",
+      "name": "event-bus.ts",
+      "location": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/events/event-bus.ts#EventBus",
+      "kind": "class",
+      "name": "EventBus",
+      "location": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 7
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/events/event-bus.ts#publish",
+      "kind": "method",
+      "name": "publish",
+      "location": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 12
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/events/event-bus.ts#subscribe",
+      "kind": "method",
+      "name": "subscribe",
+      "location": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 19
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/events/event-bus.ts#subscribeAll",
+      "kind": "method",
+      "name": "subscribeAll",
+      "location": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 25
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "file",
+      "name": "event-envelope.ts",
+      "location": {
+        "file": "src/core/events/event-envelope.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/events/event-types.ts#event-types.ts",
+      "kind": "file",
+      "name": "event-types.ts",
+      "location": {
+        "file": "src/core/events/event-types.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/providers/cli-llm-provider.ts#cli-llm-provider.ts",
+      "kind": "file",
+      "name": "cli-llm-provider.ts",
+      "location": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/providers/cli-llm-provider.ts#CliLlmProvider",
+      "kind": "class",
+      "name": "CliLlmProvider",
+      "location": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 14
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/cli-llm-provider.ts#chat",
+      "kind": "method",
+      "name": "chat",
+      "location": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 31
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/cli-llm-provider.ts#run",
+      "kind": "method",
+      "name": "run",
+      "location": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 42
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/providers/llm-provider.ts#llm-provider.ts",
+      "kind": "file",
+      "name": "llm-provider.ts",
+      "location": {
+        "file": "src/core/providers/llm-provider.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/providers/ollama-provider.ts#ollama-provider.ts",
+      "kind": "file",
+      "name": "ollama-provider.ts",
+      "location": {
+        "file": "src/core/providers/ollama-provider.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/providers/ollama-provider.ts#OllamaProvider",
+      "kind": "class",
+      "name": "OllamaProvider",
+      "location": {
+        "file": "src/core/providers/ollama-provider.ts",
+        "line": 6
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/ollama-provider.ts#chat",
+      "kind": "method",
+      "name": "chat",
+      "location": {
+        "file": "src/core/providers/ollama-provider.ts",
+        "line": 9
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/providers/openai-provider.ts#openai-provider.ts",
+      "kind": "file",
+      "name": "openai-provider.ts",
+      "location": {
+        "file": "src/core/providers/openai-provider.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/providers/openai-provider.ts#OpenAIProvider",
+      "kind": "class",
+      "name": "OpenAIProvider",
+      "location": {
+        "file": "src/core/providers/openai-provider.ts",
+        "line": 4
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/openai-provider.ts#chat",
+      "kind": "method",
+      "name": "chat",
+      "location": {
+        "file": "src/core/providers/openai-provider.ts",
+        "line": 12
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "file",
+      "name": "provider-registry.ts",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "kind": "class",
+      "name": "ProviderRegistry",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 17
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/provider-registry.ts#register",
+      "kind": "method",
+      "name": "register",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 22
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/provider-registry.ts#get",
+      "kind": "method",
+      "name": "get",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 26
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/provider-registry.ts#chat",
+      "kind": "method",
+      "name": "chat",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 30
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/provider-registry.ts#resolve",
+      "kind": "method",
+      "name": "resolve",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 54
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/providers/provider-registry.ts#resolveFallback",
+      "kind": "method",
+      "name": "resolveFallback",
+      "location": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 68
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/tools/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/core/tools/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/tools/tool-registry.ts#tool-registry.ts",
+      "kind": "file",
+      "name": "tool-registry.ts",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "kind": "class",
+      "name": "ToolRegistry",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 3
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-registry.ts#register",
+      "kind": "method",
+      "name": "register",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 6
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-registry.ts#get",
+      "kind": "method",
+      "name": "get",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 10
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-registry.ts#has",
+      "kind": "method",
+      "name": "has",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 14
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-registry.ts#getAll",
+      "kind": "method",
+      "name": "getAll",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 18
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-registry.ts#getCatalog",
+      "kind": "method",
+      "name": "getCatalog",
+      "location": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 22
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/tools/tool-runtime.ts#tool-runtime.ts",
+      "kind": "file",
+      "name": "tool-runtime.ts",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "kind": "class",
+      "name": "ToolRuntime",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 6
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-runtime.ts#execute",
+      "kind": "method",
+      "name": "execute",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 9
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-runtime.ts#publishStarted",
+      "kind": "method",
+      "name": "publishStarted",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 45
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-runtime.ts#publishResult",
+      "kind": "method",
+      "name": "publishResult",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 70
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-runtime.ts#publishFinished",
+      "kind": "method",
+      "name": "publishFinished",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 99
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/core/tools/tool-runtime.ts#publishError",
+      "kind": "method",
+      "name": "publishError",
+      "location": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 126
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/core/tools/tool.ts#tool.ts",
+      "kind": "file",
+      "name": "tool.ts",
+      "location": {
+        "file": "src/core/tools/tool.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/agents/agent-definition.ts#agent-definition.ts",
+      "kind": "file",
+      "name": "agent-definition.ts",
+      "location": {
+        "file": "src/domain/agents/agent-definition.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/agents/agent-result.ts#agent-result.ts",
+      "kind": "file",
+      "name": "agent-result.ts",
+      "location": {
+        "file": "src/domain/agents/agent-result.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/agents/external-agent-definition.ts#external-agent-definition.ts",
+      "kind": "file",
+      "name": "external-agent-definition.ts",
+      "location": {
+        "file": "src/domain/agents/external-agent-definition.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/agents/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/agents/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/auth/authenticated-actor.ts#authenticated-actor.ts",
+      "kind": "file",
+      "name": "authenticated-actor.ts",
+      "location": {
+        "file": "src/domain/auth/authenticated-actor.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/auth/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/auth/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/commands/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/commands/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/commands/parsed-command.ts#parsed-command.ts",
+      "kind": "file",
+      "name": "parsed-command.ts",
+      "location": {
+        "file": "src/domain/commands/parsed-command.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/commands/user-command.ts#user-command.ts",
+      "kind": "file",
+      "name": "user-command.ts",
+      "location": {
+        "file": "src/domain/commands/user-command.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/planner/execution-plan.ts#execution-plan.ts",
+      "kind": "file",
+      "name": "execution-plan.ts",
+      "location": {
+        "file": "src/domain/planner/execution-plan.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/planner/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/planner/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/projects/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/projects/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/projects/project.ts#project.ts",
+      "kind": "file",
+      "name": "project.ts",
+      "location": {
+        "file": "src/domain/projects/project.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/tools/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/domain/tools/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/domain/tools/tool-result.ts#tool-result.ts",
+      "kind": "file",
+      "name": "tool-result.ts",
+      "location": {
+        "file": "src/domain/tools/tool-result.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "kind": "file",
+      "name": "chat-gateway.ts",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "kind": "class",
+      "name": "ChatGateway",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 17
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/chat-gateway.ts#start",
+      "kind": "method",
+      "name": "start",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 28
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/chat-gateway.ts#handleMessage",
+      "kind": "method",
+      "name": "handleMessage",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 74
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/chat-gateway.ts#broadcast",
+      "kind": "method",
+      "name": "broadcast",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 111
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/chat-gateway.ts#sendGatewayError",
+      "kind": "method",
+      "name": "sendGatewayError",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 121
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/chat-gateway.ts#authenticateConnection",
+      "kind": "method",
+      "name": "authenticateConnection",
+      "location": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 131
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/gateway/command-parser.ts#command-parser.ts",
+      "kind": "file",
+      "name": "command-parser.ts",
+      "location": {
+        "file": "src/gateway/command-parser.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/gateway/http-gateway.ts#http-gateway.ts",
+      "kind": "file",
+      "name": "http-gateway.ts",
+      "location": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/gateway/http-gateway.ts#HttpGateway",
+      "kind": "class",
+      "name": "HttpGateway",
+      "location": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 8
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/http-gateway.ts#getServer",
+      "kind": "method",
+      "name": "getServer",
+      "location": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 18
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/http-gateway.ts#register",
+      "kind": "method",
+      "name": "register",
+      "location": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 22
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/http-gateway.ts#start",
+      "kind": "method",
+      "name": "start",
+      "location": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 26
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/http-gateway.ts#handleRequest",
+      "kind": "method",
+      "name": "handleRequest",
+      "location": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 32
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "kind": "file",
+      "name": "rest-gateway.ts",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "kind": "class",
+      "name": "RestGateway",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 18
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleRequest",
+      "kind": "method",
+      "name": "handleRequest",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 29
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleCommand",
+      "kind": "method",
+      "name": "handleCommand",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 90
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleAgentRegistration",
+      "kind": "method",
+      "name": "handleAgentRegistration",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 113
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleExternalAgentRegistration",
+      "kind": "method",
+      "name": "handleExternalAgentRegistration",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 122
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "kind": "method",
+      "name": "handleAuditQuery",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 131
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleProjectQuery",
+      "kind": "method",
+      "name": "handleProjectQuery",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 178
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#handleEventQuery",
+      "kind": "method",
+      "name": "handleEventQuery",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 197
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#readJson",
+      "kind": "method",
+      "name": "readJson",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 229
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#sendJson",
+      "kind": "method",
+      "name": "sendJson",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 243
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#sendHtml",
+      "kind": "method",
+      "name": "sendHtml",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 250
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/gateway/rest-gateway.ts#authenticate",
+      "kind": "method",
+      "name": "authenticate",
+      "location": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 257
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/gateway/ui-page.ts#ui-page.ts",
+      "kind": "file",
+      "name": "ui-page.ts",
+      "location": {
+        "file": "src/gateway/ui-page.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/main.ts#main.ts",
+      "kind": "file",
+      "name": "main.ts",
+      "location": {
+        "file": "src/main.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/services/auth-service.ts#auth-service.ts",
+      "kind": "file",
+      "name": "auth-service.ts",
+      "location": {
+        "file": "src/services/auth-service.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/services/auth-service.ts#AuthService",
+      "kind": "class",
+      "name": "AuthService",
+      "location": {
+        "file": "src/services/auth-service.ts",
+        "line": 27
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/auth-service.ts#authenticate",
+      "kind": "method",
+      "name": "authenticate",
+      "location": {
+        "file": "src/services/auth-service.ts",
+        "line": 34
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/auth-service.ts#publishFailure",
+      "kind": "method",
+      "name": "publishFailure",
+      "location": {
+        "file": "src/services/auth-service.ts",
+        "line": 61
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/services/command-service.ts#command-service.ts",
+      "kind": "file",
+      "name": "command-service.ts",
+      "location": {
+        "file": "src/services/command-service.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/services/command-service.ts#CommandService",
+      "kind": "class",
+      "name": "CommandService",
+      "location": {
+        "file": "src/services/command-service.ts",
+        "line": 20
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/command-service.ts#handleUserCommand",
+      "kind": "method",
+      "name": "handleUserCommand",
+      "location": {
+        "file": "src/services/command-service.ts",
+        "line": 28
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/command-service.ts#publishRegistrationResult",
+      "kind": "method",
+      "name": "publishRegistrationResult",
+      "location": {
+        "file": "src/services/command-service.ts",
+        "line": 112
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/command-service.ts#registerDynamicAgent",
+      "kind": "method",
+      "name": "registerDynamicAgent",
+      "location": {
+        "file": "src/services/command-service.ts",
+        "line": 138
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/command-service.ts#registerExternalAgent",
+      "kind": "method",
+      "name": "registerExternalAgent",
+      "location": {
+        "file": "src/services/command-service.ts",
+        "line": 146
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "kind": "file",
+      "name": "dynamic-agent-service.ts",
+      "location": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/services/dynamic-agent-service.ts#DynamicAgentService",
+      "kind": "class",
+      "name": "DynamicAgentService",
+      "location": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 12
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/dynamic-agent-service.ts#register",
+      "kind": "method",
+      "name": "register",
+      "location": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 19
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/services/event-service.ts#event-service.ts",
+      "kind": "file",
+      "name": "event-service.ts",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/services/event-service.ts#EventService",
+      "kind": "class",
+      "name": "EventService",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 20
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#exportEvents",
+      "kind": "method",
+      "name": "exportEvents",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 23
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#getMetrics",
+      "kind": "method",
+      "name": "getMetrics",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 27
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#replayTask",
+      "kind": "method",
+      "name": "replayTask",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 47
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#replayConversation",
+      "kind": "method",
+      "name": "replayConversation",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 54
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#listFailures",
+      "kind": "method",
+      "name": "listFailures",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 63
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#listByConversation",
+      "kind": "method",
+      "name": "listByConversation",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 67
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#listByProject",
+      "kind": "method",
+      "name": "listByProject",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 71
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#listByTask",
+      "kind": "method",
+      "name": "listByTask",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 75
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#listByCorrelation",
+      "kind": "method",
+      "name": "listByCorrelation",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 79
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#listByFilters",
+      "kind": "method",
+      "name": "listByFilters",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 83
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#getBaseEvents",
+      "kind": "method",
+      "name": "getBaseEvents",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 98
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/event-service.ts#toTimeline",
+      "kind": "method",
+      "name": "toTimeline",
+      "location": {
+        "file": "src/services/event-service.ts",
+        "line": 118
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "kind": "file",
+      "name": "external-agent-service.ts",
+      "location": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/services/external-agent-service.ts#ExternalAgentService",
+      "kind": "class",
+      "name": "ExternalAgentService",
+      "location": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 7
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/external-agent-service.ts#register",
+      "kind": "method",
+      "name": "register",
+      "location": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 13
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/services/project-service.ts#project-service.ts",
+      "kind": "file",
+      "name": "project-service.ts",
+      "location": {
+        "file": "src/services/project-service.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/services/project-service.ts#ProjectService",
+      "kind": "class",
+      "name": "ProjectService",
+      "location": {
+        "file": "src/services/project-service.ts",
+        "line": 11
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/project-service.ts#listProjects",
+      "kind": "method",
+      "name": "listProjects",
+      "location": {
+        "file": "src/services/project-service.ts",
+        "line": 23
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/project-service.ts#getProject",
+      "kind": "method",
+      "name": "getProject",
+      "location": {
+        "file": "src/services/project-service.ts",
+        "line": 33
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/project-service.ts#resolveBacklogPath",
+      "kind": "method",
+      "name": "resolveBacklogPath",
+      "location": {
+        "file": "src/services/project-service.ts",
+        "line": 51
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/services/project-service.ts#readConfiguredProjects",
+      "kind": "method",
+      "name": "readConfiguredProjects",
+      "location": {
+        "file": "src/services/project-service.ts",
+        "line": 55
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/store/event-store.ts#event-store.ts",
+      "kind": "file",
+      "name": "event-store.ts",
+      "location": {
+        "file": "src/store/event-store.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/store/file-event-store.ts#file-event-store.ts",
+      "kind": "file",
+      "name": "file-event-store.ts",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/store/file-event-store.ts#FileEventStore",
+      "kind": "class",
+      "name": "FileEventStore",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 8
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#append",
+      "kind": "method",
+      "name": "append",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 11
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#listAll",
+      "kind": "method",
+      "name": "listAll",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 17
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#listByConversation",
+      "kind": "method",
+      "name": "listByConversation",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 21
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#listByProject",
+      "kind": "method",
+      "name": "listByProject",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 29
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#listByTask",
+      "kind": "method",
+      "name": "listByTask",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 37
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#listByCorrelation",
+      "kind": "method",
+      "name": "listByCorrelation",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 45
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/file-event-store.ts#readAll",
+      "kind": "method",
+      "name": "readAll",
+      "location": {
+        "file": "src/store/file-event-store.ts",
+        "line": 53
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/store/sqlite-event-store.ts#sqlite-event-store.ts",
+      "kind": "file",
+      "name": "sqlite-event-store.ts",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "kind": "class",
+      "name": "SqliteEventStore",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 23
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#create",
+      "kind": "method",
+      "name": "create",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 26
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#append",
+      "kind": "method",
+      "name": "append",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 74
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#listAll",
+      "kind": "method",
+      "name": "listAll",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 110
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#listByConversation",
+      "kind": "method",
+      "name": "listByConversation",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 121
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#listByProject",
+      "kind": "method",
+      "name": "listByProject",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 134
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#listByTask",
+      "kind": "method",
+      "name": "listByTask",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 147
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#listByCorrelation",
+      "kind": "method",
+      "name": "listByCorrelation",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 161
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#toEvent",
+      "kind": "method",
+      "name": "toEvent",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 174
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/store/sqlite-event-store.ts#ensureProjectColumn",
+      "kind": "method",
+      "name": "ensureProjectColumn",
+      "location": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 191
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/tools/filesystem-tool.ts#filesystem-tool.ts",
+      "kind": "file",
+      "name": "filesystem-tool.ts",
+      "location": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/tools/filesystem-tool.ts#FilesystemTool",
+      "kind": "class",
+      "name": "FilesystemTool",
+      "location": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 31
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/tools/filesystem-tool.ts#execute",
+      "kind": "method",
+      "name": "execute",
+      "location": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 41
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/tools/filesystem-tool.ts#resolveAllowedPath",
+      "kind": "method",
+      "name": "resolveAllowedPath",
+      "location": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 72
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/tools/filesystem-tool.ts#toRelativePath",
+      "kind": "method",
+      "name": "toRelativePath",
+      "location": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 84
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/tools/git-tool.ts#git-tool.ts",
+      "kind": "file",
+      "name": "git-tool.ts",
+      "location": {
+        "file": "src/tools/git-tool.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/tools/git-tool.ts#GitTool",
+      "kind": "class",
+      "name": "GitTool",
+      "location": {
+        "file": "src/tools/git-tool.ts",
+        "line": 20
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/tools/git-tool.ts#execute",
+      "kind": "method",
+      "name": "execute",
+      "location": {
+        "file": "src/tools/git-tool.ts",
+        "line": 28
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/tools/index.ts#index.ts",
+      "kind": "file",
+      "name": "index.ts",
+      "location": {
+        "file": "src/tools/index.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "file:src/tools/shell-tool.ts#shell-tool.ts",
+      "kind": "file",
+      "name": "shell-tool.ts",
+      "location": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 1
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "class:src/tools/shell-tool.ts#ShellTool",
+      "kind": "class",
+      "name": "ShellTool",
+      "location": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 20
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/tools/shell-tool.ts#execute",
+      "kind": "method",
+      "name": "execute",
+      "location": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 30
+      },
+      "language": "typescript"
+    },
+    {
+      "id": "method:src/tools/shell-tool.ts#runCommand",
+      "kind": "method",
+      "name": "runCommand",
+      "location": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 60
+      },
+      "language": "typescript"
+    }
+  ],
+  "edges": [
+    {
+      "from": "file:scripts/ws-client.ts#ws-client.ts",
+      "to": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "scripts/ws-client.ts",
+        "line": 30
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "file:src/agents/backlog/backlog-intent.ts#backlog-intent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "file:src/agents/backlog/backlog-source.ts#backlog-source.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "to": "class:src/agents/backlog/backlog-agent.ts#BacklogAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 15
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-agent.ts#BacklogAgent",
+      "to": "method:src/agents/backlog/backlog-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 48
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-agent.ts#BacklogAgent",
+      "to": "method:src/agents/backlog/backlog-agent.ts#executeIntent",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 82
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-intent.ts#backlog-intent.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-intent.ts#backlog-intent.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-intent.ts#backlog-intent.ts",
+      "to": "file:src/agents/backlog/backlog-source.ts#backlog-source.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-intent.ts#backlog-intent.ts",
+      "to": "class:src/agents/backlog/backlog-intent.ts#BacklogIntentInterpreter",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 42
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-intent.ts#BacklogIntentInterpreter",
+      "to": "method:src/agents/backlog/backlog-intent.ts#interpret",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 48
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-intent.ts#BacklogIntentInterpreter",
+      "to": "method:src/agents/backlog/backlog-intent.ts#tryModel",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 64
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-source.ts#backlog-source.ts",
+      "to": "file:src/services/project-service.ts#project-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/backlog/backlog-source.ts#backlog-source.ts",
+      "to": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 18
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "to": "method:src/agents/backlog/backlog-source.ts#read",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 24
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "to": "method:src/agents/backlog/backlog-source.ts#addTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 29
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "to": "method:src/agents/backlog/backlog-source.ts#updateTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 46
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "to": "method:src/agents/backlog/backlog-source.ts#removeTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 64
+      }
+    },
+    {
+      "from": "class:src/agents/backlog/backlog-source.ts#BacklogSource",
+      "to": "method:src/agents/backlog/backlog-source.ts#resolveFilePath",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 74
+      }
+    },
+    {
+      "from": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "to": "class:src/agents/dynamic/dynamic-agent.ts#DynamicAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "class:src/agents/dynamic/dynamic-agent.ts#DynamicAgent",
+      "to": "method:src/agents/dynamic/dynamic-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "to": "class:src/agents/external/external-agent.ts#ExternalAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "class:src/agents/external/external-agent.ts#ExternalAgent",
+      "to": "method:src/agents/external/external-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 24
+      }
+    },
+    {
+      "from": "class:src/agents/external/external-agent.ts#ExternalAgent",
+      "to": "method:src/agents/external/external-agent.ts#callHttp",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 49
+      }
+    },
+    {
+      "from": "class:src/agents/external/external-agent.ts#ExternalAgent",
+      "to": "method:src/agents/external/external-agent.ts#callCli",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 70
+      }
+    },
+    {
+      "from": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "to": "file:src/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "to": "class:src/agents/git/git-agent.ts#GitAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "class:src/agents/git/git-agent.ts#GitAgent",
+      "to": "method:src/agents/git/git-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "file:src/agents/planner/execution-plan-validator.ts#execution-plan-validator.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/execution-plan-validator.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/agents/planner/execution-plan-validator.ts#execution-plan-validator.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "file:src/agents/planner/planner-prompt-builder.ts#planner-prompt-builder.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 10
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "to": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "to": "method:src/agents/planner/planner-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 38
+      }
+    },
+    {
+      "from": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "to": "method:src/agents/planner/planner-agent.ts#createPlan",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 60
+      }
+    },
+    {
+      "from": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "to": "method:src/agents/planner/planner-agent.ts#createModelPlan",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 71
+      }
+    },
+    {
+      "from": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "to": "method:src/agents/planner/planner-agent.ts#createDeterministicPlan",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 107
+      }
+    },
+    {
+      "from": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "to": "method:src/agents/planner/planner-agent.ts#dispatch",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 161
+      }
+    },
+    {
+      "from": "class:src/agents/planner/planner-agent.ts#PlannerAgent",
+      "to": "method:src/agents/planner/planner-agent.ts#say",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 187
+      }
+    },
+    {
+      "from": "file:src/agents/planner/planner-prompt-builder.ts#planner-prompt-builder.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-prompt-builder.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/rabbit/rabbit-agent.ts#rabbit-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/rabbit/rabbit-agent.ts#rabbit-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/rabbit/rabbit-agent.ts#rabbit-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/rabbit/rabbit-agent.ts#rabbit-agent.ts",
+      "to": "class:src/agents/rabbit/rabbit-agent.ts#RabbitAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "class:src/agents/rabbit/rabbit-agent.ts#RabbitAgent",
+      "to": "method:src/agents/rabbit/rabbit-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 21
+      }
+    },
+    {
+      "from": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "to": "file:src/services/event-service.ts#event-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "to": "class:src/agents/security/security-agent.ts#SecurityAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "class:src/agents/security/security-agent.ts#SecurityAgent",
+      "to": "method:src/agents/security/security-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "to": "file:src/services/event-service.ts#event-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "to": "class:src/agents/summary/summary-agent.ts#SummaryAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "class:src/agents/summary/summary-agent.ts#SummaryAgent",
+      "to": "method:src/agents/summary/summary-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 21
+      }
+    },
+    {
+      "from": "file:src/agents/technical/technical-review-agent.ts#technical-review-agent.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/agents/technical/technical-review-agent.ts#technical-review-agent.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/agents/technical/technical-review-agent.ts#technical-review-agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/agents/technical/technical-review-agent.ts#technical-review-agent.ts",
+      "to": "class:src/agents/technical/technical-review-agent.ts#TechnicalReviewAgent",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 15
+      }
+    },
+    {
+      "from": "class:src/agents/technical/technical-review-agent.ts#TechnicalReviewAgent",
+      "to": "method:src/agents/technical/technical-review-agent.ts#handle",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 31
+      }
+    },
+    {
+      "from": "class:src/agents/technical/technical-review-agent.ts#TechnicalReviewAgent",
+      "to": "method:src/agents/technical/technical-review-agent.ts#buildReview",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 54
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/gateway/http-gateway.ts#http-gateway.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 10
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/providers/llm-provider.ts#llm-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 11
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/store/event-store.ts#event-store.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 13
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/services/command-service.ts#command-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 14
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/services/event-service.ts#event-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 15
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/services/auth-service.ts#auth-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 16
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/services/project-service.ts#project-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 17
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 18
+      }
+    },
+    {
+      "from": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "to": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/app-context.ts",
+        "line": 19
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/services/command-service.ts#command-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/services/event-service.ts#event-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/services/auth-service.ts#auth-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 10
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/services/project-service.ts#project-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 11
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 13
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/providers/ollama-provider.ts#ollama-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 14
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/providers/openai-provider.ts#openai-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 15
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/providers/cli-llm-provider.ts#cli-llm-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 16
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 17
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/store/file-event-store.ts#file-event-store.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 18
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/planner/planner-agent.ts#planner-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 19
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/backlog/backlog-agent.ts#backlog-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/backlog/backlog-source.ts#backlog-source.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 21
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/summary/summary-agent.ts#summary-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 22
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/technical/technical-review-agent.ts#technical-review-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 23
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/git/git-agent.ts#git-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 27
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/security/security-agent.ts#security-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 28
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/agents/rabbit/rabbit-agent.ts#rabbit-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 29
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 30
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 32
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/gateway/http-gateway.ts#http-gateway.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 33
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 34
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "file:src/bootstrap/app-context.ts#app-context.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 35
+      }
+    },
+    {
+      "from": "file:src/bootstrap/bootstrap.ts#bootstrap.ts",
+      "to": "class:src/bootstrap/bootstrap.ts#Bootstrap",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 38
+      }
+    },
+    {
+      "from": "class:src/bootstrap/bootstrap.ts#Bootstrap",
+      "to": "method:src/bootstrap/bootstrap.ts#create",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 39
+      }
+    },
+    {
+      "from": "class:src/bootstrap/bootstrap.ts#Bootstrap",
+      "to": "method:src/bootstrap/bootstrap.ts#start",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 135
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "to": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "to": "method:src/core/agents/agent-registry.ts#get",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "to": "method:src/core/agents/agent-registry.ts#has",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 16
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "to": "method:src/core/agents/agent-registry.ts#getAll",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-registry.ts#AgentRegistry",
+      "to": "method:src/core/agents/agent-registry.ts#getCatalog",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-registry.ts",
+        "line": 24
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "to": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-router.ts#agent-router.ts",
+      "to": "class:src/core/agents/agent-router.ts#AgentRouter",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-router.ts#AgentRouter",
+      "to": "method:src/core/agents/agent-router.ts#start",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 15
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-router.ts#AgentRouter",
+      "to": "method:src/core/agents/agent-router.ts#publishError",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 35
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "to": "file:src/core/agents/agent.ts#agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent-runtime.ts#agent-runtime.ts",
+      "to": "class:src/core/agents/agent-runtime.ts#AgentRuntime",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-runtime.ts#AgentRuntime",
+      "to": "method:src/core/agents/agent-runtime.ts#execute",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 11
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-runtime.ts#AgentRuntime",
+      "to": "method:src/core/agents/agent-runtime.ts#publishStarted",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 25
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-runtime.ts#AgentRuntime",
+      "to": "method:src/core/agents/agent-runtime.ts#publishCompleted",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 45
+      }
+    },
+    {
+      "from": "class:src/core/agents/agent-runtime.ts#AgentRuntime",
+      "to": "method:src/core/agents/agent-runtime.ts#publishError",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 70
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent.ts#agent.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/agents/agent.ts#agent.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "to": "file:src/store/event-store.ts#event-store.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "to": "class:src/core/events/event-bus.ts#EventBus",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "class:src/core/events/event-bus.ts#EventBus",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "class:src/core/events/event-bus.ts#EventBus",
+      "to": "method:src/core/events/event-bus.ts#subscribe",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 19
+      }
+    },
+    {
+      "from": "class:src/core/events/event-bus.ts#EventBus",
+      "to": "method:src/core/events/event-bus.ts#subscribeAll",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-bus.ts",
+        "line": 25
+      }
+    },
+    {
+      "from": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-envelope.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-envelope.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "to": "file:src/core/events/event-types.ts#event-types.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/events/event-envelope.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/providers/cli-llm-provider.ts#cli-llm-provider.ts",
+      "to": "file:src/core/providers/llm-provider.ts#llm-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/providers/cli-llm-provider.ts#cli-llm-provider.ts",
+      "to": "class:src/core/providers/cli-llm-provider.ts#CliLlmProvider",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 14
+      }
+    },
+    {
+      "from": "class:src/core/providers/cli-llm-provider.ts#CliLlmProvider",
+      "to": "method:src/core/providers/cli-llm-provider.ts#chat",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 31
+      }
+    },
+    {
+      "from": "class:src/core/providers/cli-llm-provider.ts#CliLlmProvider",
+      "to": "method:src/core/providers/cli-llm-provider.ts#run",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/cli-llm-provider.ts",
+        "line": 42
+      }
+    },
+    {
+      "from": "file:src/core/providers/ollama-provider.ts#ollama-provider.ts",
+      "to": "file:src/core/providers/llm-provider.ts#llm-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/ollama-provider.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/core/providers/ollama-provider.ts#ollama-provider.ts",
+      "to": "class:src/core/providers/ollama-provider.ts#OllamaProvider",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/ollama-provider.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "class:src/core/providers/ollama-provider.ts#OllamaProvider",
+      "to": "method:src/core/providers/ollama-provider.ts#chat",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/ollama-provider.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "file:src/core/providers/openai-provider.ts#openai-provider.ts",
+      "to": "file:src/core/providers/llm-provider.ts#llm-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/openai-provider.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/core/providers/openai-provider.ts#openai-provider.ts",
+      "to": "class:src/core/providers/openai-provider.ts#OpenAIProvider",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/openai-provider.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "class:src/core/providers/openai-provider.ts#OpenAIProvider",
+      "to": "method:src/core/providers/openai-provider.ts#chat",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/openai-provider.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "to": "file:src/core/providers/llm-provider.ts#llm-provider.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "to": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 17
+      }
+    },
+    {
+      "from": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "to": "method:src/core/providers/provider-registry.ts#register",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 22
+      }
+    },
+    {
+      "from": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "to": "method:src/core/providers/provider-registry.ts#get",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "to": "method:src/core/providers/provider-registry.ts#chat",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 30
+      }
+    },
+    {
+      "from": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "to": "method:src/core/providers/provider-registry.ts#resolve",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 54
+      }
+    },
+    {
+      "from": "class:src/core/providers/provider-registry.ts#ProviderRegistry",
+      "to": "method:src/core/providers/provider-registry.ts#resolveFallback",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/providers/provider-registry.ts",
+        "line": 68
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-registry.ts#tool-registry.ts",
+      "to": "file:src/core/tools/tool.ts#tool.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-registry.ts#tool-registry.ts",
+      "to": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "to": "method:src/core/tools/tool-registry.ts#register",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "to": "method:src/core/tools/tool-registry.ts#get",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 10
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "to": "method:src/core/tools/tool-registry.ts#has",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 14
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "to": "method:src/core/tools/tool-registry.ts#getAll",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 18
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-registry.ts#ToolRegistry",
+      "to": "method:src/core/tools/tool-registry.ts#getCatalog",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-registry.ts",
+        "line": 22
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-runtime.ts#tool-runtime.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-runtime.ts#tool-runtime.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-runtime.ts#tool-runtime.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-runtime.ts#tool-runtime.ts",
+      "to": "file:src/core/tools/tool.ts#tool.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool-runtime.ts#tool-runtime.ts",
+      "to": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "to": "method:src/core/tools/tool-runtime.ts#execute",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "to": "method:src/core/tools/tool-runtime.ts#publishStarted",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 45
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "to": "method:src/core/tools/tool-runtime.ts#publishResult",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 70
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "to": "method:src/core/tools/tool-runtime.ts#publishFinished",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 99
+      }
+    },
+    {
+      "from": "class:src/core/tools/tool-runtime.ts#ToolRuntime",
+      "to": "method:src/core/tools/tool-runtime.ts#publishError",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 126
+      }
+    },
+    {
+      "from": "file:src/core/tools/tool.ts#tool.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/domain/agents/agent-definition.ts#agent-definition.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/domain/agents/agent-definition.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/domain/commands/user-command.ts#user-command.ts",
+      "to": "file:src/domain/auth/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/domain/commands/user-command.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "to": "file:src/services/command-service.ts#command-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "to": "file:src/services/auth-service.ts#auth-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "file:src/gateway/chat-gateway.ts#chat-gateway.ts",
+      "to": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 17
+      }
+    },
+    {
+      "from": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "to": "method:src/gateway/chat-gateway.ts#start",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 28
+      }
+    },
+    {
+      "from": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "to": "method:src/gateway/chat-gateway.ts#handleMessage",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 74
+      }
+    },
+    {
+      "from": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "to": "method:src/gateway/chat-gateway.ts#broadcast",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 111
+      }
+    },
+    {
+      "from": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "to": "method:src/gateway/chat-gateway.ts#sendGatewayError",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 121
+      }
+    },
+    {
+      "from": "class:src/gateway/chat-gateway.ts#ChatGateway",
+      "to": "method:src/gateway/chat-gateway.ts#authenticateConnection",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 131
+      }
+    },
+    {
+      "from": "file:src/gateway/command-parser.ts#command-parser.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/command-parser.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/gateway/command-parser.ts#command-parser.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/command-parser.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/gateway/http-gateway.ts#http-gateway.ts",
+      "to": "class:src/gateway/http-gateway.ts#HttpGateway",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "class:src/gateway/http-gateway.ts#HttpGateway",
+      "to": "method:src/gateway/http-gateway.ts#getServer",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 18
+      }
+    },
+    {
+      "from": "class:src/gateway/http-gateway.ts#HttpGateway",
+      "to": "method:src/gateway/http-gateway.ts#register",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 22
+      }
+    },
+    {
+      "from": "class:src/gateway/http-gateway.ts#HttpGateway",
+      "to": "method:src/gateway/http-gateway.ts#start",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "class:src/gateway/http-gateway.ts#HttpGateway",
+      "to": "method:src/gateway/http-gateway.ts#handleRequest",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/http-gateway.ts",
+        "line": 32
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/services/command-service.ts#command-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/services/event-service.ts#event-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/services/auth-service.ts#auth-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/services/project-service.ts#project-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 9
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "file:src/gateway/ui-page.ts#ui-page.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 10
+      }
+    },
+    {
+      "from": "file:src/gateway/rest-gateway.ts#rest-gateway.ts",
+      "to": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 18
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleRequest",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 29
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleCommand",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 90
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleAgentRegistration",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 113
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleExternalAgentRegistration",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 122
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 131
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleProjectQuery",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 178
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#handleEventQuery",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 197
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#readJson",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 229
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#sendJson",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 243
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#sendHtml",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 250
+      }
+    },
+    {
+      "from": "class:src/gateway/rest-gateway.ts#RestGateway",
+      "to": "method:src/gateway/rest-gateway.ts#authenticate",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 257
+      }
+    },
+    {
+      "from": "file:src/services/auth-service.ts#auth-service.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/auth-service.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/services/auth-service.ts#auth-service.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/auth-service.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/services/auth-service.ts#auth-service.ts",
+      "to": "class:src/services/auth-service.ts#AuthService",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/auth-service.ts",
+        "line": 27
+      }
+    },
+    {
+      "from": "class:src/services/auth-service.ts#AuthService",
+      "to": "method:src/services/auth-service.ts#authenticate",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/auth-service.ts",
+        "line": 34
+      }
+    },
+    {
+      "from": "class:src/services/auth-service.ts#AuthService",
+      "to": "method:src/services/auth-service.ts#publishFailure",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/auth-service.ts",
+        "line": 61
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "file:src/gateway/command-parser.ts#command-parser.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "file:src/services/command-service.ts#command-service.ts",
+      "to": "class:src/services/command-service.ts#CommandService",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "class:src/services/command-service.ts#CommandService",
+      "to": "method:src/services/command-service.ts#handleUserCommand",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 28
+      }
+    },
+    {
+      "from": "class:src/services/command-service.ts#CommandService",
+      "to": "method:src/services/command-service.ts#publishRegistrationResult",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 112
+      }
+    },
+    {
+      "from": "class:src/services/command-service.ts#CommandService",
+      "to": "method:src/services/command-service.ts#registerDynamicAgent",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 138
+      }
+    },
+    {
+      "from": "class:src/services/command-service.ts#CommandService",
+      "to": "method:src/services/command-service.ts#registerExternalAgent",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 146
+      }
+    },
+    {
+      "from": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "to": "file:src/agents/dynamic/dynamic-agent.ts#dynamic-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "to": "file:src/core/providers/provider-registry.ts#provider-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "to": "class:src/services/dynamic-agent-service.ts#DynamicAgentService",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 12
+      }
+    },
+    {
+      "from": "class:src/services/dynamic-agent-service.ts#DynamicAgentService",
+      "to": "method:src/services/dynamic-agent-service.ts#register",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 19
+      }
+    },
+    {
+      "from": "file:src/services/event-service.ts#event-service.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/services/event-service.ts#event-service.ts",
+      "to": "file:src/store/event-store.ts#event-store.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/services/event-service.ts#event-service.ts",
+      "to": "class:src/services/event-service.ts#EventService",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#exportEvents",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 23
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#getMetrics",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 27
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#replayTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 47
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#replayConversation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 54
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#listFailures",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 63
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#listByConversation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 67
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#listByProject",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 71
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#listByTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 75
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#listByCorrelation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 79
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#listByFilters",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 83
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#getBaseEvents",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 98
+      }
+    },
+    {
+      "from": "class:src/services/event-service.ts#EventService",
+      "to": "method:src/services/event-service.ts#toTimeline",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/event-service.ts",
+        "line": 118
+      }
+    },
+    {
+      "from": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "to": "file:src/agents/external/external-agent.ts#external-agent.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 1
+      }
+    },
+    {
+      "from": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "to": "file:src/core/agents/agent-registry.ts#agent-registry.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "to": "file:src/core/events/event-bus.ts#event-bus.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "to": "file:src/services/dynamic-agent-service.ts#dynamic-agent-service.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/services/external-agent-service.ts#external-agent-service.ts",
+      "to": "class:src/services/external-agent-service.ts#ExternalAgentService",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 7
+      }
+    },
+    {
+      "from": "class:src/services/external-agent-service.ts#ExternalAgentService",
+      "to": "method:src/services/external-agent-service.ts#register",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 13
+      }
+    },
+    {
+      "from": "file:src/services/project-service.ts#project-service.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/project-service.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/services/project-service.ts#project-service.ts",
+      "to": "class:src/services/project-service.ts#ProjectService",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/project-service.ts",
+        "line": 11
+      }
+    },
+    {
+      "from": "class:src/services/project-service.ts#ProjectService",
+      "to": "method:src/services/project-service.ts#listProjects",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/project-service.ts",
+        "line": 23
+      }
+    },
+    {
+      "from": "class:src/services/project-service.ts#ProjectService",
+      "to": "method:src/services/project-service.ts#getProject",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/project-service.ts",
+        "line": 33
+      }
+    },
+    {
+      "from": "class:src/services/project-service.ts#ProjectService",
+      "to": "method:src/services/project-service.ts#resolveBacklogPath",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/project-service.ts",
+        "line": 51
+      }
+    },
+    {
+      "from": "class:src/services/project-service.ts#ProjectService",
+      "to": "method:src/services/project-service.ts#readConfiguredProjects",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/project-service.ts",
+        "line": 55
+      }
+    },
+    {
+      "from": "file:src/store/event-store.ts#event-store.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/event-store.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/store/file-event-store.ts#file-event-store.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/store/file-event-store.ts#file-event-store.ts",
+      "to": "file:src/store/event-store.ts#event-store.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/store/file-event-store.ts#file-event-store.ts",
+      "to": "class:src/store/file-event-store.ts#FileEventStore",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 8
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#append",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 11
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#listAll",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 17
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#listByConversation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 21
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#listByProject",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 29
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#listByTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 37
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#listByCorrelation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 45
+      }
+    },
+    {
+      "from": "class:src/store/file-event-store.ts#FileEventStore",
+      "to": "method:src/store/file-event-store.ts#readAll",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/file-event-store.ts",
+        "line": 53
+      }
+    },
+    {
+      "from": "file:src/store/sqlite-event-store.ts#sqlite-event-store.ts",
+      "to": "file:src/core/events/event-envelope.ts#event-envelope.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 5
+      }
+    },
+    {
+      "from": "file:src/store/sqlite-event-store.ts#sqlite-event-store.ts",
+      "to": "file:src/store/event-store.ts#event-store.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 6
+      }
+    },
+    {
+      "from": "file:src/store/sqlite-event-store.ts#sqlite-event-store.ts",
+      "to": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 23
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#create",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#append",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 74
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#listAll",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 110
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#listByConversation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 121
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#listByProject",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 134
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#listByTask",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 147
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#listByCorrelation",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 161
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#toEvent",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 174
+      }
+    },
+    {
+      "from": "class:src/store/sqlite-event-store.ts#SqliteEventStore",
+      "to": "method:src/store/sqlite-event-store.ts#ensureProjectColumn",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/store/sqlite-event-store.ts",
+        "line": 191
+      }
+    },
+    {
+      "from": "file:src/tools/filesystem-tool.ts#filesystem-tool.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/tools/filesystem-tool.ts#filesystem-tool.ts",
+      "to": "file:src/core/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 4
+      }
+    },
+    {
+      "from": "file:src/tools/filesystem-tool.ts#filesystem-tool.ts",
+      "to": "class:src/tools/filesystem-tool.ts#FilesystemTool",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 31
+      }
+    },
+    {
+      "from": "class:src/tools/filesystem-tool.ts#FilesystemTool",
+      "to": "method:src/tools/filesystem-tool.ts#execute",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 41
+      }
+    },
+    {
+      "from": "class:src/tools/filesystem-tool.ts#FilesystemTool",
+      "to": "method:src/tools/filesystem-tool.ts#resolveAllowedPath",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 72
+      }
+    },
+    {
+      "from": "class:src/tools/filesystem-tool.ts#FilesystemTool",
+      "to": "method:src/tools/filesystem-tool.ts#toRelativePath",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/filesystem-tool.ts",
+        "line": 84
+      }
+    },
+    {
+      "from": "file:src/tools/git-tool.ts#git-tool.ts",
+      "to": "file:src/core/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/git-tool.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/tools/git-tool.ts#git-tool.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/git-tool.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/tools/git-tool.ts#git-tool.ts",
+      "to": "class:src/tools/git-tool.ts#GitTool",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/git-tool.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "class:src/tools/git-tool.ts#GitTool",
+      "to": "method:src/tools/git-tool.ts#execute",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/git-tool.ts",
+        "line": 28
+      }
+    },
+    {
+      "from": "file:src/tools/shell-tool.ts#shell-tool.ts",
+      "to": "file:src/domain/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 2
+      }
+    },
+    {
+      "from": "file:src/tools/shell-tool.ts#shell-tool.ts",
+      "to": "file:src/core/tools/index.ts#index.ts",
+      "kind": "imports",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 3
+      }
+    },
+    {
+      "from": "file:src/tools/shell-tool.ts#shell-tool.ts",
+      "to": "class:src/tools/shell-tool.ts#ShellTool",
+      "kind": "contains",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "class:src/tools/shell-tool.ts#ShellTool",
+      "to": "method:src/tools/shell-tool.ts#execute",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 30
+      }
+    },
+    {
+      "from": "class:src/tools/shell-tool.ts#ShellTool",
+      "to": "method:src/tools/shell-tool.ts#runCommand",
+      "kind": "method",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/tools/shell-tool.ts",
+        "line": 60
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#handle",
+      "to": "method:src/agents/backlog/backlog-source.ts#read",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 50
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#handle",
+      "to": "method:src/agents/backlog/backlog-intent.ts#interpret",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 52
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 55
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#executeIntent",
+      "to": "method:src/agents/backlog/backlog-source.ts#addTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 89
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#executeIntent",
+      "to": "method:src/agents/backlog/backlog-source.ts#updateTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 102
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#executeIntent",
+      "to": "method:src/agents/backlog/backlog-source.ts#updateTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 118
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-agent.ts#executeIntent",
+      "to": "method:src/agents/backlog/backlog-source.ts#removeTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-agent.ts",
+        "line": 131
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-intent.ts#tryModel",
+      "to": "method:src/core/providers/provider-registry.ts#chat",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-intent.ts",
+        "line": 73
+      }
+    },
+    {
+      "from": "method:src/agents/backlog/backlog-source.ts#resolveFilePath",
+      "to": "method:src/services/project-service.ts#resolveBacklogPath",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/backlog/backlog-source.ts",
+        "line": 79
+      }
+    },
+    {
+      "from": "method:src/agents/dynamic/dynamic-agent.ts#handle",
+      "to": "method:src/core/providers/provider-registry.ts#chat",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 29
+      }
+    },
+    {
+      "from": "method:src/agents/dynamic/dynamic-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/dynamic/dynamic-agent.ts",
+        "line": 37
+      }
+    },
+    {
+      "from": "method:src/agents/external/external-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/external/external-agent.ts",
+        "line": 30
+      }
+    },
+    {
+      "from": "method:src/agents/git/git-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/git/git-agent.ts",
+        "line": 27
+      }
+    },
+    {
+      "from": "method:src/agents/planner/planner-agent.ts#createPlan",
+      "to": "method:src/core/agents/agent-registry.ts#getCatalog",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 67
+      }
+    },
+    {
+      "from": "method:src/agents/planner/planner-agent.ts#createModelPlan",
+      "to": "method:src/core/providers/provider-registry.ts#chat",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 81
+      }
+    },
+    {
+      "from": "method:src/agents/planner/planner-agent.ts#dispatch",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 162
+      }
+    },
+    {
+      "from": "method:src/agents/planner/planner-agent.ts#say",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/planner/planner-agent.ts",
+        "line": 188
+      }
+    },
+    {
+      "from": "method:src/agents/rabbit/rabbit-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/rabbit/rabbit-agent.ts",
+        "line": 29
+      }
+    },
+    {
+      "from": "method:src/agents/security/security-agent.ts#handle",
+      "to": "method:src/services/event-service.ts#listFailures",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 27
+      }
+    },
+    {
+      "from": "method:src/agents/security/security-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/security/security-agent.ts",
+        "line": 31
+      }
+    },
+    {
+      "from": "method:src/agents/summary/summary-agent.ts#handle",
+      "to": "method:src/services/event-service.ts#listByTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 25
+      }
+    },
+    {
+      "from": "method:src/agents/summary/summary-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/summary/summary-agent.ts",
+        "line": 34
+      }
+    },
+    {
+      "from": "method:src/agents/technical/technical-review-agent.ts#handle",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/agents/technical/technical-review-agent.ts",
+        "line": 35
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 60
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 61
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 63
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 64
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 65
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 67
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 70
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 71
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 72
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 73
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 74
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 76
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/gateway/http-gateway.ts#getServer",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 96
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 109
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#create",
+      "to": "method:src/gateway/http-gateway.ts#handleRequest",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 110
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#start",
+      "to": "method:src/core/agents/agent-router.ts#start",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 138
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#start",
+      "to": "method:src/core/agents/agent-router.ts#start",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 140
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#start",
+      "to": "method:src/core/agents/agent-router.ts#start",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 142
+      }
+    },
+    {
+      "from": "method:src/bootstrap/bootstrap.ts#start",
+      "to": "method:src/core/events/event-bus.ts#subscribeAll",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/bootstrap/bootstrap.ts",
+        "line": 144
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-router.ts#start",
+      "to": "method:src/core/events/event-bus.ts#subscribe",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 16
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-router.ts#start",
+      "to": "method:src/core/agents/agent-runtime.ts#publishError",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 20
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-router.ts#start",
+      "to": "method:src/core/agents/agent-registry.ts#get",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 24
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-router.ts#start",
+      "to": "method:src/core/agents/agent-runtime.ts#publishError",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 27
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-router.ts#start",
+      "to": "method:src/core/agents/agent-runtime.ts#execute",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 31
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-router.ts#publishError",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-router.ts",
+        "line": 36
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-runtime.ts#publishStarted",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-runtime.ts#publishCompleted",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 50
+      }
+    },
+    {
+      "from": "method:src/core/agents/agent-runtime.ts#publishError",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/agents/agent-runtime.ts",
+        "line": 77
+      }
+    },
+    {
+      "from": "method:src/core/tools/tool-runtime.ts#publishStarted",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 50
+      }
+    },
+    {
+      "from": "method:src/core/tools/tool-runtime.ts#publishResult",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 76
+      }
+    },
+    {
+      "from": "method:src/core/tools/tool-runtime.ts#publishFinished",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 105
+      }
+    },
+    {
+      "from": "method:src/core/tools/tool-runtime.ts#publishError",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/core/tools/tool-runtime.ts",
+        "line": 132
+      }
+    },
+    {
+      "from": "method:src/gateway/chat-gateway.ts#start",
+      "to": "method:src/core/events/event-bus.ts#subscribeAll",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 67
+      }
+    },
+    {
+      "from": "method:src/gateway/chat-gateway.ts#handleMessage",
+      "to": "method:src/services/command-service.ts#handleUserCommand",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 91
+      }
+    },
+    {
+      "from": "method:src/gateway/chat-gateway.ts#authenticateConnection",
+      "to": "method:src/services/auth-service.ts#authenticate",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 136
+      }
+    },
+    {
+      "from": "method:src/gateway/chat-gateway.ts#authenticateConnection",
+      "to": "method:src/services/auth-service.ts#publishFailure",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/chat-gateway.ts",
+        "line": 146
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleRequest",
+      "to": "method:src/services/auth-service.ts#authenticate",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 38
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleRequest",
+      "to": "method:src/core/agents/agent-registry.ts#getCatalog",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 68
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleCommand",
+      "to": "method:src/services/command-service.ts#handleUserCommand",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 102
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleAgentRegistration",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 117
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleExternalAgentRegistration",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 126
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "to": "method:src/services/event-service.ts#exportEvents",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 134
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "to": "method:src/services/event-service.ts#getMetrics",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 141
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "to": "method:src/services/event-service.ts#listFailures",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 148
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "to": "method:src/services/event-service.ts#replayTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 159
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleAuditQuery",
+      "to": "method:src/services/event-service.ts#replayConversation",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 170
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleProjectQuery",
+      "to": "method:src/services/project-service.ts#listProjects",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 180
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleProjectQuery",
+      "to": "method:src/services/event-service.ts#listByProject",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 187
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleEventQuery",
+      "to": "method:src/services/event-service.ts#listByConversation",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 201
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleEventQuery",
+      "to": "method:src/services/event-service.ts#listByTask",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 211
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#handleEventQuery",
+      "to": "method:src/services/event-service.ts#listByCorrelation",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 219
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#authenticate",
+      "to": "method:src/services/auth-service.ts#authenticate",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 262
+      }
+    },
+    {
+      "from": "method:src/gateway/rest-gateway.ts#authenticate",
+      "to": "method:src/services/auth-service.ts#publishFailure",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/gateway/rest-gateway.ts",
+        "line": 272
+      }
+    },
+    {
+      "from": "method:src/services/auth-service.ts#publishFailure",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/auth-service.ts",
+        "line": 64
+      }
+    },
+    {
+      "from": "method:src/services/command-service.ts#handleUserCommand",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 41
+      }
+    },
+    {
+      "from": "method:src/services/command-service.ts#handleUserCommand",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 86
+      }
+    },
+    {
+      "from": "method:src/services/command-service.ts#publishRegistrationResult",
+      "to": "method:src/core/events/event-bus.ts#publish",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 119
+      }
+    },
+    {
+      "from": "method:src/services/command-service.ts#registerDynamicAgent",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 143
+      }
+    },
+    {
+      "from": "method:src/services/command-service.ts#registerExternalAgent",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/command-service.ts",
+        "line": 151
+      }
+    },
+    {
+      "from": "method:src/services/dynamic-agent-service.ts#register",
+      "to": "method:src/core/agents/agent-registry.ts#has",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 22
+      }
+    },
+    {
+      "from": "method:src/services/dynamic-agent-service.ts#register",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/dynamic-agent-service.ts",
+        "line": 26
+      }
+    },
+    {
+      "from": "method:src/services/external-agent-service.ts#register",
+      "to": "method:src/core/agents/agent-registry.ts#has",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 16
+      }
+    },
+    {
+      "from": "method:src/services/external-agent-service.ts#register",
+      "to": "method:src/core/agents/agent-registry.ts#register",
+      "kind": "calls",
+      "provenance": "EXTRACTED",
+      "evidence": {
+        "file": "src/services/external-agent-service.ts",
+        "line": 20
+      }
+    }
+  ],
+  "stats": {
+    "nodeCount": 229,
+    "edgeCount": 417
+  }
+}
