@@ -1,6 +1,6 @@
 # Divida tecnica e lacunas
 
-Atualizado com base no checkout e `docs/backlog.md` (2026-09-01).
+Atualizado com base no checkout e `docs/backlog.md` (2026-09-10).
 
 ## Backlog — Sprint 27 pendente
 
@@ -35,6 +35,12 @@ Atualizado com base no checkout e `docs/backlog.md` (2026-09-01).
 - Ollama local (agentes degradam para fallback)
 - RabbitMQ (RabbitAgent e preparatorio)
 - CI/CD no repositorio (nao observado)
+
+## Ops / agents tooling
+
+| Item | Severidade | Notas |
+| --- | --- | --- |
+| MCP `nero-code-graph` bound a outro checkout | Media | `NCG_BOUND_ROOT` em `~/.cursor/mcp.json` aponta para `nero-code-graph`; regenerar `don-server` via CLI com bound root local |
 
 ## Prioridade sugerida
 
